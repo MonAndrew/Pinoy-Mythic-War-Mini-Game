@@ -7,6 +7,7 @@ public class App {
         int maxCharacter = 2;
 
         CharacterStats characters = new CharacterStats(maxCharacter);
+        PlayerVersusPlayer pvp = new PlayerVersusPlayer(2);
         int baseHP = 1000;
         int baseMana = 250;
 
@@ -33,15 +34,18 @@ public class App {
         int player2 = characters.characterSelection(maxCharacter);
         characters.displayCharacterStats(player2);
         
+        pvp.setCharacterHealthAndMana(characters.getHealth(player1),characters.getMana(player1),player1);
+        pvp.setCharacterHealthAndMana(characters.getHealth(player2),characters.getMana(player2),player2);
+
         int round=1;
         //START BATTLE
-        while(characters.getHealth(player1) >= 0 && characters.getHealth(player2) >= 0){
+        while(characters.getHealth(player1) > 0 && characters.getHealth(player2) > 0){
 
         System.out.println("\n======================= ROUND " + (round) + " ======================");
         round++;
 
-        for(int i=0; i<10 && characters.getHealth(player1) >= 0 && characters.getHealth(player2) >= 0; i++){
-        System.out.println("\n======================= TURN " + (i+1) + " =======================");
+        for(int i=1; (characters.getHealth(player1) > 0 && characters.getHealth(player2) > 0) && i<=10; i++){
+        System.out.println("\n======================= TURN " + (i) + " =======================");
         
         if(i%2 == 0){
             System.out.println("\n\t\t Player 1's Turn");
@@ -51,10 +55,10 @@ public class App {
         }
 
         if(i%2 == 0){
-            characters.displayHealthAndMana(player1);
+            pvp.displayHealthAndMana(player1);
             characters.enterSkill(player1, player2);
         }else{
-            characters.displayHealthAndMana(player2);
+            pvp.displayHealthAndMana(player2);
             characters.enterSkill(player2, player1);
         }
 
@@ -64,6 +68,7 @@ public class App {
         
         characters.displayCharacterStats(player1);
         characters.displayCharacterStats(player2);
+        characters.displayEndBattle(player1, player2);
 
         //end
         scan.close();
