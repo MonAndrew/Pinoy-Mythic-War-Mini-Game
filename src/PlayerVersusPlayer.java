@@ -1,31 +1,38 @@
-public class PlayerVersusPlayer extends CharacterStats {
+import character.CharacterStats;
+import character.Character_1;
+import character.Character_2;
+import character.Miscellaneous;
 
-    private final String playerName[];
-    private int health[];
-    private int mana[];
+class PlayerVersusPlayer{
+    Miscellaneous misc = new Miscellaneous();
+    CharacterStats character_1 = new Character_1();
+    CharacterStats character_2 = new Character_2();
+    GameMechanics selectedCharacter_1 = new SelectedCharacter_1();
+    GameMechanics selectedCharacter_2 = new SelectedCharacter_2();
 
-    public PlayerVersusPlayer(int n){
-        super(n);
-        this.playerName = new String[n];
-        this.health = new int[n];
-        this.mana = new int[n];
-    }
-    
-    public void setCharacterHealthAndMana(int health,int mana,int n){
-        this.health[n] = health;
-        this.mana[n] = mana;
+    public void dealDamage(){
+
     }
 
-    public int getPlayerHealth(int n){
-        return health[n];
-    }
-    public int getPlayerMana(int n){
-        return mana[n];
+    public int characterSelection(int num){
+        switch(num){
+
+            case 1 -> {
+            selectedCharacter_1.setPlayerSelectedCharacter(character_1.getCharacterName(), character_1.getHealth(), character_1.getMana());}
+
+            case 2 -> {
+            selectedCharacter_2.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), character_2.getMana());}
+
+        }
+        return 0;
     }
 
-    public void displayHealthAndMana(int n){
-        System.out.println("HP: "+getPlayerHealth(n)+"/"+getMaxHealth());
-        System.out.println("Mana: "+getPlayerMana(n)+"/"+getMaxMana());
+    public void mainPlayerVersusPlayerGame(){
+
+        System.out.println("WOw me in?");
+        //int player1 = characterSelection(misc.characterSelectionTryCatch(2));
+        selectedCharacter_1.displayCharacterNameHealthAndMana();
+
     }
 
 }

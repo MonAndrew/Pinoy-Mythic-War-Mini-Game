@@ -1,77 +1,64 @@
-import java.util.Scanner;
+import character.CharacterStats;
+import character.Character_1;
+import character.Character_2;
+import character.Miscellaneous;
+
+//import java.util.Scanner;
+//import java.nio.charset.Charset;
 
 public class App {
     public static void main(String[] args){
-        Scanner scan = new Scanner(System.in);
-        
+       //Scanner scan = new Scanner(System.in);
+
         int maxCharacter = 2;
 
-        CharacterStats characters = new CharacterStats(maxCharacter);
-        PlayerVersusPlayer pvp = new PlayerVersusPlayer(2);
-        int baseHP = 1000;
-        int baseMana = 250;
+        Miscellaneous misc = new Miscellaneous();
+        PlayerVersusPlayer pvp = new PlayerVersusPlayer();
 
-        //name , health, mana, attackType, n
-        //skill1 name, min, max, manaCost, 
-        //skill2 name, min, max, manaCost,
-        //supportSkillName, supportSkillType, n
-        characters.setCharacterStats("Juncoco Maarti",baseHP,baseMana,2,0);
-        characters.setSkills("Labas Dila sabay Putok", 130, 150, 140, "Tataposin na Kita", 175, 250, 215,"YEY HP",1, 0);
+        CharacterStats character_1 = new Character_1();
+        CharacterStats character_2 = new Character_2();
 
-        characters.setCharacterStats("Jhong Kenario",baseHP,baseMana,1,1);
-        characters.setSkills("Gagamboy", 110, 150, 75, "Backflip kick", 160, 200, 180,"BING BONG",2, 1);
+        //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █");
+/* 
+        int player1 = misc.characterSelectionTryCatch(maxCharacter);
+        int player2 = misc.characterSelectionTryCatch(maxCharacter);
+        character_1.setCharacter();
+        character_2.setCharacter();
+
+        character_1.displayCharacterStats();
+        character_1.displayBackStory();
+
+        character_2.displayCharacterStats();
+        character_2.displayBackStory();
+
         
-        for(int i=0 ; i<maxCharacter; i++){
-            characters.displayCharacterStats(i);
+        character_1.minusHealth(character_1.getSkill_1());
+        character_2.displayCharacterNameHealthAndMana();
+        character_2.minusHealth(character_1.getSkill_2());
+        character_1.displayCharacterNameHealthAndMana();
+        character_2.minusHealth(500);
+        character_2.useSupportSkill();
+        character_2.displayCharacterNameHealthAndMana();
+*/
+        //now we implement PVP
+        misc.setPlayerName_1();
+        System.out.println(misc.getPlayerName_1());
+
+        System.out.println("PVP");
+        //pvp.setCharacterHealthAndMana(character_1.getHealth(), character_1.getMana(), 0);
+        pvp.characterSelection(1);
+        pvp.mainPlayerVersusPlayerGame();
+
+        /*
+        Charset cp437 = Charset.forName("Cp437"); // DOS Extended ASCII
+        for (int i = 0; i <= 255; i++) {
+            byte[] b = { (byte) i };
+            String s = new String(b, cp437);
+            System.out.printf("%3d : %s%n", i, s);
         }
-        
-        //character selection
-        System.out.println("\n======================= PLAYER 1 =======================");
-        int player1 = characters.characterSelection(maxCharacter);
-        characters.displayCharacterStats(player1);
+        */
 
-        System.out.println("\n======================= PLAYER 2 =======================");
-        int player2 = characters.characterSelection(maxCharacter);
-        characters.displayCharacterStats(player2);
-        
-        pvp.setCharacterHealthAndMana(characters.getHealth(player1),characters.getMana(player1),player1);
-        pvp.setCharacterHealthAndMana(characters.getHealth(player2),characters.getMana(player2),player2);
-
-        int round=1;
-        //START BATTLE
-        while(characters.getHealth(player1) > 0 && characters.getHealth(player2) > 0){
-
-        System.out.println("\n======================= ROUND " + (round) + " ======================");
-        round++;
-
-        for(int i=1; (characters.getHealth(player1) > 0 && characters.getHealth(player2) > 0) && i<=10; i++){
-        System.out.println("\n======================= TURN " + (i) + " =======================");
-        
-        if(i%2 == 0){
-            System.out.println("\n\t\t Player 1's Turn");
-            }
-        else{
-            System.out.println("\n\t\tPlayer 2's Turn");
-        }
-
-        if(i%2 == 0){
-            pvp.displayHealthAndMana(player1);
-            characters.enterSkill(player1, player2);
-        }else{
-            pvp.displayHealthAndMana(player2);
-            characters.enterSkill(player2, player1);
-        }
-
-        }
-        //end of battle
-        }
-        
-        characters.displayCharacterStats(player1);
-        characters.displayCharacterStats(player2);
-        characters.displayEndBattle(player1, player2);
-
-        //end
-        scan.close();
+       //scan.close();
     }
 }
 
