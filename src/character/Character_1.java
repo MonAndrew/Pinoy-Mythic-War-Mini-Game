@@ -7,6 +7,12 @@ Miscellaneous misc = new Miscellaneous();
     private int health;
     private int mana;
     //attacks
+    //normal skill
+    private String normalSkillName;
+    private int normalSkill1minRange;
+    private int normalSkill1maxRange;
+    private int manaGain;
+    //1
     private String skillName1;
     private int skill1minRange;
     private int skill1maxRange;

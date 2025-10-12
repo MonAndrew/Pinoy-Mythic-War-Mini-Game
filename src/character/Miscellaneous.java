@@ -107,9 +107,9 @@ public class Miscellaneous {
         try{
         System.out.print("Select Your Character: ");
         characterSelection = scan.nextInt();
-        characterSelection -= 1;
         
-        if(characterSelection < 0 || characterSelection >= maxCharacter){
+        
+        if(characterSelection < 1 || characterSelection > maxCharacter){
             throw new ArrayIndexOutOfBoundsException();
             }
            

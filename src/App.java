@@ -14,6 +14,8 @@ public class App {
 
         Miscellaneous misc = new Miscellaneous();
         PlayerVersusPlayer pvp = new PlayerVersusPlayer();
+        GameMechanics selectedCharacter_1 = new SelectedCharacter_1();
+        GameMechanics selectedCharacter_2 = new SelectedCharacter_2();
 
         CharacterStats character_1 = new Character_1();
         CharacterStats character_2 = new Character_2();
@@ -41,12 +43,14 @@ public class App {
         character_2.displayCharacterNameHealthAndMana();
 */
         //now we implement PVP
-        misc.setPlayerName_1();
-        System.out.println(misc.getPlayerName_1());
+        //misc.setPlayerName_1();
+        //System.out.println(misc.getPlayerName_1());
+
 
         System.out.println("PVP");
         //pvp.setCharacterHealthAndMana(character_1.getHealth(), character_1.getMana(), 0);
-        pvp.characterSelection(1);
+        //selectedCharacter_1.displayCharacterNameHealthAndMana();
+        pvp.setCharacters(); 
         pvp.mainPlayerVersusPlayerGame();
 
         /*

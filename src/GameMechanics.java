@@ -6,11 +6,16 @@ import character.Miscellaneous;
 public abstract class GameMechanics{
     Miscellaneous misc = new Miscellaneous();
 
-    abstract void setPlayerSelectedCharacter(String name,int health, int mana);
-    abstract String getCharacterName();
-    abstract int getHealth();
-    abstract int getMana();
-    abstract void displayCharacterNameHealthAndMana();
+    abstract public void setPlayerSelectedCharacter(String name,int health, int mana);
+    abstract public String getCharacterName();
+    abstract public int getHealth();
+    abstract public int getMana();
+    abstract public void displayCharacterNameHealthAndMana();
+//battles
+    abstract public void minusHealth(int damage);
+    abstract public void minusMana(int manaCost);
+    abstract public void addHealth(int health);
+    abstract public void addMana(int mana);
 
 }
 class SelectedCharacter_1 extends GameMechanics{
@@ -57,6 +62,28 @@ class SelectedCharacter_1 extends GameMechanics{
         return this.mana;
     }
 
+    //in battle
+    @Override
+    public void addHealth(int health){
+        System.out.println(" +"+health+" HP ");
+        this.health += health;
+    }
+    @Override
+    public void addMana(int mana){
+        System.out.println(" -"+mana+" Mana ");
+        this.mana += mana;
+    }
+    @Override
+    public void minusHealth(int damage){
+        System.out.println(" -"+damage+" HP ");
+        this.health -= damage;
+    }
+    @Override
+    public void minusMana(int manaCost){
+        System.out.println(" -"+manaCost+" Mana");
+        this.mana -= manaCost;
+    }
+
 }
 class SelectedCharacter_2 extends GameMechanics{
     private String characterName;
@@ -96,6 +123,28 @@ class SelectedCharacter_2 extends GameMechanics{
     @Override
     public int getMana(){
         return this.mana;
+    }
+
+    //in battle
+    @Override
+    public void addHealth(int health){
+        System.out.println(" +"+health+" HP ");
+        this.health += health;
+    }
+    @Override
+    public void addMana(int mana){
+        System.out.println(" -"+mana+" Mana ");
+        this.mana += mana;
+    }
+    @Override
+    public void minusHealth(int damage){
+        System.out.println(" -"+damage+" HP ");
+        this.health -= damage;
+    }
+    @Override
+    public void minusMana(int manaCost){
+        System.out.println(" -"+manaCost+" Mana");
+        this.mana -= manaCost;
     }
 
 }
