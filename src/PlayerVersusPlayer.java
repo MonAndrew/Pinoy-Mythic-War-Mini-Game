@@ -19,6 +19,27 @@ class PlayerVersusPlayer{
     public void dealDamage(){
         // to <- from
         selectedCharacter_1.minusHealth(950);
+        selectedCharacter_2.minusHealth(975);
+
+        /*call tryCatchEnterskill() return num
+         * switchcase method(num)
+         * Damage = 0;
+         * {
+         * case 1 -> Damage = Normalskill()
+         * case 2 -> Damage = Skill_1()
+         * case 3 -> Damage = Skill_2()
+         * }
+         * // now for the buff? how am i gonna add extra dmg? just incase
+         * //now how would i know if i would call the buff or debuff?
+         * extra = 0;
+         * extra
+         * return damage + (buff) and can be (-debuff);
+         * damage + (+Positive Number) || (-Negative)
+         * 
+         * real return
+         * return Damage + (extra);
+         * 
+         */
 
     }
 
@@ -56,11 +77,13 @@ class PlayerVersusPlayer{
 
     public void mainPlayerVersusPlayerGame(){
 
-        System.out.println("WOw me in?");
+        System.out.println("WOw me in? PVP btw");
         int player1 = misc.characterSelectionTryCatch(2);
         System.out.println("Pnum: "+player1);
+        int player2 = misc.characterSelectionTryCatch(2);
+        System.out.println("Pnum: "+player2);
         characterSelection_1(player1);
-        characterSelection_2(2);
+        characterSelection_2(player2);
 
         System.out.println("Player 1:");
         selectedCharacter_1.displayCharacterNameHealthAndMana();
@@ -68,7 +91,10 @@ class PlayerVersusPlayer{
         selectedCharacter_2.displayCharacterNameHealthAndMana();
 
         dealDamage();
+        System.out.println("Player 1:");
         selectedCharacter_1.displayCharacterNameHealthAndMana();
+        System.out.println("Player 2:");
+        selectedCharacter_2.displayCharacterNameHealthAndMana();
 
     }
 

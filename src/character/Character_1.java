@@ -9,8 +9,8 @@ Miscellaneous misc = new Miscellaneous();
     //attacks
     //normal skill
     private String normalSkillName;
-    private int normalSkill1minRange;
-    private int normalSkill1maxRange;
+    private int normalSkillminRange;
+    private int normalSkillmaxRange;
     private int manaGain;
     //1
     private String skillName1;
@@ -31,6 +31,7 @@ Miscellaneous misc = new Miscellaneous();
     public void setCharacter(){
         setCharacterName("Juncoco Maarti");
         setCharacterStats(super.getBaseHealth(), super.getBaseMana());
+        setCharacterNormalSkill("Normal", 75, 80, 25);
         setCharacterSkill_1("Labas Dila sabay Putok", 130, 150, 140);
         setCharacterSkill_2("Tataposin na Kita", 175, 250, 250);
         setCharacterSupportSkill("YumYUmYum",0.17, 0.10);
@@ -56,6 +57,7 @@ Miscellaneous misc = new Miscellaneous();
         displayCharacterNameHealthAndMana();
 
         System.out.println("                                     SKILLS: ");
+        System.out.println("(" + this.normalSkillName+"): Damage: "+this.normalSkillminRange+"-"+this.normalSkillmaxRange+", Mana Gain: "+this.manaGain);
         System.out.println("(" + this.skillName1+"): Damage: "+this.skill1minRange+"-"+this.skill1maxRange+", Mana Cost: "+this.manaCost1);
         System.out.println("(" + this.skillName2+"): Damage: "+this.skill2minRange+"-"+this.skill2maxRange+", Mana Cost: "+this.manaCost2);
         System.out.println("(" + this.supportSkillName+"): ???");
@@ -88,6 +90,13 @@ Miscellaneous misc = new Miscellaneous();
     public void setCharacterStats(int health, int mana){
         this.health = health;
         this.mana = mana;
+    }
+    @Override
+    public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain){
+        this.normalSkillName = skillName;
+        this.normalSkillminRange = min;
+        this.normalSkillmaxRange = max;
+        this.manaGain = manaGain;
     }
     @Override
     public void setCharacterSkill_1(String skillName, int min,int max, int manaCost){
@@ -124,12 +133,22 @@ Miscellaneous misc = new Miscellaneous();
         return this.mana;
     }
     @Override
+    public int getManaGain(){
+        return this.manaGain;
+    }
+    @Override
     public int getManaCost1(){
         return this.manaCost1;
     }
     @Override
     public int getManaCost2(){
         return this.manaCost2;
+    }
+    @Override
+    public int getNormalSkill(){
+        addMana(manaGain);
+        checkHealthAndManaIfBelowZero();
+        return random.nextInt((this.normalSkillminRange - this.normalSkillmaxRange) + 1) + this.normalSkillminRange;
     }
     @Override
     public int getSkill_1(){

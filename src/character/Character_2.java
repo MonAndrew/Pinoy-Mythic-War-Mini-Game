@@ -7,6 +7,12 @@ Miscellaneous misc = new Miscellaneous();
     private int health;
     private int mana;
     //attacks
+    //normal skill
+    private String normalSkillName;
+    private int normalSkillminRange;
+    private int normalSkillmaxRange;
+    private int manaGain;
+    //1
     private String skillName1;
     private int skill1minRange;
     private int skill1maxRange;
@@ -26,7 +32,8 @@ Miscellaneous misc = new Miscellaneous();
     public void setCharacter(){
         setCharacterName("Zak Riberto");
         setCharacterStats(super.getBaseHealth(),super.getBaseMana());//HP[1000] && Mana[250]
-        setCharacterSkill_1("Abs Smash", 130, 150, 0);
+        setCharacterNormalSkill("Normal", 75, 80, 25);
+        setCharacterSkill_1("Abs Smash", 130, 150, 150);
         setCharacterSkill_2("Kaldag kaldag", 175, 250, 250);
         setCharacterSupportSkill("Anti-selos Barrie",0.17, 0.10);
     }
@@ -49,8 +56,9 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("                                     STATS: ");
 
         displayCharacterNameHealthAndMana();
-        
+
         System.out.println("                                     SKILLS: ");
+        System.out.println("(" + this.normalSkillName+"): Damage: "+this.normalSkillminRange+"-"+this.normalSkillmaxRange+", Mana Gain: "+this.manaGain);
         System.out.println("(" + this.skillName1+"): Damage: "+this.skill1minRange+"-"+this.skill1maxRange+", Mana Cost: "+this.manaCost1);
         System.out.println("(" + this.skillName2+"): Damage: "+this.skill2minRange+"-"+this.skill2maxRange+", Mana Cost: "+this.manaCost2);
         System.out.println("(" + this.supportSkillName+"): ???");
@@ -83,6 +91,13 @@ Miscellaneous misc = new Miscellaneous();
     public void setCharacterStats(int health, int mana){
         this.health = health;
         this.mana = mana;
+    }
+    @Override
+    public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain){
+        this.normalSkillName = skillName;
+        this.normalSkillminRange = min;
+        this.normalSkillmaxRange = max;
+        this.manaGain = manaGain;
     }
     @Override
     public void setCharacterSkill_1(String skillName, int min,int max, int manaCost){
@@ -119,12 +134,22 @@ Miscellaneous misc = new Miscellaneous();
         return this.mana;
     }
     @Override
+    public int getManaGain(){
+        return this.manaGain;
+    }
+    @Override
     public int getManaCost1(){
         return this.manaCost1;
     }
     @Override
     public int getManaCost2(){
         return this.manaCost2;
+    }
+    @Override
+    public int getNormalSkill(){
+        addMana(manaGain);
+        checkHealthAndManaIfBelowZero();
+        return random.nextInt((this.normalSkillminRange - this.normalSkillmaxRange) + 1) + this.normalSkillminRange;
     }
     @Override
     public int getSkill_1(){
@@ -140,18 +165,17 @@ Miscellaneous misc = new Miscellaneous();
     }
     @Override
     public int getBuff(){
-        return (int)Math.round((this.health * this.buff));//17%
+        return (int)this.buff;
     }
     @Override
     public int getDebuff(){
-        return (int)Math.round((this.mana * this.debuff));
+        return (int)this.debuff;
     }
 
     //in battle
     @Override
     public void useSupportSkill(){
-        this.health += getBuff();//1170
-        this.mana = getDebuff();
+
     }
     @Override
     public void checkHealthAndManaIfBelowZero(){
@@ -161,8 +185,7 @@ Miscellaneous misc = new Miscellaneous();
     if(getMana() < 0) this.mana = 0;
     
     }
-    //add  and minus
-     @Override
+    @Override
     public void addHealth(int health){
         System.out.println(" +"+health+" HP ");
         this.health += health;
