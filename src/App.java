@@ -3,6 +3,10 @@ import character.Character_1;
 import character.Character_2;
 import character.Character_3;
 import character.Character_4;
+import character.Character_5;
+import character.Character_6;
+import character.Character_7;
+import character.Character_8;
 import character.Miscellaneous;
 
 //import java.util.Scanner;
