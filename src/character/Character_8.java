@@ -1,7 +1,7 @@
 
 package character;
 
-public class Character_4 extends Miscellaneous implements CharacterStats{
+public class Character_8 extends Miscellaneous implements CharacterStats{
 Miscellaneous misc = new Miscellaneous();
 
     private String characterName;
