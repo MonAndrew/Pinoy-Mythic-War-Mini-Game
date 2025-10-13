@@ -27,6 +27,10 @@ public class App {
         CharacterStats character_2 = new Character_2();
         CharacterStats character_3 = new Character_3();
         CharacterStats character_4 = new Character_4();
+        CharacterStats character_5 = new Character_5();
+        CharacterStats character_6 = new Character_6();
+        CharacterStats character_7 = new Character_7();
+        CharacterStats character_8 = new Character_8();
 
         //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █");
 
@@ -36,6 +40,10 @@ public class App {
         character_2.setCharacter();
         character_3.setCharacter();
         character_4.setCharacter();
+        character_5.setCharacter();
+        character_6.setCharacter();
+        character_7.setCharacter();
+        character_8.setCharacter();
 
         character_1.displayCharacterStats();
         character_1.displayBackStory();
@@ -48,6 +56,18 @@ public class App {
 
         character_4.displayCharacterStats();
         character_4.displayBackStory();
+
+        character_5.displayCharacterStats();
+        character_5.displayBackStory();
+
+        character_6.displayCharacterStats();
+        character_6.displayBackStory();
+
+        character_7.displayCharacterStats();
+        character_7.displayBackStory();
+
+        character_8.displayCharacterStats();
+        character_8.displayBackStory();
 
 /*         
         character_1.minusHealth(character_1.getSkill_1());
