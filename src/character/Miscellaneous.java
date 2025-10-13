@@ -122,7 +122,7 @@ public class Miscellaneous {
             isValidSelection = true;
         }
         if(characterSelection >= 0 && characterSelection < maxCharacter){
-        System.out.println("You've Selected: Character #" + (characterSelection + 1));
+        System.out.println("You've Selected: Character #" + (characterSelection));
         isValidSelection = false;
         }     
          

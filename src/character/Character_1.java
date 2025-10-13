@@ -146,20 +146,20 @@ Miscellaneous misc = new Miscellaneous();
     }
     @Override
     public int getNormalSkill(){
-        addMana(manaGain);
-        checkHealthAndManaIfBelowZero();
+        //addMana(manaGain);
+        //checkHealthAndManaIfBelowZero();
         return random.nextInt((this.normalSkillminRange - this.normalSkillmaxRange) + 1) + this.normalSkillminRange;
     }
     @Override
     public int getSkill_1(){
-        minusMana(manaCost1);
-        checkHealthAndManaIfBelowZero();
+        //minusMana(manaCost1);
+        //checkHealthAndManaIfBelowZero();
         return random.nextInt((this.skill1maxRange - this.skill1minRange) + 1) + this.skill1minRange;
     }
     @Override
     public int getSkill_2(){
-        minusMana(manaCost2);
-        checkHealthAndManaIfBelowZero();
+        //minusMana(manaCost2);
+        //checkHealthAndManaIfBelowZero();
         return random.nextInt((this.skill2maxRange - this.skill2minRange) + 1) + this.skill2minRange;
     }
     @Override

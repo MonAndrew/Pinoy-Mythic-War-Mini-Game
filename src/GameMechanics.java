@@ -1,16 +1,21 @@
-//import character.CharacterStats;
-//import character.Character_1;
-//import character.Character_2;
+import character.CharacterStats;
+import character.Character_1;
+import character.Character_2;
 import character.Miscellaneous;
 
 public abstract class GameMechanics{
     Miscellaneous misc = new Miscellaneous();
+    CharacterStats character_1 = new Character_1();
+    CharacterStats character_2 = new Character_2();
 
     abstract public void setPlayerSelectedCharacter(String name,int health, int mana);
     abstract public String getCharacterName();
     abstract public int getHealth();
     abstract public int getMana();
     abstract public void displayCharacterNameHealthAndMana();
+    abstract public int getDamageFromNormaSkill();
+    abstract public int getDamageFromSkill_1();
+    abstract public int getDamageFromSkill_2();
 //battles
     abstract public void minusHealth(int damage);
     abstract public void minusMana(int manaCost);
@@ -35,14 +40,10 @@ class SelectedCharacter_1 extends GameMechanics{
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println("Name: " +getCharacterName());
 
-        for(int i=1; i<=getHealth() ;i+=50){
-            System.out.print("█ ");
-        }
+        misc.displayASCIIBars(getHealth());
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
-        for(int i=1; i<=getMana() ;i+=50){
-            System.out.print("█ ");
-        }
+        misc.displayASCIIBars(getMana());
         System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
@@ -60,6 +61,24 @@ class SelectedCharacter_1 extends GameMechanics{
     @Override
     public int getMana(){
         return this.mana;
+    }
+    @Override
+    public int getDamageFromNormaSkill(){
+        addMana(character_1.getManaGain());
+        
+        return character_1.getNormalSkill();
+    }
+    @Override
+    public int getDamageFromSkill_1(){
+        minusMana(character_1.getManaCost1());
+        
+        return character_1.getSkill_1();
+    }
+    @Override
+    public int getDamageFromSkill_2(){
+        minusMana(character_1.getManaCost2());
+        
+        return character_1.getSkill_2();
     }
 
     //in battle
@@ -123,6 +142,24 @@ class SelectedCharacter_2 extends GameMechanics{
     @Override
     public int getMana(){
         return this.mana;
+    }
+    @Override
+    public int getDamageFromNormaSkill(){
+        minusMana(character_2.getManaGain());
+        
+        return character_2.getNormalSkill();
+    }
+    @Override
+    public int getDamageFromSkill_1(){
+        minusMana(character_2.getManaCost1());
+        
+        return character_2.getSkill_1();
+    }
+    @Override
+    public int getDamageFromSkill_2(){
+        minusMana(character_2.getManaCost2());
+        
+        return character_2.getSkill_2();
     }
 
     //in battle

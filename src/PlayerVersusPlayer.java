@@ -15,11 +15,15 @@ class PlayerVersusPlayer{
         character_1.setCharacter();
         character_2.setCharacter();
     }
+    public void dealDamageCharacter_1ToCharacter_2(){
+        // to <- from
+        selectedCharacter_2.minusHealth(975);
 
-    public void dealDamage(){
+    }
+
+    public void dealDamageCharacter_2ToCharacter_1(){
         // to <- from
         selectedCharacter_1.minusHealth(950);
-        selectedCharacter_2.minusHealth(975);
 
         /*call tryCatchEnterskill() return num
          * switchcase method(num)
@@ -90,7 +94,8 @@ class PlayerVersusPlayer{
         System.out.println("Player 2:");
         selectedCharacter_2.displayCharacterNameHealthAndMana();
 
-        dealDamage();
+        dealDamageCharacter_1ToCharacter_2();
+        dealDamageCharacter_2ToCharacter_1();
         System.out.println("Player 1:");
         selectedCharacter_1.displayCharacterNameHealthAndMana();
         System.out.println("Player 2:");
