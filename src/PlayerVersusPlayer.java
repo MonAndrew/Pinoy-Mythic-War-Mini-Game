@@ -66,6 +66,30 @@ class PlayerVersusPlayer{
             selectedCharacter_1.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), character_2.getMana());
             return 2;}
 
+            case 3 -> {
+            selectedCharacter_1.setPlayerSelectedCharacter(character_3.getCharacterName(), character_3.getHealth(), character_3.getMana());
+            return 3;}
+
+            case 4 -> {
+            selectedCharacter_1.setPlayerSelectedCharacter(character_4.getCharacterName(), character_4.getHealth(), character_4.getMana());
+            return 4;}
+
+            case 5 -> {
+            selectedCharacter_1.setPlayerSelectedCharacter(character_5.getCharacterName(), character_5.getHealth(), character_5.getMana());
+            return 5;}
+
+            case 6 -> {
+            selectedCharacter_1.setPlayerSelectedCharacter(character_6.getCharacterName(), character_6.getHealth(), character_6.getMana());
+            return 6;}
+
+            case 7 -> {
+            selectedCharacter_1.setPlayerSelectedCharacter(character_7.getCharacterName(), character_7.getHealth(), character_7.getMana());
+            return 7;}
+
+            case 8 -> {
+            selectedCharacter_1.setPlayerSelectedCharacter(character_8.getCharacterName(), character_8.getHealth(), character_8.getMana());
+            return 8;}
+
         }
         return 0;
     }
@@ -81,6 +105,30 @@ class PlayerVersusPlayer{
             case 2 -> {
             selectedCharacter_2.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), character_2.getMana());
             return 2;}
+
+            case 3 -> {
+            selectedCharacter_2.setPlayerSelectedCharacter(character_3.getCharacterName(), character_3.getHealth(), character_3.getMana());
+            return 3;}
+
+            case 4 -> {
+            selectedCharacter_2.setPlayerSelectedCharacter(character_4.getCharacterName(), character_4.getHealth(), character_4.getMana());
+            return 4;}
+
+            case 5 -> {
+            selectedCharacter_2.setPlayerSelectedCharacter(character_5.getCharacterName(), character_5.getHealth(), character_5.getMana());
+            return 5;}
+
+            case 6 -> {
+            selectedCharacter_2.setPlayerSelectedCharacter(character_6.getCharacterName(), character_6.getHealth(), character_6.getMana());
+            return 6;}
+
+            case 7 -> {
+            selectedCharacter_2.setPlayerSelectedCharacter(character_7.getCharacterName(), character_7.getHealth(), character_7.getMana());
+            return 7;}
+
+            case 8 -> {
+            selectedCharacter_2.setPlayerSelectedCharacter(character_8.getCharacterName(), character_8.getHealth(), character_8.getMana());
+            return 8;}
 
         }
         return 0;
