@@ -13,6 +13,12 @@ public abstract class GameMechanics{
     Miscellaneous misc = new Miscellaneous();
     CharacterStats character_1 = new Character_1();
     CharacterStats character_2 = new Character_2();
+    CharacterStats character_3 = new Character_3();
+    CharacterStats character_4 = new Character_4();
+    CharacterStats character_5 = new Character_5();
+    CharacterStats character_6 = new Character_6();
+    CharacterStats character_7 = new Character_7();
+    CharacterStats character_8 = new Character_8();
 
     abstract public void setPlayerSelectedCharacter(String name,int health, int mana);
     abstract public String getCharacterName();
