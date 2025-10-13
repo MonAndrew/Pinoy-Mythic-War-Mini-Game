@@ -13,6 +13,12 @@ class PlayerVersusPlayer{
     Miscellaneous misc = new Miscellaneous();
     CharacterStats character_1 = new Character_1();
     CharacterStats character_2 = new Character_2();
+    CharacterStats character_3 = new Character_3();
+    CharacterStats character_4 = new Character_4();
+    CharacterStats character_5 = new Character_5();
+    CharacterStats character_6 = new Character_6();
+    CharacterStats character_7 = new Character_7();
+    CharacterStats character_8 = new Character_8();
     
     GameMechanics selectedCharacter_1 = new SelectedCharacter_1();
     GameMechanics selectedCharacter_2 = new SelectedCharacter_2();
