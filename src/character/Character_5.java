@@ -29,7 +29,7 @@ Miscellaneous misc = new Miscellaneous();
 
     @Override
     public void setCharacter(){
-        setCharacterName("Character Name");
+        setCharacterName("Manni Pacqyow");
         setCharacterStats(super.getBaseHealth(), super.getBaseMana()); // already set 1000 and 250
         setCharacterNormalSkill("Normal skill name", 0, 100, 25);
         setCharacterSkill_1("(skill 1 name) -> min , max , manaCost", 130, 150, 140);
