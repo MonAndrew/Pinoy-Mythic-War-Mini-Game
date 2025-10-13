@@ -1,13 +1,13 @@
 package character;
 
-public class Character_5 extends Miscellaneous implements CharacterStats{
+public class Character_4 extends Miscellaneous implements CharacterStats{
 Miscellaneous misc = new Miscellaneous();
 
     private String characterName;
     private int health;
     private int mana;
     //attacks
-    //normal skill  
+    //normal skill
     private String normalSkillName;
     private int normalSkillminRange;
     private int normalSkillmaxRange;
@@ -27,14 +27,15 @@ Miscellaneous misc = new Miscellaneous();
     private double buff;
     private double debuff;
 
+    //change for Character
     @Override
     public void setCharacter(){
         setCharacterName("Manni Pacqyow");
-        setCharacterStats(super.getBaseHealth(), super.getBaseMana()); // already set 1000 and 250
-        setCharacterNormalSkill("Normal skill name", 0, 100, 25);
-        setCharacterSkill_1("(skill 1 name) -> min , max , manaCost", 130, 150, 140);
-        setCharacterSkill_2("(skill 2 name) (iguess ultimante) -> min , max , manaCost", 175, 250, 250);
-        setCharacterSupportSkill("(Support skill name) -> buff,debuff",0.17, 0.10);
+        setCharacterStats(super.getBaseHealth(),super.getBaseMana()); //HP[1000] && Mana[250]
+        setCharacterNormalSkill("Normal", 75, 80, 25);
+        setCharacterSkill_1("Jab", 130, 150, 150);
+        setCharacterSkill_2("Block", 175, 250, 250);
+        setCharacterSupportSkill("Right Jab, Left Hook, combo!!!",0.17, 0.10);
     }
     @Override
     public void displayBackStory(){
@@ -42,8 +43,8 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
 
         System.out.println("("+getCharacterName()+") Backstory:");
-        System.out.println(" Back story.");
-
+        System.out.println("Manni Pacqyow was just a skinny kid from Bukidnon who left home with nothing but tsinelas and fists faster than tsismis. Pacqyow fought his way to the top of the food chain, from dukot rice meals to EDI TIPAKLONG. From kanto boy to global icon, Manni Pacqyow showed the world na minsan, suntok lang talaga ang puhunan. ");
+        
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }
@@ -75,7 +76,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
         misc.displayASCIIBars(getMana());
-        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
+        System.out.println("\nMana: ("+getMana()+"/"+super.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -205,4 +206,3 @@ Miscellaneous misc = new Miscellaneous();
         this.mana -= manaCost;
     }
 }
-
