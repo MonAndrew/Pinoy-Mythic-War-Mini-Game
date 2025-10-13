@@ -1,13 +1,13 @@
 package character;
 
-public class Character_5 extends Miscellaneous implements CharacterStats{
+public class Character_4 extends Miscellaneous implements CharacterStats{
 Miscellaneous misc = new Miscellaneous();
 
     private String characterName;
     private int health;
     private int mana;
     //attacks
-    //normal skill  
+    //normal skill
     private String normalSkillName;
     private int normalSkillminRange;
     private int normalSkillmaxRange;
@@ -27,14 +27,15 @@ Miscellaneous misc = new Miscellaneous();
     private double buff;
     private double debuff;
 
+    //change for Character
     @Override
     public void setCharacter(){
-        setCharacterName("Character Name");
-        setCharacterStats(super.getBaseHealth(), super.getBaseMana()); // already set 1000 and 250
-        setCharacterNormalSkill("Normal skill name", 0, 100, 25);
-        setCharacterSkill_1("(skill 1 name) -> min , max , manaCost", 130, 150, 140);
-        setCharacterSkill_2("(skill 2 name) (iguess ultimante) -> min , max , manaCost", 175, 250, 250);
-        setCharacterSupportSkill("(Support skill name) -> buff,debuff",0.17, 0.10);
+        setCharacterName("Johnder Ford");
+        setCharacterStats(super.getBaseHealth(),super.getBaseMana()); //HP[1000] && Mana[250]
+        setCharacterNormalSkill("Normal", 75, 80, 25);
+        setCharacterSkill_1("Basher", 130, 150, 150);
+        setCharacterSkill_2("Who You", 175, 250, 250);
+        setCharacterSupportSkill("Expired Trial Card",0.17, 0.10);
     }
     @Override
     public void displayBackStory(){
@@ -42,8 +43,8 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
 
         System.out.println("("+getCharacterName()+") Backstory:");
-        System.out.println(" Back story.");
-
+        System.out.println("Johnder Ford was an arrogant celebrity who was once a gangsta in his local neighborhood, he was leader of a boy band called Cool Pals and later on went solo in his career and decided to undergo plastic surgery, this made him more arrogant than he already was and was widely receiving negative backlash on the internet. He later on went missing while he was planning to do a controversial public stunt, a black mysterious figure suddenly grabbed him to a mysterious realm.");
+        
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }
@@ -75,7 +76,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
         misc.displayASCIIBars(getMana());
-        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
+        System.out.println("\nMana: ("+getMana()+"/"+super.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
