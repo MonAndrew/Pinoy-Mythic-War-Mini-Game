@@ -1,6 +1,8 @@
 import character.CharacterStats;
 import character.Character_1;
 import character.Character_2;
+import character.Character_3;
+import character.Character_4;
 import character.Miscellaneous;
 
 //import java.util.Scanner;
@@ -19,13 +21,17 @@ public class App {
 
         CharacterStats character_1 = new Character_1();
         CharacterStats character_2 = new Character_2();
+        CharacterStats character_3 = new Character_3();
+        CharacterStats character_4 = new Character_4();
 
         //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █");
-/* 
-        int player1 = misc.characterSelectionTryCatch(maxCharacter);
-        int player2 = misc.characterSelectionTryCatch(maxCharacter);
+
+        //int player1 = misc.characterSelectionTryCatch(maxCharacter);
+        //int player2 = misc.characterSelectionTryCatch(maxCharacter);
         character_1.setCharacter();
         character_2.setCharacter();
+        character_3.setCharacter();
+        character_4.setCharacter();
 
         character_1.displayCharacterStats();
         character_1.displayBackStory();
@@ -33,7 +39,13 @@ public class App {
         character_2.displayCharacterStats();
         character_2.displayBackStory();
 
-        
+        character_3.displayCharacterStats();
+        character_3.displayBackStory();
+
+        character_4.displayCharacterStats();
+        character_4.displayBackStory();
+
+/*         
         character_1.minusHealth(character_1.getSkill_1());
         character_2.displayCharacterNameHealthAndMana();
         character_2.minusHealth(character_1.getSkill_2());
