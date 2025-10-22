@@ -22,6 +22,18 @@ public interface CharacterStats {
     public int getNormalSkill();
     public int getSkill_1();
     public int getSkill_2();
+    //normal skill
+    public String getNormalSkillName();
+    public int getMinRangeNormalSkill();
+    public int getMaxRangeNormalSkill();
+    //skill 1
+    public String getSkillName_1();
+    public int getMinRangeSkill_1();
+    public int getMaxRangeSkill_1();
+    //skill 2
+    public String getSkillName_2();
+    public int getMinRangeSkill_2();
+    public int getMaxRangeSkill_2();
     public int getBuff();
     public int getDebuff();
     //in Battle maybe

@@ -16,7 +16,7 @@ public class App {
     public static void main(String[] args){
        //Scanner scan = new Scanner(System.in);
 
-        int maxCharacter = 2;
+        int maxCharacter = 8;
 
         Miscellaneous misc = new Miscellaneous();
         PlayerVersusPlayer pvp = new PlayerVersusPlayer();
@@ -44,7 +44,7 @@ public class App {
         character_6.setCharacter();
         character_7.setCharacter();
         character_8.setCharacter();
-
+/* 
         character_1.displayCharacterStats();
         character_1.displayBackStory();
 
@@ -68,6 +68,7 @@ public class App {
 
         character_8.displayCharacterStats();
         character_8.displayBackStory();
+        */
 
 /*         
         character_1.minusHealth(character_1.getSkill_1());
@@ -87,7 +88,7 @@ public class App {
         //pvp.setCharacterHealthAndMana(character_1.getHealth(), character_1.getMana(), 0);
         //selectedCharacter_1.displayCharacterNameHealthAndMana();
         pvp.setCharacters(); 
-        pvp.mainPlayerVersusPlayerGame();
+        pvp.mainPlayerVersusPlayerGame(8);
 
         /*
         Charset cp437 = Charset.forName("Cp437"); // DOS Extended ASCII

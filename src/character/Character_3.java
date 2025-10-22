@@ -14,13 +14,13 @@ Miscellaneous misc = new Miscellaneous();
     private int manaGain;
     //1
     private String skillName1;
-    private int skill1minRange;
-    private int skill1maxRange;
+    private int minRangeSkill_1;
+    private int maxRangeSkill_1;
     private int manaCost1;
     //2
     private String skillName2;
-    private int skill2minRange;
-    private int skill2maxRange;
+    private int minRangeSkill_2;
+    private int maxRangeSkill_2;
     private int manaCost2;
     //support skill
     private String supportSkillName;
@@ -59,8 +59,8 @@ Miscellaneous misc = new Miscellaneous();
 
         System.out.println("                                     SKILLS: ");
         System.out.println("(" + this.normalSkillName+"): Damage: "+this.normalSkillminRange+"-"+this.normalSkillmaxRange+", Mana Gain: "+this.manaGain);
-        System.out.println("(" + this.skillName1+"): Damage: "+this.skill1minRange+"-"+this.skill1maxRange+", Mana Cost: "+this.manaCost1);
-        System.out.println("(" + this.skillName2+"): Damage: "+this.skill2minRange+"-"+this.skill2maxRange+", Mana Cost: "+this.manaCost2);
+        System.out.println("(" + this.skillName1+"): Damage: "+this.minRangeSkill_1+"-"+this.maxRangeSkill_1+", Mana Cost: "+this.manaCost1);
+        System.out.println("(" + this.skillName2+"): Damage: "+this.minRangeSkill_2+"-"+this.maxRangeSkill_2+", Mana Cost: "+this.manaCost2);
         System.out.println("(" + this.supportSkillName+"): ???");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
@@ -102,15 +102,15 @@ Miscellaneous misc = new Miscellaneous();
     @Override
     public void setCharacterSkill_1(String skillName, int min,int max, int manaCost){
         this.skillName1 = skillName;
-        this.skill1minRange = min;
-        this.skill1maxRange = max;
+        this.minRangeSkill_1 = min;
+        this.maxRangeSkill_1 = max;
         this.manaCost1 = manaCost;
     }
     @Override
     public void setCharacterSkill_2(String skillName, int min,int max, int manaCost){
         this.skillName2 = skillName;
-        this.skill2minRange = min;
-        this.skill2maxRange = max;
+        this.minRangeSkill_2 = min;
+        this.maxRangeSkill_2 = max;
         this.manaCost2 = manaCost;
     }
     @Override
@@ -125,6 +125,13 @@ Miscellaneous misc = new Miscellaneous();
     public String getCharacterName(){
         return this.characterName;
     }
+    @Override
+    public String getNormalSkillName(){ return this.normalSkillName; }
+    @Override
+    public String getSkillName_1(){ return this.skillName1; }
+    @Override
+    public String getSkillName_2(){ return this.skillName2; }
+
     @Override
     public int getHealth(){
         return this.health;
@@ -155,14 +162,41 @@ Miscellaneous misc = new Miscellaneous();
     public int getSkill_1(){
         //minusMana(manaCost1);
         //checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.skill1maxRange - this.skill1minRange) + 1) + this.skill1minRange;
+        return random.nextInt((this.maxRangeSkill_1 - this.minRangeSkill_1) + 1) + this.minRangeSkill_1;
     }
     @Override
     public int getSkill_2(){
         //minusMana(manaCost2);
         //checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.skill2maxRange - this.skill2minRange) + 1) + this.skill2minRange;
+        return random.nextInt((this.maxRangeSkill_2 - this.minRangeSkill_2) + 1) + this.minRangeSkill_2;
     }
+    //get skills min - max
+    @Override
+    public int getMinRangeNormalSkill(){
+        return this.normalSkillminRange;
+    }
+    @Override
+    public int getMaxRangeNormalSkill(){
+        return this.normalSkillmaxRange;
+    }
+    @Override
+    public int getMinRangeSkill_1(){
+        return this.minRangeSkill_1;
+    }
+    @Override
+    public int getMaxRangeSkill_1(){
+        return this.maxRangeSkill_1;
+    }
+    @Override
+    public int getMinRangeSkill_2(){
+        return this.minRangeSkill_2;
+    }
+    @Override
+    public int getMaxRangeSkill_2(){
+        return this.maxRangeSkill_2;
+    }
+
+    //
     @Override
     public int getBuff(){
         return (int)this.buff;

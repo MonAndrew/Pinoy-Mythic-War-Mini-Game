@@ -27,16 +27,23 @@ class PlayerVersusPlayer{
     public void setCharacters(){
         character_1.setCharacter();
         character_2.setCharacter();
+        character_3.setCharacter();
+        character_4.setCharacter();
+        character_5.setCharacter();
+        character_6.setCharacter();
+        character_7.setCharacter();
+        character_8.setCharacter();
     }
     public void dealDamageCharacter_1ToCharacter_2(){
         // to <- from
-        selectedCharacter_2.minusHealth(975);
+        selectedCharacter_2.minusHealth(selectedCharacter_1.getDamageFromSkill_2());
 
     }
 
     public void dealDamageCharacter_2ToCharacter_1(){
         // to <- from
-        selectedCharacter_1.minusHealth(950);
+        selectedCharacter_1.minusHealth(selectedCharacter_2.getDamageFromSkill_1());
+        
 
         /*call tryCatchEnterskill() return num
          * switchcase method(num)
@@ -61,11 +68,14 @@ class PlayerVersusPlayer{
     }
 
     public int characterSelection_1(int num){
-        setCharacters();
+        //setCharacters();
         switch(num){
 
             case 1 -> {
             selectedCharacter_1.setPlayerSelectedCharacter(character_1.getCharacterName(), character_1.getHealth(), character_1.getMana());
+            selectedCharacter_1.setCharacterNormalSkill(character_1.getNormalSkillName(), character_1.getMinRangeNormalSkill(), character_1.getMaxRangeNormalSkill(), character_1.getManaGain());
+            selectedCharacter_1.setCharacterSkill_1(character_1.getSkillName_1(), character_1.getMinRangeSkill_1(), character_1.getMaxRangeSkill_1(), character_1.getManaCost1());
+            selectedCharacter_1.setCharacterSkill_2(character_1.getSkillName_2(), character_1.getMinRangeSkill_2(), character_1.getMaxRangeSkill_2(), character_1.getManaCost2());
             return 1;}
 
             case 2 -> {
@@ -101,7 +111,7 @@ class PlayerVersusPlayer{
     }
 
     public int characterSelection_2(int num){
-        setCharacters();
+        //setCharacters();
         switch(num){
 
             case 1 -> {
@@ -110,6 +120,9 @@ class PlayerVersusPlayer{
 
             case 2 -> {
             selectedCharacter_2.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), character_2.getMana());
+            selectedCharacter_2.setCharacterNormalSkill(character_2.getNormalSkillName(), character_2.getMinRangeNormalSkill(), character_2.getMaxRangeNormalSkill(), character_2.getManaGain());
+            selectedCharacter_2.setCharacterSkill_1(character_2.getSkillName_1(), character_2.getMinRangeSkill_1(), character_2.getMaxRangeSkill_1(), character_2.getManaCost1());
+            selectedCharacter_2.setCharacterSkill_2(character_2.getSkillName_2(), character_2.getMinRangeSkill_2(), character_2.getMaxRangeSkill_2(), character_2.getManaCost2());
             return 2;}
 
             case 3 -> {
@@ -140,12 +153,13 @@ class PlayerVersusPlayer{
         return 0;
     }
 
-    public void mainPlayerVersusPlayerGame(){
+    public void mainPlayerVersusPlayerGame(int maxCharacter){
+        setCharacters();
 
         System.out.println("WOw me in? PVP btw");
-        int player1 = misc.characterSelectionTryCatch(2);
+        int player1 = misc.characterSelectionTryCatch(maxCharacter);
         System.out.println("Pnum: "+player1);
-        int player2 = misc.characterSelectionTryCatch(2);
+        int player2 = misc.characterSelectionTryCatch(maxCharacter);
         System.out.println("Pnum: "+player2);
         characterSelection_1(player1);
         characterSelection_2(player2);

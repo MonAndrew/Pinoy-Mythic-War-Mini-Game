@@ -40,7 +40,7 @@ public class Miscellaneous {
     }
 
     public void setPlayerName_1(){
-        String playerName= "Anonymous";
+        String playerName= "Anonymous " + 1;
 
         System.out.println("Do you want to set Player name?(Y/N)");
         char confirmName = scan.next().charAt(0);
@@ -52,7 +52,7 @@ public class Miscellaneous {
     }
 
     public void setPlayerName_2(){
-        String playerName= "Anonymous";
+        String playerName= "Anonymous "+ 2;
 
         System.out.println("Do you want to set Player name?(Y/N)");
         char confirmName = scan.next().charAt(0);
