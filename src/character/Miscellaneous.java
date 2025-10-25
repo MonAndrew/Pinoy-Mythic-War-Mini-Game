@@ -144,7 +144,7 @@ public class Miscellaneous {
     public int enterSkillTryCatch(){
 
         boolean isValidSelection =true;
-        int skillNumber = 0;
+        int skillNumber = 1;
         do{
 
         try{
@@ -155,12 +155,9 @@ public class Miscellaneous {
             throw new ArrayIndexOutOfBoundsException();
             }
             isValidSelection = true; 
-        }catch(ArrayIndexOutOfBoundsException e){
-            System.out.println("Invalid Skill Number Selection!\n");
-            isValidSelection = false;
         }catch(InputMismatchException e){
             System.out.println("Invalid Skill Number Selection!\n");
-            scan.nextLine();
+            scan.next();
             isValidSelection = false;
         }
            

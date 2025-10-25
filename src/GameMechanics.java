@@ -32,7 +32,7 @@ public abstract class GameMechanics{
     abstract public String getCharacterName();
     abstract public int getHealth();
     abstract public int getMana();
-    abstract public int getDamageFromNormaSkill();
+    abstract public int getDamagefromNormalSkill();
     abstract public int getDamageFromSkill_1();
     abstract public int getDamageFromSkill_2();
 //battles
@@ -123,7 +123,7 @@ class SelectedCharacter_1 extends GameMechanics{
         return this.mana;
     }
     @Override
-    public int getDamageFromNormaSkill(){
+    public int getDamagefromNormalSkill(){
         System.out.println("("+this.characterName+") Used: "+this.normalSkillName);
         minusMana(this.manaGain);
         checkHealthAndManaIfBelowZero();
@@ -264,7 +264,7 @@ class SelectedCharacter_2 extends GameMechanics{
         return this.mana;
     }
     @Override
-    public int getDamageFromNormaSkill(){
+    public int getDamagefromNormalSkill(){
         System.out.println("("+this.characterName+") Used: "+this.normalSkillName);
         minusMana(this.manaGain);
         checkHealthAndManaIfBelowZero();

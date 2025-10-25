@@ -182,12 +182,15 @@ class PlayerVersusPlayer{
      
     switch(skillnum){
      
-    case 1 -> { dmg  =  selectedCharacter_1.getDamageFromNormaSkill(); 
+    case 1 -> { dmg  = selectedCharacter_1.getDamageFromNormaSkill(); 
     } 
     case 2 -> { dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
     } 
     case 3 -> { dmg  = selectedCharacter_1.getDamageFromSkill_2(); 
     }
+
+    default -> { dmg  = selectedCharacter_1.getDamageFromNormaSkill(); 
+    } 
 
     }
     //motin        
@@ -200,7 +203,7 @@ class PlayerVersusPlayer{
      
     switch(skillnum){
      
-    case 1 -> { dmg  =  selectedCharacter_2.getDamageFromNormaSkill(); 
+    case 1 -> { dmg  = selectedCharacter_2.getDamageFromNormaSkill(); 
     } 
     case 2 -> { dmg  = selectedCharacter_2.getDamageFromSkill_1(); 
     } 
