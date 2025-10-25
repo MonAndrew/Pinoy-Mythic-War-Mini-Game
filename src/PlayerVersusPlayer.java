@@ -76,8 +76,27 @@ class PlayerVersusPlayer{
         System.out.println(character_6.getCharacterName());
         System.out.println(character_7.getCharacterName());
         System.out.println(character_8.getCharacterName());
+    } 
+    
+    public int skillNumber(int skillnum){
+     
+    int dmg = 0;
+     
+    switch(skillnum){
+     
+    case 1 -> { 
+        dmg  =  selectedCharacter_1.getDmg; 
+    } 
+    case 2-> {  
+        dmg  = skill 1 dmg; 
+    } 
+    case 3 -> { 
+        dmg  = skill 2 dmg } 
     }
-
+     
+    return dmg
+    }
+ 
     public int characterSelection_1(int num){
         //setCharacters();
         switch(num){
