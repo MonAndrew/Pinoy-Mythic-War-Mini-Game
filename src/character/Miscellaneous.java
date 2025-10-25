@@ -95,6 +95,17 @@ public class Miscellaneous {
             System.out.print("█ ");
         }
     }
+    //conclusion battle
+    public void displayEndBattle(int player1, int player2){
+        System.out.println("\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n\n");
+        if(player1>player2)
+            System.out.println("\t\t     PLAYER 1 WINS!");
+        else if(player1<player2)
+            System.out.println("\t\t     PLAYER 2 WINS!");
+        else
+            System.out.println("\t\t\t         TIE!");
+        System.out.println("\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    }
 
     //user input
     public int characterSelectionTryCatch(int maxCharacter){
@@ -118,7 +129,7 @@ public class Miscellaneous {
             isValidSelection = true;
         }catch(InputMismatchException e){
             System.out.println("Invalid Character Selection!");
-            scan.nextLine();
+            scan.next();
             isValidSelection = true;
         }
         if(characterSelection >= 0 && characterSelection < maxCharacter){

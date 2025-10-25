@@ -1,13 +1,12 @@
 import character.CharacterStats;
 import character.Character_1;
 import character.Character_2;
-/*
 import character.Character_3;
 import character.Character_4;
 import character.Character_5;
 import character.Character_6;
 import character.Character_7;
-import character.Character_8; */
+import character.Character_8; 
 import character.Miscellaneous;
 import java.util.Random;
 
@@ -16,14 +15,12 @@ public abstract class GameMechanics{
     Random random = new Random();
     CharacterStats character_1 = new Character_1();
     CharacterStats character_2 = new Character_2();
-    /* 
     CharacterStats character_3 = new Character_3();
     CharacterStats character_4 = new Character_4();
     CharacterStats character_5 = new Character_5();
     CharacterStats character_6 = new Character_6();
     CharacterStats character_7 = new Character_7();
     CharacterStats character_8 = new Character_8();
-*/
 //setters
     abstract public void setPlayerSelectedCharacter(String name,int health, int mana);
     abstract public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);
