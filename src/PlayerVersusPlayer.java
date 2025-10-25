@@ -34,69 +34,8 @@ class PlayerVersusPlayer{
         character_7.setCharacter();
         character_8.setCharacter();
     }
-    public void dealDamageCharacter_1ToCharacter_2(){
-        // to <- from
-        selectedCharacter_2.minusHealth(selectedCharacter_1.getDamageFromSkill_2());
 
-    }
-
-    public void dealDamageCharacter_2ToCharacter_1(){
-        // to <- from
-        selectedCharacter_1.minusHealth(selectedCharacter_2.getDamageFromSkill_1());
-        
-
-        /*call tryCatchEnterskill() return num
-         * switchcase method(num)
-         * Damage = 0;
-         * {
-         * case 1 -> Damage = Normalskill()
-         * case 2 -> Damage = Skill_1()
-         * case 3 -> Damage = Skill_2()
-         * }
-         * // now for the buff? how am i gonna add extra dmg? just incase
-         * //now how would i know if i would call the buff or debuff?
-         * extra = 0;
-         * extra
-         * return damage + (buff) and can be (-debuff);
-         * damage + (+Positive Number) || (-Negative)
-         * 
-         * real return
-         * return Damage + (extra);
-         * 
-         */
-
-    }
-    
-    public void displayCharacters(){
-        System.out.println(character_1.getCharacterName());
-        System.out.println(character_2.getCharacterName());
-        System.out.println(character_3.getCharacterName());
-        System.out.println(character_4.getCharacterName());
-        System.out.println(character_5.getCharacterName());
-        System.out.println(character_6.getCharacterName());
-        System.out.println(character_7.getCharacterName());
-        System.out.println(character_8.getCharacterName());
-    } 
-    
-    public int skillNumber(int skillnum){
      
-    int dmg = 0;
-     
-    switch(skillnum){
-     
-    case 1 -> { 
-        dmg  =  selectedCharacter_1.getDamageFromNormaSkill(); 
-    } 
-    case 2-> {  
-        dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
-    } 
-    case 3 -> { 
-        dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
-    }
-    //motin        
-    return dmg;
-    }
- 
     public int characterSelection_1(int num){
         //setCharacters();
         switch(num){
@@ -224,6 +163,88 @@ class PlayerVersusPlayer{
         }
         return 0;
     }
+    
+    public void displayCharacters(){
+        System.out.println(character_1.getCharacterName());
+        System.out.println(character_2.getCharacterName());
+        System.out.println(character_3.getCharacterName());
+        System.out.println(character_4.getCharacterName());
+        System.out.println(character_5.getCharacterName());
+        System.out.println(character_6.getCharacterName());
+        System.out.println(character_7.getCharacterName());
+        System.out.println(character_8.getCharacterName());
+    } 
+
+    
+    public int skillNumberForSelectedCharacter_1(int skillnum){
+     
+    int dmg = 0;
+     
+    switch(skillnum){
+     
+    case 1 -> { dmg  =  selectedCharacter_1.getDamageFromNormaSkill(); 
+    } 
+    case 2 -> { dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
+    } 
+    case 3 -> { dmg  = selectedCharacter_1.getDamageFromSkill_2(); 
+    }
+
+    }
+    //motin        
+    return dmg;
+    }
+
+    public int skillNumberForSelectedCharacter_2(int skillnum){
+     
+    int dmg = 0;
+     
+    switch(skillnum){
+     
+    case 1 -> { dmg  =  selectedCharacter_2.getDamageFromNormaSkill(); 
+    } 
+    case 2 -> { dmg  = selectedCharacter_2.getDamageFromSkill_1(); 
+    } 
+    case 3 -> { dmg  = selectedCharacter_2.getDamageFromSkill_2(); 
+    }
+
+    }
+    //motin        
+    return dmg;
+    }
+    
+    public void dealDamageCharacter_1ToCharacter_2(int skillnum){
+
+        // to <- from
+        selectedCharacter_2.minusHealth( skillNumberForSelectedCharacter_1(skillnum) );
+
+    }
+
+    public void dealDamageCharacter_2ToCharacter_1(){
+        // to <- from
+        selectedCharacter_1.minusHealth(selectedCharacter_2.getDamageFromSkill_1());
+        
+
+        /*call tryCatchEnterskill() return num
+         * switchcase method(num)
+         * Damage = 0;
+         * {
+         * case 1 -> Damage = Normalskill()
+         * case 2 -> Damage = Skill_1()
+         * case 3 -> Damage = Skill_2()
+         * }
+         * // now for the buff? how am i gonna add extra dmg? just incase
+         * //now how would i know if i would call the buff or debuff?
+         * extra = 0;
+         * extra
+         * return damage + (buff) and can be (-debuff);
+         * damage + (+Positive Number) || (-Negative)
+         * 
+         * real return
+         * return Damage + (extra);
+         * 
+         */
+
+    }
 
     public void mainPlayerVersusPlayerGame(int maxCharacter){
         setCharacters();
@@ -247,7 +268,7 @@ class PlayerVersusPlayer{
                 if(turn % 2 == 0){
                     System.out.println("Player 1:");
                     selectedCharacter_1.displayCharacterNameHealthAndMana();
-                    dealDamageCharacter_1ToCharacter_2();
+                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());
                 }else{
                     System.out.println("Player 2:");
                     selectedCharacter_2.displayCharacterNameHealthAndMana();

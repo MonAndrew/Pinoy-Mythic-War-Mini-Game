@@ -71,10 +71,10 @@ public class Miscellaneous {
         return this.playerName_2;
     }
 
-    public int getRNG(){
+    /*public int getRNG(){
         //(max-min+1) + min
-        return random.nextInt(2 - 1) + 1;
-    }
+        return random.nextInt(2 - 10) + 1;
+    }*/
 
     public int getMaxHealth(){
         return maxHealth;
@@ -141,7 +141,7 @@ public class Miscellaneous {
     return characterSelection;
     }
 
-    public int enterSkillTryCatch(int from, int to){
+    public int enterSkillTryCatch(){
 
         boolean isValidSelection =true;
         int skillNumber = 0;
@@ -156,10 +156,10 @@ public class Miscellaneous {
             }
             isValidSelection = true; 
         }catch(ArrayIndexOutOfBoundsException e){
-            System.out.println("Invalid Character Selection!\n");
+            System.out.println("Invalid Skill Number Selection!\n");
             isValidSelection = false;
         }catch(InputMismatchException e){
-            System.out.println("Invalid Character Selection!\n");
+            System.out.println("Invalid Skill Number Selection!\n");
             scan.nextLine();
             isValidSelection = false;
         }
