@@ -85,16 +85,16 @@ class PlayerVersusPlayer{
     switch(skillnum){
      
     case 1 -> { 
-        dmg  =  selectedCharacter_1.getDmg; 
+        dmg  =  selectedCharacter_1.getDamageFromNormaSkill(); 
     } 
     case 2-> {  
-        dmg  = skill 1 dmg; 
+        dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
     } 
     case 3 -> { 
-        dmg  = skill 2 dmg } 
+        dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
     }
-     
-    return dmg
+    //motin        
+    return dmg;
     }
  
     public int characterSelection_1(int num){
