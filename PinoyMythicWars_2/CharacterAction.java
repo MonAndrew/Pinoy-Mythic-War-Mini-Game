@@ -11,6 +11,8 @@ package PinoyMythicWars_2;
 public interface CharacterAction {
     
     public void attack(CharacterStatsBase target);
+    public void supportSkill();
+    public void burstSkill(CharacterStatsBase target);
     public void takeDamage(int damage);
     public boolean isAlive();
     public void showStatus();
