@@ -19,4 +19,25 @@ public class Johnder_Ford extends CharacterStatsBase{
         System.out.println(name + " attacks " + target.getName() + " for " + attack + " damage!");
         target.takeDamage(attack);
     }
+    
+    @Override
+    public void supportSkill(){
+        int cost = 115;
+        int healAmount = 200;
+
+        currentHealth += healAmount;
+        
+        System.out.println(name + " used Ako si Johnder and healed for " + healAmount + " HP!" + "| Updated HP: " + currentHealth);
+        
+        
+    }
+    
+    @Override
+    public void burstSkill(CharacterStatsBase target){
+        int cost = 275;
+     
+        int damage = (int)(attack * 2.5);
+        System.out.println(name + " unleashes Final Judgement for " + damage + " damage!");
+        target.takeDamage(damage);
+    }
 }

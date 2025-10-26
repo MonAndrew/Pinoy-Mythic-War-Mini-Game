@@ -43,11 +43,14 @@ public class Main {
         }
         
         if(battleType == 1){
-            System.out.println("asdasd");
+            PVP_BattleSystem battle = new PVP_BattleSystem();
+            battle.startBattle();
         }else if(battleType == 2){
             try{
                     int[] wasChoosen = new int[8];
                     int i= 0;
+                    
+                    //MAKE SURE ALL CHARACTERS START AS NOT CHOOSEN
                     for(i = 0; i < 8; i++){
                         wasChoosen[i] = 0;
                     }
@@ -106,41 +109,74 @@ public class Main {
                     
                     //CHECKING IF THE CHARACTER HAS BEEN CHOOSEN, IF NOT FIGHT THAT CHARACTER
                     if(wasChoosen[0] == 0) {
+                        System.out.println();
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new Juncoco_Maarti();
                         battle.startBattle(player, enemy);
                         wasChoosen[0] = 1;
                     }
                     if(wasChoosen[1] == 0){
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new Ruby_Galapad();
                         battle.startBattle(player, enemy);
                         wasChoosen[1] = 1;
                     }
                     if(wasChoosen[2] == 0){
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new Jhong_Kinario();
                         battle.startBattle(player, enemy);
                         wasChoosen[2] = 1;
                     }    
                     if(wasChoosen[3] == 0){
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new Manny_Pacqyow();   
                         battle.startBattle(player, enemy);
                         wasChoosen[3] = 1;
                     }
                     if(wasChoosen[4] == 0){
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new Zak_Rebirto();  
                         battle.startBattle(player, enemy);
                         wasChoosen[4] = 1;
                     }
                     if(wasChoosen[5] == 0){
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new CynaMon();
                         battle.startBattle(player, enemy);
                         wasChoosen[5] = 1;
                     }
                     if(wasChoosen[6] == 0){
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new Zaldiko();
                         battle.startBattle(player, enemy);
                         wasChoosen[6] = 1;
                     }
                     if(wasChoosen[7] == 0){
+                        System.out.println("------------------------------------");
+                        System.out.println("New Battle Start!!");
+                        player.currentHealth = 1500;
+                        player.energy = 150;
                         enemy = new Johnder_Ford();
                         battle.startBattle(player, enemy);
                         wasChoosen[7] = 1;
