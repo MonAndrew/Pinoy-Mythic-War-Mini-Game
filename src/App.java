@@ -15,8 +15,13 @@ public class App {
             misc.addSpace();
             pvp.mainPlayerVersusPlayerGame(maxCharacter);
 
+        }else if (misc.displayGamePlayOptions() == 2){
+            misc.addSpace();
+            pvp.mainPlayerVersusEntityGame(maxCharacter);
+
         }else{
             misc.addSpace();
+            System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");
             misc.displayDeathScreen();
         }
  

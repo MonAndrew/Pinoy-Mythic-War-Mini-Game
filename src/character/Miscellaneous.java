@@ -71,10 +71,10 @@ public class Miscellaneous {
         return this.playerName_2;
     }
 
-    /*public int getRNG(){
+    public int getRNG(){
         //(max-min+1) + min
-        return random.nextInt(2 - 10) + 1;
-    }*/
+        return random.nextInt(3) + 1;
+    }
 
     public int getMaxHealth(){
         return maxHealth;
@@ -263,7 +263,9 @@ public class Miscellaneous {
         System.out.println("                         ╔══════════════════════╗");
         System.out.println("                         ║ 2:   ARCADE MODE     ║");
         System.out.println("                         ╚══════════════════════╝");
-        System.out.println();
+        System.out.println("                         ╔══════════════════════╗");
+        System.out.println("                         ║ 3:    SETTINGS       ║");
+        System.out.println("                         ╚══════════════════════╝");
         System.out.println();
         System.out.println("");
         System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
