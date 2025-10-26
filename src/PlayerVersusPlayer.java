@@ -166,18 +166,18 @@ class PlayerVersusPlayer{
     
     //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
     public void displayCharacters(){
-        System.out.println("                   ╔══════════════════════╗");
-        System.out.println("                   ║   SELECT CHARACTER:  ║");
-        System.out.println("                   ╚══════════════════════╝");
-        System.out.println("╔══════════════════╦══════════════════════╦══════════════════╗");
+        System.out.println("                         ╔══════════════════════╗");
+        System.out.println("                         ║   SELECT CHARACTER:  ║");
+        System.out.println("                         ╚══════════════════════╝");
+        System.out.println("      ╔══════════════════╦══════════════════════╦══════════════════╗");
 
-        System.out.println("║ 0:   RANDOM      ║ 1: "+character_1.getCharacterName()+"    ║ 2: "+ character_2.getCharacterName()+"   ║");
-      System.out.println("╠══════════════════╬══════════════════════╬══════════════════╣");
-        System.out.println("║ 3: "+character_3.getCharacterName()+" ║ 4: "+character_4.getCharacterName()+"      ║ 5: "+ character_5.getCharacterName()+" ║");
-      System.out.println("╠══════════════════╬══════════════════════╬══════════════════╣");
-        System.out.println("║ 6: "+character_6.getCharacterName()+"  ║ 7: "+character_7.getCharacterName()+"  ║ 8: "+ character_8.getCharacterName()+"  ║");
+        System.out.println("      ║ 0:   RANDOM      ║ 1: "+character_1.getCharacterName()+"    ║ 2: "+ character_2.getCharacterName()+"   ║");
+        System.out.println("      ╠══════════════════╬══════════════════════╬══════════════════╣");
+        System.out.println("      ║ 3: "+character_3.getCharacterName()+" ║ 4: "+character_4.getCharacterName()+"      ║ 5: "+ character_5.getCharacterName()+" ║");
+        System.out.println("      ╠══════════════════╬══════════════════════╬══════════════════╣");
+        System.out.println("      ║ 6: "+character_6.getCharacterName()+"  ║ 7: "+character_7.getCharacterName()+"  ║ 8: "+ character_8.getCharacterName()+"  ║");
 
-        System.out.println("╚══════════════════╩══════════════════════╩══════════════════╝");
+        System.out.println("      ╚══════════════════╩══════════════════════╩══════════════════╝");
         System.out.println("\n\n\n\n");
     } 
 
