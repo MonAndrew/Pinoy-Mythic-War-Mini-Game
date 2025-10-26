@@ -52,10 +52,10 @@ public abstract class GameMechanics{
         //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println("Name: " +getCharacterName());
 
-        misc.displayASCIIBars(getHealth());
+        misc.displayASCIIBars(getHealth(),misc.getMaxHealth());
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
-        misc.displayASCIIBars(getMana());
+        misc.displayASCIIBars(getMana(),misc.getMaxMana());
         System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
 
         //System.out.println("═════════════════════════════════════════════════════════════════════════════════");

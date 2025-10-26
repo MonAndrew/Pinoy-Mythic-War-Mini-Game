@@ -73,11 +73,11 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println("Name: " +getCharacterName());
 
-        misc.displayASCIIBars(getHealth());
+        misc.displayASCIIBars(getHealth(),misc.getMaxHealth());
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
-        misc.displayASCIIBars(getMana());
-        System.out.println("\nMana: ("+getMana()+"/"+super.getMaxMana()+")");
+        misc.displayASCIIBars(getMana(),misc.getMaxMana());
+        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -154,7 +154,7 @@ Miscellaneous misc = new Miscellaneous();
         return this.manaCost2;
     }
 
-    
+
     //get skills min - max
     @Override
     public int getMinRangeNormalSkill(){

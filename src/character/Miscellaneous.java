@@ -48,7 +48,7 @@ public class Miscellaneous {
         if(Character.toUpperCase(confirmName) == 'Y')
         playerName = confirmedCustomPlayerName();
 
-        this.playerName_1 = playerName;
+            this.playerName_1 = playerName;
     }
 
     public void setPlayerName_2(){
@@ -60,7 +60,7 @@ public class Miscellaneous {
         if(Character.toUpperCase(confirmName) == 'Y')
         playerName = confirmedCustomPlayerName();
 
-        this.playerName_2 = playerName;
+            this.playerName_2 = playerName;
     }
 
     public String getPlayerName_1(){
@@ -88,12 +88,6 @@ public class Miscellaneous {
     }
     public int getBaseMana(){
         return this.baseMana;
-    }
-
-    public void displayASCIIBars(int bar){
-        for(int i=1; i<=bar ;i+=50){
-            System.out.print("█ ");
-        }
     }
 
     //user input
@@ -163,13 +157,44 @@ public class Miscellaneous {
 
 
     //battle design?? idk
+    public void displayASCIIBars(int bar,int max){
+
+        for(int i=0; i<=max ;i+=25){ 
+            if(i == 0){  System.out.print("╓"); }
+            
+            System.out.print("─");
+            
+            if(i == max){ System.out.print("╖");
+            }
+        }
+
+        System.out.println();
+        for(int i=0; i<=max ;i+=25){ 
+            if(i == 0){ System.out.print("║");}
+
+            if(i<=bar && i != 0)System.out.print("█");
+            else System.out.print(" ");
+            
+            if(i == max){ System.out.print("║"); }
+        }
+
+        System.out.println();
+        for(int i=0; i<=max ;i+=25){ 
+            if(i == 0){  System.out.print("╙"); }
+            
+            System.out.print("─");
+            
+            if(i == max){ System.out.print("╜");
+            }
+        }
+    }
+
     public void addSpace(){
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
     //conclusion battle
     public void displayEndBattle(int player1, int player2){
-        //System.out.println("\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n\n");
-        
+
             System.out.println("██████████████████████████████████████████████████████████████");
             System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
             System.out.println("███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");    
@@ -189,10 +214,7 @@ public class Miscellaneous {
             System.out.println("███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");
             System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
             System.out.println("██████████████████████████████████████████████████████████████");
-            System.out.println("══════════════════════════════════════════════════════════");
-        //System.out.println("\n\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
     }
-    //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ");
 
     public String displayGameMainScreen(){
       //System.out.println(  "══════════════════════════════════════════════════════════");
@@ -268,7 +290,8 @@ public class Miscellaneous {
     public void displayInvalidScreen(){
         System.out.println("██████████████████████████████████████████████████████████████");
         System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
-        System.out.println("███▓▓▓                                                  ▓▓▓███");             System.out.println("███▓▓▓                                                  ▓▓▓███");
+        System.out.println("███▓▓▓                                                  ▓▓▓███");             
+        System.out.println("███▓▓▓                                                  ▓▓▓███");
         System.out.println("███▓▓▓                  ╔══════════════╗                ▓▓▓███");
         System.out.println("███▓▓▓                  ║   INVALID!   ║                ▓▓▓███");
         System.out.println("███▓▓▓                  ╚══════════════╝                ▓▓▓███");
@@ -279,18 +302,18 @@ public class Miscellaneous {
     }
 
     public void displayDeathScreen(){
-        
+        //Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ═
         System.out.println("██████████████████████████████████████████████████████████████");
         System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
         System.out.println("███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");    
         System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
 
-        System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░ YOU DIED ░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+        System.out.println("███▓▓▓▓▒▒▒░░░░░░  ╥ ╥ ╓─╖ ╥ ╥   ╥─╖ ╥ ╓── ╥─╖  ░░░░░▒▒▒▓▓▓▓███");
+        System.out.println("███▓▓▓▓▒▒▒░░░░░░  ╚╦╝ ║ ║ ║ ║   ║ ║ ║ ╠═  ║ ║  ░░░░░▒▒▒▓▓▓▓███");
+        System.out.println("███▓▓▓▓▒▒▒░░░░░░   ╨  ╙─╜ ╙─╜   ╨─╜ ╨ ╙── ╨─╜  ░░░░░▒▒▒▓▓▓▓███");
 
-        System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
