@@ -164,15 +164,21 @@ class PlayerVersusPlayer{
         return 0;
     }
     
+    //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
     public void displayCharacters(){
-        System.out.println(character_1.getCharacterName());
-        System.out.println(character_2.getCharacterName());
-        System.out.println(character_3.getCharacterName());
-        System.out.println(character_4.getCharacterName());
-        System.out.println(character_5.getCharacterName());
-        System.out.println(character_6.getCharacterName());
-        System.out.println(character_7.getCharacterName());
-        System.out.println(character_8.getCharacterName());
+        System.out.println("                   ╔══════════════════════╗");
+        System.out.println("                   ║   SELECT CHARACTER:  ║");
+        System.out.println("                   ╚══════════════════════╝");
+        System.out.println("╔══════════════════╦══════════════════════╦══════════════════╗");
+
+        System.out.println("║ 0:   RANDOM      ║ 1: "+character_1.getCharacterName()+"    ║ 2: "+ character_2.getCharacterName()+"   ║");
+      System.out.println("╠══════════════════╬══════════════════════╬══════════════════╣");
+        System.out.println("║ 3: "+character_3.getCharacterName()+" ║ 4: "+character_4.getCharacterName()+"      ║ 5: "+ character_5.getCharacterName()+" ║");
+      System.out.println("╠══════════════════╬══════════════════════╬══════════════════╣");
+        System.out.println("║ 6: "+character_6.getCharacterName()+"  ║ 7: "+character_7.getCharacterName()+"  ║ 8: "+ character_8.getCharacterName()+"  ║");
+
+        System.out.println("╚══════════════════╩══════════════════════╩══════════════════╝");
+        System.out.println("\n\n\n\n");
     } 
 
     
@@ -182,36 +188,60 @@ class PlayerVersusPlayer{
      
     switch(skillnum){
      
-    case 1 -> { dmg  = selectedCharacter_1.getDamageFromNormaSkill(); 
-    } 
-    case 2 -> { dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
-    } 
-    case 3 -> { dmg  = selectedCharacter_1.getDamageFromSkill_2(); 
-    }
-
-    default -> { dmg  = selectedCharacter_1.getDamageFromNormaSkill(); 
+    case 1 -> { dmg  = selectedCharacter_1.getDamagefromNormalSkill(); 
     } 
 
+    case 2 -> { 
+    if(selectedCharacter_1.getMana() < selectedCharacter_1.getManaCost1()){
+        System.out.println("Not enough Mana!");
+        dmg  = selectedCharacter_1.getDamagefromNormalSkill();
     }
-    //motin        
+    else
+        dmg  = selectedCharacter_1.getDamageFromSkill_1(); 
+    }
+
+    case 3 -> { 
+        if(selectedCharacter_1.getMana() < selectedCharacter_1.getManaCost2()){
+        System.out.println("Not enough Mana!");
+        dmg  = selectedCharacter_1.getDamagefromNormalSkill();
+    }
+    else
+        dmg  = selectedCharacter_1.getDamageFromSkill_2(); 
+    }
+
+    }
+         
     return dmg;
     }
 
     public int skillNumberForSelectedCharacter_2(int skillnum){
      
     int dmg = 0;
-     
+    
     switch(skillnum){
      
-    case 1 -> { dmg  = selectedCharacter_2.getDamageFromNormaSkill(); 
+    case 1 -> { 
+        dmg  = selectedCharacter_2.getDamagefromNormalSkill(); 
     } 
-    case 2 -> { dmg  = selectedCharacter_2.getDamageFromSkill_1(); 
-    } 
-    case 3 -> { dmg  = selectedCharacter_2.getDamageFromSkill_2(); 
+    case 2 -> { 
+    if(selectedCharacter_2.getMana() < selectedCharacter_2.getManaCost1()){
+        System.out.println("Not enough Mana!");
+        dmg  = selectedCharacter_2.getDamagefromNormalSkill();
+    }
+    else
+        dmg  = selectedCharacter_2.getDamageFromSkill_1(); 
+    }
+    case 3 -> { 
+        if(selectedCharacter_2.getMana() < selectedCharacter_2.getManaCost2()){
+        System.out.println("Not enough Mana!");
+        dmg  = selectedCharacter_2.getDamagefromNormalSkill();
+    }
+    else
+        dmg  = selectedCharacter_2.getDamageFromSkill_2(); 
     }
 
     }
-    //motin        
+            
     return dmg;
     }
     
@@ -222,30 +252,9 @@ class PlayerVersusPlayer{
 
     }
 
-    public void dealDamageCharacter_2ToCharacter_1(){
+    public void dealDamageCharacter_2ToCharacter_1(int skillnum){
         // to <- from
-        selectedCharacter_1.minusHealth(selectedCharacter_2.getDamageFromSkill_1());
-        
-
-        /*call tryCatchEnterskill() return num
-         * switchcase method(num)
-         * Damage = 0;
-         * {
-         * case 1 -> Damage = Normalskill()
-         * case 2 -> Damage = Skill_1()
-         * case 3 -> Damage = Skill_2()
-         * }
-         * // now for the buff? how am i gonna add extra dmg? just incase
-         * //now how would i know if i would call the buff or debuff?
-         * extra = 0;
-         * extra
-         * return damage + (buff) and can be (-debuff);
-         * damage + (+Positive Number) || (-Negative)
-         * 
-         * real return
-         * return Damage + (extra);
-         * 
-         */
+        selectedCharacter_1.minusHealth( skillNumberForSelectedCharacter_2(skillnum) );
 
     }
 
@@ -254,36 +263,44 @@ class PlayerVersusPlayer{
 
         displayCharacters();
 
-        System.out.println("WOw me in? PVP btw");
+        //misc.setPlayerName_1();
+        //System.out.println(misc.getPlayerName_1());
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
-        System.out.println("Pnum: "+player1);
+        
         int player2 = misc.characterSelectionTryCatch(maxCharacter);
-        System.out.println("Pnum: "+player2);
+        
         characterSelection_1(player1);
         characterSelection_2(player2);
 
         while(selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0){
 
-            for(int turn = 10; (selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0) && turn > 0 ;turn--){
+            for(int turn = 1; (selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0) && turn <= 10 ;turn++){
 
-                System.out.println("                                  TURN: "+turn);
+                System.out.println("══════════════════════════════════════════════════════════════");
+                System.out.println("                             TURN: "+turn);
 
-                if(turn % 2 == 0){
-                    System.out.println("Player 1:");
+                if(turn % 2 != 0){
+                System.out.println("                            Player 1:");
+
+                    //selectedCharacter_1.addMana(1250);
                     selectedCharacter_1.displayCharacterNameHealthAndMana();
                     dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());
+
                 }else{
-                    System.out.println("Player 2:");
+                System.out.println("                            Player 2:");
+
                     selectedCharacter_2.displayCharacterNameHealthAndMana();
-                    dealDamageCharacter_2ToCharacter_1();
+                    dealDamageCharacter_2ToCharacter_1(1);
 
                 }
-
+                System.out.println("══════════════════════════════════════════════════════════════");
             }
 
             //end while loop
         }
-        
+    
+    selectedCharacter_1.displayCharacterNameHealthAndMana();
+    selectedCharacter_2.displayCharacterNameHealthAndMana();
     misc.displayEndBattle(selectedCharacter_1.getHealth(), selectedCharacter_2.getHealth());
 
         //end game main method

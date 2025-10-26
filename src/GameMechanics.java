@@ -27,11 +27,14 @@ public abstract class GameMechanics{
     abstract public void setCharacterSkill_1(String skillName, int min,int max, int manaCost);
     abstract public void setCharacterSkill_2(String skillName, int min,int max, int manaCost);
 
-    abstract public void displayCharacterNameHealthAndMana();
+    //abstract public void displayCharacterNameHealthAndMana();
 
     abstract public String getCharacterName();
     abstract public int getHealth();
     abstract public int getMana();
+    abstract public int getManaGain();
+    abstract public int getManaCost1();
+    abstract public int getManaCost2();
     abstract public int getDamagefromNormalSkill();
     abstract public int getDamageFromSkill_1();
     abstract public int getDamageFromSkill_2();
@@ -44,6 +47,21 @@ public abstract class GameMechanics{
     
     abstract public void checkHealthAndManaIfBelowZero();
 
+    public void displayCharacterNameHealthAndMana(){
+        System.out.println();
+        //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("Name: " +getCharacterName());
+
+        misc.displayASCIIBars(getHealth());
+        System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
+
+        misc.displayASCIIBars(getMana());
+        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
+
+        //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println();
+    }
+    
 }
 class SelectedCharacter_1 extends GameMechanics{
     private String characterName;
@@ -94,21 +112,6 @@ class SelectedCharacter_1 extends GameMechanics{
         this.maxRangeSkill_2 = max;
         this.manaCost2 = manaCost;
     }
-    @Override
-    public void displayCharacterNameHealthAndMana(){
-        System.out.println();
-        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
-        System.out.println("Name: " +getCharacterName());
-
-        misc.displayASCIIBars(getHealth());
-        System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
-
-        misc.displayASCIIBars(getMana());
-        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
-
-        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
-        System.out.println();
-    }
 
     @Override
     public String getCharacterName(){
@@ -123,11 +126,23 @@ class SelectedCharacter_1 extends GameMechanics{
         return this.mana;
     }
     @Override
+    public int getManaGain(){
+        return this.manaGain;
+    }
+    @Override
+    public int getManaCost1(){
+        return this.manaCost1;
+    }
+    @Override
+    public int getManaCost2(){
+        return this.manaCost2;
+    }
+    @Override
     public int getDamagefromNormalSkill(){
         System.out.println("("+this.characterName+") Used: "+this.normalSkillName);
-        minusMana(this.manaGain);
+        addMana(this.manaGain);
         checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.normalSkillminRange - this.normalSkillmaxRange) + 1) + this.normalSkillminRange;
+        return random.nextInt((this.normalSkillmaxRange - this.normalSkillminRange) + 1) + this.normalSkillminRange;
     }
     @Override
     public int getDamageFromSkill_1(){
@@ -152,7 +167,7 @@ class SelectedCharacter_1 extends GameMechanics{
     if(getHealth() > misc.getMaxHealth()) this.health = misc.getMaxHealth();
     
     if(getMana() < 0) this.mana = 0;
-    if(getMana() > misc.getMaxMana()) this.health = misc.getMaxMana();
+    if(getMana() > misc.getMaxMana()) this.mana = misc.getMaxMana();
 
     }
     @Override
@@ -235,22 +250,7 @@ class SelectedCharacter_2 extends GameMechanics{
         this.maxRangeSkill_2 = max;
         this.manaCost2 = manaCost;
     }
-    @Override
-    public void displayCharacterNameHealthAndMana(){
-        System.out.println();
-        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
-        System.out.println("Name: " +getCharacterName());
-
-        misc.displayASCIIBars(getHealth());
-        System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
-
-        misc.displayASCIIBars(getMana());
-        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
-
-        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
-        System.out.println();
-    }
-
+    
     @Override
     public String getCharacterName(){
         return this.characterName;
@@ -264,11 +264,23 @@ class SelectedCharacter_2 extends GameMechanics{
         return this.mana;
     }
     @Override
+    public int getManaGain(){
+        return this.manaGain;
+    }
+    @Override
+    public int getManaCost1(){
+        return this.manaCost1;
+    }
+    @Override
+    public int getManaCost2(){
+        return this.manaCost2;
+    }
+    @Override
     public int getDamagefromNormalSkill(){
         System.out.println("("+this.characterName+") Used: "+this.normalSkillName);
-        minusMana(this.manaGain);
+        addMana(this.manaGain);
         checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.normalSkillminRange - this.normalSkillmaxRange) + 1) + this.normalSkillminRange;
+        return random.nextInt((this.normalSkillmaxRange - this.normalSkillminRange) + 1) + this.normalSkillminRange;
     }
     @Override
     public int getDamageFromSkill_1(){
@@ -293,7 +305,7 @@ class SelectedCharacter_2 extends GameMechanics{
     if(getHealth() > misc.getMaxHealth()) this.health = misc.getMaxHealth();
     
     if(getMana() < 0) this.mana = 0;
-    if(getMana() > misc.getMaxMana()) this.health = misc.getMaxMana();
+    if(getMana() > misc.getMaxMana()) this.mana = misc.getMaxMana();
 
     }
     @Override

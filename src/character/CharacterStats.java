@@ -6,6 +6,7 @@ public interface CharacterStats {
     public void setCharacter();
     public void displayBackStory();
     public void displayCharacterStats();
+    public void displayCharacterNameHealthAndMana();
     public void setCharacterName(String characterName);
     public void setCharacterStats(int health, int mana);
     public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);
@@ -19,9 +20,6 @@ public interface CharacterStats {
     public int getManaGain();
     public int getManaCost1();
     public int getManaCost2();
-    public int getNormalSkill();
-    public int getSkill_1();
-    public int getSkill_2();
     //normal skill
     public String getNormalSkillName();
     public int getMinRangeNormalSkill();
@@ -36,12 +34,5 @@ public interface CharacterStats {
     public int getMaxRangeSkill_2();
     public int getBuff();
     public int getDebuff();
-    //in Battle maybe
-    public void useSupportSkill();
-    public void displayCharacterNameHealthAndMana();
-    public void checkHealthAndManaIfBelowZero();
-    public void minusHealth(int damage);
-    public void minusMana(int manaCost);
-    public void addHealth(int health);
-    public void addMana(int mana);
+
 }

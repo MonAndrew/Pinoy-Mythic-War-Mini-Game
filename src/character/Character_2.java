@@ -152,24 +152,8 @@ Miscellaneous misc = new Miscellaneous();
     public int getManaCost2(){
         return this.manaCost2;
     }
-    @Override
-    public int getNormalSkill(){
-        //addMana(manaGain);
-        //checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.normalSkillminRange - this.normalSkillmaxRange) + 1) + this.normalSkillminRange;
-    }
-    @Override
-    public int getSkill_1(){
-        //minusMana(manaCost1);
-        //checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.maxRangeSkill_1 - this.minRangeSkill_1) + 1) + this.minRangeSkill_1;
-    }
-    @Override
-    public int getSkill_2(){
-        //minusMana(manaCost2);
-        //checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.maxRangeSkill_2 - this.minRangeSkill_2) + 1) + this.minRangeSkill_2;
-    }
+
+
     //get skills min - max
     @Override
     public int getMinRangeNormalSkill(){
@@ -206,37 +190,4 @@ Miscellaneous misc = new Miscellaneous();
         return (int)this.debuff;
     }
 
-    //in battle
-    @Override
-    public void useSupportSkill(){
-
-    }
-    @Override
-    public void checkHealthAndManaIfBelowZero(){
-    
-    if(getHealth() < 0) this.health = 0;
-    
-    if(getMana() < 0) this.mana = 0;
-    
-    }
-    @Override
-    public void addHealth(int health){
-        System.out.println(" +"+health+" HP ");
-        this.health += health;
-    }
-    @Override
-    public void addMana(int mana){
-        System.out.println(" -"+mana+" Mana ");
-        this.mana += mana;
-    }
-    @Override
-    public void minusHealth(int damage){
-        System.out.println(" -"+damage+" HP ");
-        this.health -= damage;
-    }
-    @Override
-    public void minusMana(int manaCost){
-        System.out.println(" -"+manaCost+" Mana");
-        this.mana -= manaCost;
-    }
 }
