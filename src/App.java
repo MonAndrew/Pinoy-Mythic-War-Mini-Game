@@ -1,5 +1,6 @@
 
 import character.Miscellaneous;
+import playerversusentity.Main;
 import java.nio.charset.Charset;
 
 public class App {
@@ -7,17 +8,36 @@ public class App {
         int maxCharacter = 8;
 
         Miscellaneous misc = new Miscellaneous();
+        Main pve = new Main();
         PlayerVersusPlayer pvp = new PlayerVersusPlayer();
 
         misc.displayGameMainScreen();
         misc.addSpace();
-        if(misc.displayGamePlayOptions() == 1){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        int test = misc.displayGamePlayOptions();
+        if(test == 1){
             misc.addSpace();
             pvp.mainPlayerVersusPlayerGame(maxCharacter);
 
-        }else if (misc.displayGamePlayOptions() == 2){
+        }else if (test == 2){
             misc.addSpace();
-            pvp.mainPlayerVersusEntityGame(maxCharacter);
+            pve.mainPlayerVE();
 
         }else{
             misc.addSpace();

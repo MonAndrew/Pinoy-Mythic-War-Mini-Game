@@ -43,6 +43,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
 
         System.out.println("("+getCharacterName()+") Backstory:");
+        System.out.println();
         System.out.println("Johnder Ford was an arrogant celebrity who was once a gangsta in his local neighborhood, he was leader of a boy band called Cool Pals and later on went solo in his career and decided to undergo plastic surgery, this made him more arrogant than he already was and was widely receiving negative backlash on the internet. He later on went missing while he was planning to do a controversial public stunt, a black mysterious figure suddenly grabbed him to a mysterious realm.");
         
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
@@ -75,8 +76,8 @@ Miscellaneous misc = new Miscellaneous();
         misc.displayASCIIBars(getHealth(),misc.getMaxHealth());
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
-        misc.displayASCIIBars(getMana(),misc.getMaxMana());
-        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
+        misc.displayASCIIBars(misc.getMaxMana(),misc.getMaxMana());
+        System.out.println("\nMana: ("+misc.getMaxMana()+"/"+misc.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();

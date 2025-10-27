@@ -43,7 +43,9 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
 
+        
         System.out.println("("+getCharacterName()+") Backstory:");
+        System.out.println();
         System.out.println("Zaldivy Coco was a notorious politician that has the ability to turn ghost projects into real money. He was born from a family of crocodilio bombardinos where you gain more power the more you steal. One day while having a public hearing of his case he suddenly disappeared as the entity itself felt pure greed from Zaldivy Coco.");
         
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
@@ -76,8 +78,8 @@ Miscellaneous misc = new Miscellaneous();
         misc.displayASCIIBars(getHealth(),misc.getMaxHealth());
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
-        misc.displayASCIIBars(getMana(),misc.getMaxMana());
-        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
+        misc.displayASCIIBars(misc.getMaxMana(),misc.getMaxMana());
+        System.out.println("\nMana: ("+misc.getMaxMana()+"/"+misc.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();

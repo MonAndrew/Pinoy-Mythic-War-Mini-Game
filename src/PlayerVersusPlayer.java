@@ -163,6 +163,33 @@ class PlayerVersusPlayer{
         }
         return 0;
     }
+
+    public void displayBackStory(int playerNum){
+        switch(playerNum)
+        {
+        case 1 -> character_1.displayBackStory();
+        case 2 -> character_2.displayBackStory();
+        case 3 -> character_3.displayBackStory();
+        case 4->  character_4.displayBackStory();
+        case 5 -> character_5.displayBackStory();
+        case 6 -> character_6.displayBackStory();
+        case 7 -> character_7.displayBackStory();
+        case 8 -> character_8.displayBackStory();
+    }
+    }
+    public void displayCharacterStats(int playerNum){
+        switch(playerNum)
+        {
+        case 1 -> character_1.displayCharacterStats();
+        case 2 -> character_2.displayCharacterStats();
+        case 3 -> character_3.displayCharacterStats();
+        case 4->  character_4.displayCharacterStats();
+        case 5 -> character_5.displayCharacterStats();
+        case 6 -> character_6.displayCharacterStats();
+        case 7 -> character_7.displayCharacterStats();
+        case 8 -> character_8.displayCharacterStats();
+    }
+    }
     
     //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
     public void displayCharacters(){
@@ -266,11 +293,16 @@ class PlayerVersusPlayer{
         //misc.setPlayerName_1();
         //System.out.println(misc.getPlayerName_1());
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
-        
-        int player2 = misc.characterSelectionTryCatch(maxCharacter);
-        
         characterSelection_1(player1);
+        displayCharacterStats(player1);
+        displayBackStory(player1);
+
+        int player2 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_2(player2);
+        displayCharacterStats(player2);
+        displayBackStory(player2);
+        
+        
 
         while(selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0){
 
@@ -323,7 +355,7 @@ class PlayerVersusPlayer{
         characterSelection_2(entityChararcter);
 
         while(selectedCharacter_1.getHealth() > 0){
-            if(player1 == entityChararcter) continue;
+            if(player1 == entityChararcter) entityChararcter++;
 
 
             while(selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0){
@@ -352,6 +384,7 @@ class PlayerVersusPlayer{
 
                 //end while loop
         }
+        
         entityChararcter++;
         characterSelection_2(entityChararcter);
     }
