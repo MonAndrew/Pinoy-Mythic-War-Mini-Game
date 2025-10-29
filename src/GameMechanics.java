@@ -53,12 +53,25 @@ public abstract class GameMechanics{
         //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }
+
+    public void displaySkillsCanCurrentlyBeUse(){
+
+        System.out.println("Normal Skill");
+
+        if(getMana() >= getManaCost1()){
+            System.out.println("Skill 1: ");
+        }else{
+
+        }
+    }
     
 }
 class SelectedCharacter_1 extends GameMechanics{
     private String characterName;
     private int health;
     private int mana;
+    //cooldown
+    private int turn;
 
     //attacks
     //normal skill

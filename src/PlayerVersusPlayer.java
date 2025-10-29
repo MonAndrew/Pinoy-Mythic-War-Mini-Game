@@ -275,13 +275,13 @@ class PlayerVersusPlayer{
     public void dealDamageCharacter_1ToCharacter_2(int skillnum){
 
         // to <- from
-        selectedCharacter_2.minusHealth( skillNumberForSelectedCharacter_1(skillnum) );
+        selectedCharacter_2.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 1),50,skillNumberForSelectedCharacter_1(skillnum)) );
 
     }
 
     public void dealDamageCharacter_2ToCharacter_1(int skillnum){
         // to <- from
-        selectedCharacter_1.minusHealth( skillNumberForSelectedCharacter_2(skillnum) );
+        selectedCharacter_1.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 1),50,skillNumberForSelectedCharacter_2(skillnum)) );
 
     }
 
@@ -306,25 +306,47 @@ class PlayerVersusPlayer{
 
         while(selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0){
 
-            for(int turn = 1; (selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0) && turn <= 10 ;turn++){
+            for(int turn = 10; (selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0) && turn > 0 ;turn--){
 
                 System.out.println("══════════════════════════════════════════════════════════════");
                 System.out.println("                             TURN: "+turn);
+                
+                int chance = misc.getFifthyFifhtyChance();
 
-                if(turn % 2 != 0){
+                if(chance == 0){
                 System.out.println("                            Player 1:");
 
                     //selectedCharacter_1.addMana(1250);
                     selectedCharacter_1.displayCharacterNameHealthAndMana();
-                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());
+                    dealDamageCharacter_1ToCharacter_2(misc.getRNG(4,1));
 
                 }else{
                 System.out.println("                            Player 2:");
 
                     selectedCharacter_2.displayCharacterNameHealthAndMana();
-                    dealDamageCharacter_2ToCharacter_1(misc.enterSkillTryCatch());
+                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(4,1));
 
                 }
+
+                if(selectedCharacter_1.getHealth() == 0 || selectedCharacter_2.getHealth() == 0) break;
+
+                if(chance != 0){
+                System.out.println("                            Player 1:");
+
+                    //selectedCharacter_1.addMana(1250);
+                    selectedCharacter_1.displayCharacterNameHealthAndMana();
+                    dealDamageCharacter_1ToCharacter_2(misc.getRNG(4,1));
+
+                }else{
+                System.out.println("                            Player 2:");
+
+                    selectedCharacter_2.displayCharacterNameHealthAndMana();
+                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(4,1));
+
+                }
+
+
+
                 System.out.println("══════════════════════════════════════════════════════════════");
             }
 
@@ -376,7 +398,7 @@ class PlayerVersusPlayer{
                     System.out.println("                             Entity:");
 
                         selectedCharacter_2.displayCharacterNameHealthAndMana();
-                        dealDamageCharacter_2ToCharacter_1(misc.getRNG());
+                        dealDamageCharacter_2ToCharacter_1(misc.getRNG(4,1));
 
                     }
                     System.out.println("══════════════════════════════════════════════════════════════");

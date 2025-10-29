@@ -30,7 +30,7 @@ Miscellaneous misc = new Miscellaneous();
     @Override
     public void setCharacter(){
         setCharacterName("Juncoco Maarti");
-        setCharacterStats(super.getBaseHealth(), super.getBaseMana());
+        setCharacterStats(super.getMaxHealth(), super.getMaxMana());
         setCharacterNormalSkill("Normal", 75, 80, 25);
         setCharacterSkill_1("Labas Dila sabay Putok", 130, 150, 140);
         setCharacterSkill_2("Tataposin na Kita", 175, 250, 250);
@@ -77,7 +77,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
         misc.displayASCIIBars(misc.getMaxMana(),misc.getMaxMana());
-        System.out.println("\nMana: ("+misc.getMaxMana()+"/"+misc.getMaxMana()+")");
+        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();

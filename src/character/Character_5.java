@@ -31,7 +31,7 @@ Miscellaneous misc = new Miscellaneous();
     @Override
     public void setCharacter(){
         setCharacterName("Manni Pacqyow");
-        setCharacterStats(super.getBaseHealth(),super.getBaseMana()); //HP[1000] && Mana[250]
+        setCharacterStats(super.getMaxHealth(),super.getMaxMana()); //HP[1000] && Mana[250]
         setCharacterNormalSkill("Normal", 75, 80, 25);
         setCharacterSkill_1("Jab", 130, 150, 150);
         setCharacterSkill_2("Block", 175, 250, 250);
@@ -77,7 +77,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
 
         misc.displayASCIIBars(misc.getMaxMana(),misc.getMaxMana());
-        System.out.println("\nMana: ("+misc.getMaxMana()+"/"+misc.getMaxMana()+")");
+        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();

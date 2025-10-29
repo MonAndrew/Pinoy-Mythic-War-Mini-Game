@@ -11,7 +11,7 @@ public class Miscellaneous {
     private String playerName_1;
     private String playerName_2;
     private final int maxHealth = 1000; 
-    private final int maxMana = 500;
+    private final int maxMana = 600;
     //base
     private final int baseHealth = 1000; 
     private final int baseMana = 250;
@@ -71,9 +71,14 @@ public class Miscellaneous {
         return this.playerName_2;
     }
 
-    public int getRNG(){
-        //(max-min+1) + min
-        return random.nextInt(3) + 1;
+    public int getRNG(int max,int min){
+        //((max-min)+1) + min
+        return random.nextInt((max - min) + 1) + min;
+    }
+
+    public int getFifthyFifhtyChance(){
+        //((max-min)+1) + min
+        return random.nextInt(2);
     }
 
     public int getMaxHealth(){
@@ -88,6 +93,32 @@ public class Miscellaneous {
     }
     public int getBaseMana(){
         return this.baseMana;
+    }
+
+    public void slowPrint(String text){
+        int nextline = 0;
+        for(char c : text.toCharArray()){
+            System.out.print(c);
+            try{
+                Thread.sleep(100);
+            }catch(InterruptedException e){
+                Thread.currentThread().interrupt();
+            }
+        
+        if(c == ' ' || c == '.')nextline++;
+        if(nextline == 10){System.out.println(); nextline = 0;}
+        }
+    }
+
+    public int additionalCritDamage(int critChance, double critDamageIncrease,int damage){
+
+        int chance = random.nextInt((100 - critChance) + 1) + critChance;
+        if(chance <= critChance) {
+            int increase = (int)((double)damage*(critDamageIncrease/100));
+            damage += increase;
+            System.out.println("☁ CRITICAL DAMAGE +"+increase+" ☁");
+        }
+        return damage;
     }
 
     //user input
@@ -161,18 +192,18 @@ public class Miscellaneous {
 
         for(int i=0; i<=max ;i+=25){ 
             if(i == 0){  System.out.print("╓"); }
-            
+            else if(i == max){ System.out.print("─╖");}
+            else
             System.out.print("─");
             
-            if(i == max){ System.out.print("╖");
-            }
+            
+            
         }
 
         System.out.println();
         for(int i=0; i<=max ;i+=25){ 
             if(i == 0){ System.out.print("║");}
-
-            if(i<=bar && i != 0)System.out.print("█");
+            else if(i<=bar && i != 0)System.out.print("█");
             else System.out.print(" ");
             
             if(i == max){ System.out.print("║"); }
@@ -181,11 +212,11 @@ public class Miscellaneous {
         System.out.println();
         for(int i=0; i<=max ;i+=25){ 
             if(i == 0){  System.out.print("╙"); }
-            
+            else if(i == max){ System.out.print("─╜");}
+            else
             System.out.print("─");
             
-            if(i == max){ System.out.print("╜");
-            }
+            
         }
     }
 
