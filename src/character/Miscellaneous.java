@@ -8,6 +8,18 @@ public class Miscellaneous {
     Scanner scan = new Scanner(System.in);
     Random random = new Random();
 
+
+    // Text colors
+    public final String RESET = "\u001B[0m";
+    public final String RED = "\u001B[31m";
+    public final String GREEN = "\u001B[32m";
+    public final String YELLOW = "\u001B[33m";
+    public final String BLUE = "\u001B[34m";
+    public final String PURPLE = "\u001B[35m";
+    public final String CYAN = "\u001B[36m";
+    public final String WHITE = "\u001B[37m";
+    public final String BOLD = "\u001B[1m";
+
     private String playerName_1;
     private String playerName_2;
     private final int maxHealth = 1000; 
@@ -109,6 +121,20 @@ public class Miscellaneous {
         if(nextline == 10){System.out.println(); nextline = 0;}
         }
     }
+    public void displayCharacterNameHealthAndMana(String name,int currentHp,int maxHp,int currentMana,int maxMana){
+        System.out.println();
+        //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("Name: " +name);
+
+        displayASCIIBars(currentHp,maxHp);
+        System.out.println("\nHealth: ("+currentHp+"/"+maxHp+")\n");
+
+        displayASCIIBars(currentMana,maxMana);
+        System.out.println("\nMana: ("+currentMana+"/"+maxMana+")");
+
+        //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println();
+    }
 
     public int additionalCritDamage(int critChance, double critDamageIncrease,int damage){
 
@@ -116,7 +142,7 @@ public class Miscellaneous {
         if(chance <= critChance) {
             int increase = (int)((double)damage*(critDamageIncrease/100));
             damage += increase;
-            System.out.println("☁ CRITICAL DAMAGE +"+increase+" ☁");
+            System.out.println(BOLD+RED+"**"+YELLOW+" CRITICAL DAMAGE +"+increase+RED+" **"+RESET);
         }
         return damage;
     }
@@ -188,6 +214,15 @@ public class Miscellaneous {
 
 
     //battle design?? idk
+    public String startButton(){
+        System.out.println("                         ╔══════════════════════╗");
+        System.out.println("                         ║ PRESS ENTER TO START ║");
+        System.out.println("                         ╚══════════════════════╝");
+        System.out.println();
+        String empty = scan.nextLine();
+        return empty;
+    }
+
     public void displayASCIIBars(int bar,int max){
 
         for(int i=0; i<=max ;i+=25){ 
@@ -203,7 +238,12 @@ public class Miscellaneous {
         System.out.println();
         for(int i=0; i<=max ;i+=25){ 
             if(i == 0){ System.out.print("║");}
-            else if(i<=bar && i != 0)System.out.print("█");
+            else if(i<=bar && i != 0){
+
+                if(bar > (max*0.5))System.out.print(GREEN+"█"+RESET);
+                else if(bar > (max*0.25))System.out.print(YELLOW+"█"+RESET);
+                else System.out.print(RED+"█"+RESET);
+            }
             else System.out.print(" ");
             
             if(i == max){ System.out.print("║"); }
@@ -292,10 +332,13 @@ public class Miscellaneous {
         System.out.println("                         ║ 1:  PLAYER V PLAYER  ║");
         System.out.println("                         ╚══════════════════════╝");
         System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ 2:   ARCADE MODE     ║");
+        System.out.println("                         ║ 2:  PLAYER V ENTITY  ║");
         System.out.println("                         ╚══════════════════════╝");
         System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ 3:    SETTINGS       ║");
+        System.out.println("                         ║ 3:   ARCADE MODE     ║");
+        System.out.println("                         ╚══════════════════════╝");
+        System.out.println("                         ╔══════════════════════╗");
+        System.out.println("                         ║ 4:    SETTINGS       ║");
         System.out.println("                         ╚══════════════════════╝");
         System.out.println();
         System.out.println("");
@@ -306,7 +349,7 @@ public class Miscellaneous {
             
         selection = scan.nextInt();
 
-            if(selection < 1 || selection > 2){
+            if(selection < 1 || selection > 4){
             displayInvalidScreen();
             isValidSelection = false;
 

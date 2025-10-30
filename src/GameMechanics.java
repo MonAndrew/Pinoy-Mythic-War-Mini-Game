@@ -35,6 +35,7 @@ public abstract class GameMechanics{
     abstract public void minusMana(int manaCost);
     abstract public void addHealth(int health);
     abstract public void addMana(int mana);
+    abstract  public void reduceCooldown();
 
     
     abstract public void checkHealthAndManaIfBelowZero();
@@ -45,10 +46,10 @@ public abstract class GameMechanics{
         System.out.println("Name: " +getCharacterName());
 
         misc.displayASCIIBars(getHealth(),misc.getMaxHealth());
-        System.out.println("\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n");
+        System.out.println(misc.RED+"\nHealth: ("+getHealth()+"/"+misc.getMaxHealth()+")\n"+misc.RESET);
 
         misc.displayASCIIBars(getMana(),misc.getMaxMana());
-        System.out.println("\nMana: ("+getMana()+"/"+misc.getMaxMana()+")");
+        System.out.println(misc.BLUE+"\nMana: ("+getMana()+"/"+misc.getMaxMana()+")"+misc.RESET);
 
         //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -72,6 +73,8 @@ class SelectedCharacter_1 extends GameMechanics{
     private int mana;
     //cooldown
     private int turn;
+    private int cooldown_1;
+    private int cooldown_2;
 
     //attacks
     //normal skill
@@ -116,6 +119,7 @@ class SelectedCharacter_1 extends GameMechanics{
         this.minRangeSkill_2 = min;
         this.maxRangeSkill_2 = max;
         this.manaCost2 = manaCost;
+        this.cooldown_2 = 0;
     }
 
     @Override
@@ -151,6 +155,12 @@ class SelectedCharacter_1 extends GameMechanics{
     }
     @Override
     public int getDamageFromSkill_1(){
+        if(cooldown_1 != 0){
+        System.out.println("("+this.skillName1+") Cooldown: "+this.cooldown_1);
+        return 0;
+        }
+
+        this.cooldown_2 = 1;
         System.out.println("("+this.characterName+") Used: "+this.skillName1);
         minusMana(this.manaCost1);
         checkHealthAndManaIfBelowZero();
@@ -158,10 +168,19 @@ class SelectedCharacter_1 extends GameMechanics{
     }
     @Override
     public int getDamageFromSkill_2(){
-        System.out.println("("+this.characterName+") Used: "+this.skillName2);
+
+        if(cooldown_2 != 0){
+        System.out.println("("+this.skillName2+") Cooldown: "+this.cooldown_2);
+        return 0;
+        }
+
+        this.cooldown_2 = 4;
+        System.out.println("("+this.characterName+") Used: "+this.skillName2+" Turn/s");
         minusMana(this.manaCost2);
         checkHealthAndManaIfBelowZero();
         return random.nextInt((this.maxRangeSkill_2 - this.minRangeSkill_2) + 1) + this.minRangeSkill_2;
+        
+        
     }
   
     //in battle
@@ -198,6 +217,11 @@ class SelectedCharacter_1 extends GameMechanics{
         System.out.println(" -"+manaCost+" Mana: "+this.characterName);
         this.mana -= manaCost;
         checkHealthAndManaIfBelowZero();
+    }
+    @Override
+    public void reduceCooldown(){
+        this.cooldown_2--;
+        if(this.cooldown_2 < 0) this.cooldown_2 = 0;
     }
 
 }
@@ -212,6 +236,11 @@ class SelectedCharacter_2 extends GameMechanics{
     private int mana;
 
     //attacks
+    //cooldown
+    private int turn;
+    private int cooldown_1;
+    private int cooldown_2;
+
     //normal skill
     private String normalSkillName;
     private int normalSkillminRange;
@@ -254,6 +283,7 @@ class SelectedCharacter_2 extends GameMechanics{
         this.minRangeSkill_2 = min;
         this.maxRangeSkill_2 = max;
         this.manaCost2 = manaCost;
+        this.cooldown_2 = 0;
     }
     
     @Override
@@ -289,6 +319,12 @@ class SelectedCharacter_2 extends GameMechanics{
     }
     @Override
     public int getDamageFromSkill_1(){
+        if(cooldown_1 != 0){
+        System.out.println("("+this.skillName1+") Cooldown: "+this.cooldown_1);
+        return 0;
+        }
+
+        this.cooldown_2 = 1;
         System.out.println("("+this.characterName+") Used: "+this.skillName1);
         minusMana(this.manaCost1);
         checkHealthAndManaIfBelowZero();
@@ -296,6 +332,13 @@ class SelectedCharacter_2 extends GameMechanics{
     }
     @Override
     public int getDamageFromSkill_2(){
+
+        if(cooldown_2 != 0){
+        System.out.println("("+this.skillName2+") Cooldown: "+this.cooldown_2);
+        return 0;
+        }
+
+        this.cooldown_2 = 4;
         System.out.println("("+this.characterName+") Used: "+this.skillName2);
         minusMana(this.manaCost2);
         checkHealthAndManaIfBelowZero();
@@ -337,5 +380,11 @@ class SelectedCharacter_2 extends GameMechanics{
         this.mana -= manaCost;
         checkHealthAndManaIfBelowZero();
     }
+    @Override
+    public void reduceCooldown(){
+        this.cooldown_2--;
+        if(this.cooldown_2 < 0) this.cooldown_2 = 0;
+    }
+
 
 }

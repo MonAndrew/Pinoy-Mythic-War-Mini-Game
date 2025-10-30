@@ -6,7 +6,6 @@ public interface CharacterStats {
     public void setCharacter();
     public void displayBackStory();
     public void displayCharacterStats();
-    public void displayCharacterNameHealthAndMana();
     public void setCharacterName(String characterName);
     public void setCharacterStats(int health, int mana);
     public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);

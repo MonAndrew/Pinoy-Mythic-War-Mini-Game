@@ -15,20 +15,28 @@ public class App {
         misc.addSpace();
 
         int test = misc.displayGamePlayOptions();
-        switch (test) {
-            case 1:
+        switch(test) {
+            case 1 -> {
                 misc.addSpace();
                 pvp.mainPlayerVersusPlayerGame(maxCharacter);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 misc.addSpace();
-                pve.mainPlayerVE();
-                break;
-            default:
+                misc.displayDeathScreen();
+            }
+            case 3 -> {
+                misc.addSpace();
+                misc.displayDeathScreen();
+            }
+            case 4 -> {
+                misc.addSpace();
+                misc.displayDeathScreen();
+            }
+            default -> {
                 misc.addSpace();
                 System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");
                 misc.displayDeathScreen();
-                break;
+            }
         }
 
         //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
