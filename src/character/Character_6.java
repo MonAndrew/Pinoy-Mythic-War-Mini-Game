@@ -44,9 +44,9 @@ Miscellaneous misc = new Miscellaneous();
 
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
-        System.out.println("Johnder Ford was an arrogant celebrity who was once a gangsta in his local neighborhood, he was leader of a boy band called Cool Pals and later on went solo in his career and decided to undergo plastic surgery, this made him more arrogant than he already was and was widely receiving negative backlash on the internet. He later on went missing while he was planning to do a controversial public stunt, a black mysterious figure suddenly grabbed him to a mysterious realm.");
-        
-        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        String text = "Johnder Ford was an arrogant celebrity who was once a gangsta in his local neighborhood, he was leader of a boy band called Cool Pals and later on went solo in his career and decided to undergo plastic surgery, this made him more arrogant than he already was and was widely receiving negative backlash on the internet. He later on went missing while he was planning to do a controversial public stunt, a black mysterious figure suddenly grabbed him to a mysterious realm.";
+        misc.slowPrint(text);
+        System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }
 

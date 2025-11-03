@@ -44,9 +44,9 @@ Miscellaneous misc = new Miscellaneous();
 
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
-        System.out.println("Manni Pacqyow was just a skinny kid from Bukidnon who left home with nothing but tsinelas and fists faster than tsismis. Pacqyow fought his way to the top of the food chain, from dukot rice meals to EDI TIPAKLONG. From kanto boy to global icon, Manni Pacqyow showed the world na minsan, suntok lang talaga ang puhunan. ");
-        
-        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        String text = "Manni Pacqyow was just a skinny kid from Bukidnon who left home with nothing but tsinelas and fists faster than tsismis. Pacqyow fought his way to the top of the food chain, from dukot rice meals to EDI TIPAKLONG. From kanto boy to global icon, Manni Pacqyow showed the world na minsan, suntok lang talaga ang puhunan. ";
+        misc.slowPrint(text);
+        System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }
 

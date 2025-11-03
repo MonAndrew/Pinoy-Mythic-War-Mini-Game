@@ -112,7 +112,7 @@ public class Miscellaneous {
         for(char c : text.toCharArray()){
             System.out.print(c);
             try{
-                Thread.sleep(100);
+                Thread.sleep(10);
             }catch(InterruptedException e){
                 Thread.currentThread().interrupt();
             }
@@ -127,10 +127,10 @@ public class Miscellaneous {
         System.out.println("Name: " +name);
 
         displayASCIIBars(currentHp,maxHp);
-        System.out.println("\nHealth: ("+currentHp+"/"+maxHp+")\n");
+        System.out.println(BOLD+RED+"\nHealth: ("+currentHp+"/"+maxHp+")\n"+RESET);
 
         displayASCIIBars(currentMana,maxMana);
-        System.out.println("\nMana: ("+currentMana+"/"+maxMana+")");
+        System.out.println(BOLD+BLUE+"\nMana: ("+currentMana+"/"+maxMana+")"+RESET);
 
         //System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -152,41 +152,69 @@ public class Miscellaneous {
 
         int characterSelection = 0;
         boolean isValidSelection =false;
+        boolean isConfirm = false;
 
         do{
+            do{
 
-        try{
-        System.out.print("Select Your Character: ");
-        characterSelection = scan.nextInt();
-        
-        
-        if(characterSelection < 0 || characterSelection > maxCharacter){
-            System.out.println("Invalid Character Selection!");
-            isValidSelection = false;
-        }else{
-            if(characterSelection == 0) characterSelection = random.nextInt(maxCharacter - 1) + 1;
-            if(characterSelection >= 1 && characterSelection <= maxCharacter){
-            System.out.println("You've Selected: Character #" + (characterSelection));
-            isValidSelection = true;
+            try{
+            System.out.print("Select Your Character: ");
+            characterSelection = scan.nextInt();
+            
+            
+            if(characterSelection < 0 || characterSelection > maxCharacter){
+                System.out.println("Invalid Character Selection!");
+                isValidSelection = false;
+            }else{
+                if(characterSelection == 0) characterSelection = random.nextInt(maxCharacter - 1) + 1;
+                if(characterSelection >= 1 && characterSelection <= maxCharacter){
+                
+                isValidSelection = true;
+                }
+            }
+            
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Invalid Character Selection!");
+                isValidSelection = false;
+            }catch(InputMismatchException e){
+                System.out.println("Invalid Character Selection!");
+                scan.next();
+                isValidSelection = false;
+            }     
+            
+        }while(isValidSelection != true);
+
+        isValidSelection = false;
+
+        while(!isValidSelection){
+            try{
+                System.out.print("Confirm Character selected?(Y/N)");
+                char c = scan.next().charAt(0);
+
+                switch(Character.toUpperCase(c)){
+                    case 'Y' -> {isConfirm = true; isValidSelection = true;}
+                    case 'N' -> 
+                    {isConfirm = false; isValidSelection = true;}
+                    default -> {
+                        System.out.println("Invalid Input");
+                        isConfirm = false; isValidSelection = false;
+                    }
+                }
+            }catch(InputMismatchException e){
+                displayInvalidScreen();
+                scan.next();
             }
         }
-           
-        }catch(ArrayIndexOutOfBoundsException e){
-            System.out.println("Invalid Character Selection!");
-            isValidSelection = false;
-        }catch(InputMismatchException e){
-            System.out.println("Invalid Character Selection!");
-            scan.next();
-            isValidSelection = false;
-        }     
-         
-    }while(isValidSelection != true);
+       
+    }while(isConfirm == false);
+
+    System.out.println("You've Selected: Character #" + (characterSelection));
     return characterSelection;
     }
 
     public int enterSkillTryCatch(){
 
-        boolean isValidSelection =true;
+        boolean isValidSelection = true;
         int skillNumber = 1;
         do{
 
@@ -214,13 +242,14 @@ public class Miscellaneous {
 
 
     //battle design?? idk
-    public String startButton(){
+    public int startButton(){
         System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ PRESS ENTER TO START ║");
+        System.out.println("                         ║ "+RED+"PRESS ENTER TO START "+RESET+"║");
         System.out.println("                         ╚══════════════════════╝");
         System.out.println();
-        String empty = scan.nextLine();
-        return empty;
+        scan.nextLine();
+        scan.nextLine();
+        return 0;
     }
 
     public void displayASCIIBars(int bar,int max){

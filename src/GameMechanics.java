@@ -35,7 +35,8 @@ public abstract class GameMechanics{
     abstract public void minusMana(int manaCost);
     abstract public void addHealth(int health);
     abstract public void addMana(int mana);
-    abstract  public void reduceCooldown();
+    abstract public void reduceCooldownAndEffectTurns();
+    abstract public void effectType(int effectType);
 
     
     abstract public void checkHealthAndManaIfBelowZero();
@@ -55,6 +56,8 @@ public abstract class GameMechanics{
         System.out.println();
     }
 
+
+    //remove this, this should be in misc or something its just for design
     public void displaySkillsCanCurrentlyBeUse(){
 
         System.out.println("Normal Skill");
@@ -72,7 +75,8 @@ class SelectedCharacter_1 extends GameMechanics{
     private int health;
     private int mana;
     //cooldown
-    private int turn;
+    private int effectTurn;
+    private int effectType;
     private int cooldown_1;
     private int cooldown_2;
 
@@ -112,6 +116,7 @@ class SelectedCharacter_1 extends GameMechanics{
         this.minRangeSkill_1 = min;
         this.maxRangeSkill_1 = max;
         this.manaCost1 = manaCost;
+        this.cooldown_1 = 0;
     }
     @Override
     public void setCharacterSkill_2(String skillName, int min,int max, int manaCost){
@@ -219,7 +224,41 @@ class SelectedCharacter_1 extends GameMechanics{
         checkHealthAndManaIfBelowZero();
     }
     @Override
-    public void reduceCooldown(){
+    public void effectType(int effectType){
+    
+    if(effectTurn != 0){
+
+        switch(effectType){
+        //buff
+            case 1 -> {
+
+            }
+            case 2 -> {
+                
+            }
+            case 3 -> {
+                
+            }
+        //debuff
+            case 4 -> {
+                
+            }
+            case 5 -> {
+                
+            }
+            case 6 -> {
+                
+            }
+        }
+    
+    }
+
+    }
+    @Override
+    public void reduceCooldownAndEffectTurns(){
+        this.cooldown_1--;
+        if(this.cooldown_1 < 0) this.cooldown_1 = 0;
+
         this.cooldown_2--;
         if(this.cooldown_2 < 0) this.cooldown_2 = 0;
     }
@@ -237,7 +276,8 @@ class SelectedCharacter_2 extends GameMechanics{
 
     //attacks
     //cooldown
-    private int turn;
+    private int effectTurn;
+    private int effectType;
     private int cooldown_1;
     private int cooldown_2;
 
@@ -276,6 +316,7 @@ class SelectedCharacter_2 extends GameMechanics{
         this.minRangeSkill_1 = min;
         this.maxRangeSkill_1 = max;
         this.manaCost1 = manaCost;
+        this.cooldown_1 = 0;
     }
     @Override
     public void setCharacterSkill_2(String skillName, int min,int max, int manaCost){
@@ -381,9 +422,19 @@ class SelectedCharacter_2 extends GameMechanics{
         checkHealthAndManaIfBelowZero();
     }
     @Override
-    public void reduceCooldown(){
+    public void effectType(int effectType){
+
+    }
+    @Override
+    public void reduceCooldownAndEffectTurns(){
+        this.effectTurn--;
+        if(this.effectTurn <= 0) this.effectTurn = 0;
+
+        this.cooldown_1--;
+        if(this.cooldown_1 <= 0) this.cooldown_1 = 0;
+
         this.cooldown_2--;
-        if(this.cooldown_2 < 0) this.cooldown_2 = 0;
+        if(this.cooldown_2 <= 0) this.cooldown_2 = 0;
     }
 
 

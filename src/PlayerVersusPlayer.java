@@ -231,6 +231,7 @@ class PlayerVersusPlayer{
         if(selectedCharacter_1.getMana() < selectedCharacter_1.getManaCost2()){
         System.out.println("Not enough Mana!");
         dmg  = selectedCharacter_1.getDamagefromNormalSkill();
+        System.out.println("Random Effect: ");
     }
     else
         dmg  = selectedCharacter_1.getDamageFromSkill_2(); 
@@ -273,16 +274,26 @@ class PlayerVersusPlayer{
     }
     
     public void dealDamageCharacter_1ToCharacter_2(int skillnum){
-
+        // add 30% chance to miss :))
+        int missChance = misc.getRNG(100, 1);
         // to <- from
+        if(missChance > 30)
         selectedCharacter_2.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 50),50,skillNumberForSelectedCharacter_1(skillnum)) );
+        else{
+        System.out.println(misc.BOLD+misc.RED+" ** "+misc.WHITE+selectedCharacter_1.getCharacterName()+" Attacks Missed!"+misc.RED+" ** "+misc.RESET+"\n");
+        }
 
     }
 
     public void dealDamageCharacter_2ToCharacter_1(int skillnum){
-        // to <- from
-        selectedCharacter_1.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 50),50,skillNumberForSelectedCharacter_2(skillnum)) );
 
+         int missChance = misc.getRNG(100, 1);
+        // to <- from
+        if(missChance > 30)
+        selectedCharacter_1.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 50),50,skillNumberForSelectedCharacter_2(skillnum)) );
+        else{
+        System.out.println(misc.BOLD+misc.RED+" ** "+misc.WHITE+selectedCharacter_2.getCharacterName()+" Attacks Missed!"+misc.RED+" ** "+misc.RESET+"\n");
+        }
     }
 
     public void mainPlayerVersusPlayerGame(int maxCharacter){
@@ -304,8 +315,14 @@ class PlayerVersusPlayer{
         
         misc.startButton();
 
+        int round = 1;
         while(selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0){
-
+                System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+                System.out.println("                              ╔════════════╗");
+                System.out.print("                              ║ "+misc.BOLD+misc.YELLOW+" ROUND: "+round+misc.RESET);
+                if(round < 10)System.out.println("  ║");else System.out.println(" ║");
+                System.out.println("                              ╚════════════╝");
+                round++;
             for(int turn = 10; (selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0) && turn > 0 ;turn--){
 
                 System.out.println("═════════════════════════════════════════════════════════════════════════════════");
@@ -314,22 +331,22 @@ class PlayerVersusPlayer{
                 if(turn < 10)System.out.println("  ║");else System.out.println(" ║");
                 System.out.println("                               ╚══════════╝");
 
-                selectedCharacter_1.reduceCooldown();
-                selectedCharacter_2.reduceCooldown();
+                selectedCharacter_1.reduceCooldownAndEffectTurns();
+                selectedCharacter_2.reduceCooldownAndEffectTurns();
+                
                 int chance = misc.getFifthyFifhtyChance();
 
                 if(chance == 0){
                 System.out.println("                                Player 1:");
 
-                    //selectedCharacter_1.addMana(1250);
-                    selectedCharacter_1.displayCharacterNameHealthAndMana();
+                    misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     dealDamageCharacter_1ToCharacter_2(misc.getRNG(3, 1));
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
 
                 System.out.println("                                Player 2:");
 
-                    selectedCharacter_2.displayCharacterNameHealthAndMana();
+                    misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     dealDamageCharacter_2ToCharacter_1(misc.getRNG(3, 1));
 
                 }
@@ -337,7 +354,7 @@ class PlayerVersusPlayer{
                 {
                 System.out.println("                                Player 2:");
 
-                    selectedCharacter_2.displayCharacterNameHealthAndMana();
+                    misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     dealDamageCharacter_2ToCharacter_1(misc.getRNG(3, 1));
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
@@ -345,7 +362,7 @@ class PlayerVersusPlayer{
                 System.out.println("                                Player 1:");
 
                     //selectedCharacter_1.addMana(1250);
-                    selectedCharacter_1.displayCharacterNameHealthAndMana();
+                    misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     dealDamageCharacter_1ToCharacter_2(misc.getRNG(3, 1));
 
                 }
@@ -357,8 +374,9 @@ class PlayerVersusPlayer{
             //end while loop
         }
     
-    selectedCharacter_1.displayCharacterNameHealthAndMana();
-    selectedCharacter_2.displayCharacterNameHealthAndMana();
+    misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
+    misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
+    
     misc.displayEndBattle(selectedCharacter_1.getHealth(), selectedCharacter_2.getHealth());
 
         //end game main method
