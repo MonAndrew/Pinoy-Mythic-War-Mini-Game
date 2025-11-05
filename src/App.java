@@ -51,7 +51,7 @@ public class App {
                     do{
                     misc.addSpace();
                     System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");
-                    misc.displayDeathScreen();
+                    misc.displayCreditsOrGroupMembers();
                     confirmation = misc.returnTrueOrFalseConfimation();
                     }while(confirmation == true);
                 }
@@ -72,7 +72,7 @@ public class App {
             scan.nextLine();
             misc.addSpace();
         }
-        
+
         //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
         /*Charset cp437 = Charset.forName("Cp437"); // DOS Extended ASCII
         for (int i = 0; i <= 255; i++) {

@@ -4,11 +4,16 @@ public class SelectedCharacter_2 extends GameMechanics{
     private int mana;
 
     //status effect
+    private int buff;
+    private int debuff;
+
     private int effectTurn;
     private boolean isPoisoned = false;
     private int poisonEffectTurn;
     private boolean isBleeding = false;
     private int bleedingEffectTurn;
+    private boolean isThorned = false;
+    private int thornedEffectTurn;
     private boolean isIncreasedDamage = false;
     private int increaseDamageEffect;
     private boolean isDecreasedDamage = false;
@@ -40,6 +45,11 @@ public class SelectedCharacter_2 extends GameMechanics{
         this.characterName = name;
         this.health = health;
         this.mana = mana;
+    }
+    @Override
+    public void setBuffAndDebuff(int buff,int debuff){
+        this.buff = buff;
+        this.debuff = debuff;
     }
     @Override
     public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain){
@@ -89,6 +99,12 @@ public class SelectedCharacter_2 extends GameMechanics{
     @Override
     public int getCooldown_2(){ return this.cooldown_2;
     }
+    @Override
+    public int getBuff(){ return this.buff; 
+    }
+    @Override
+    public int getDebuff(){ return this.debuff; 
+    }
 
     @Override
     public int getDamagefromNormalSkill(){
@@ -136,8 +152,7 @@ public class SelectedCharacter_2 extends GameMechanics{
         checkHealthAndManaIfBelowZero();
         //random effect
         System.out.println("Support Skill/ Passive: ");
-        int effectType = misc.getRNG(2, 1);
-        effectType_Buff(effectType);
+        effectType_Buff(getBuff());
 
         return random.nextInt((this.maxRangeSkill_2 - this.minRangeSkill_2) + 1) + this.minRangeSkill_2;
     }
@@ -203,11 +218,15 @@ public class SelectedCharacter_2 extends GameMechanics{
             this.isIncreasedDamage = false;
             this.increaseDamageEffect = 1;
             //debuff
-            this.isPoisoned = false;
-            this.isBleeding = false;
             this.isDecreasedDamage = false;
             this.decreaseDamageEffect = 1;
         }
+
+        this.poisonEffectTurn--;
+        if(this.poisonEffectTurn <= 0){ this.poisonEffectTurn = 0; this.isPoisoned = false;}
+
+        this.bleedingEffectTurn--;
+        if(this.bleedingEffectTurn <= 0){ this.bleedingEffectTurn = 0; this.isBleeding = false;}
         
 
         this.cooldown_1--;
@@ -224,18 +243,9 @@ public class SelectedCharacter_2 extends GameMechanics{
         //buff
             case 1 -> { addHealth(misc.getRNG(200, 50)); }
             case 2 -> { addMana(misc.getRNG(100, 25)); }
-            //case 3 -> { System.out.println("Increase Damage 10% for 4 turns");}
+            case 3 -> { System.out.println("Increase Damage 10% for 4 turns");}
         }
 
-    }
-    @Override
-    public void effectType_Debuff(int effectType){
-        switch(effectType){
-
-            case 1 -> {System.out.println("poison Debuff");}
-            case 2 -> {System.out.println("bleed Debuff");}
-            case 3 -> {System.out.println("decrease dmg Debuff");}
-        }
     }
     @Override
     public void setStatusEffect_On(int effectType){
@@ -246,7 +256,8 @@ public class SelectedCharacter_2 extends GameMechanics{
             case 3 -> {}
             case 4 -> { System.out.println("poison_on");this.poisonEffectTurn = 4; this.isPoisoned = true;}
             case 5 -> { System.out.println("bleed_on");this.bleedingEffectTurn = 4; this.isBleeding = true;}
-            case 6 -> { System.out.println("decrease dmg_on");this.effectTurn = 4; this.isDecreasedDamage = true;}
+            case 6 -> { System.out.println("thorn_on");this.thornedEffectTurn = 4; this.isThorned = true;}
+            case 7 -> { System.out.println("decrease dmg_on");this.effectTurn = 4; this.isDecreasedDamage = true;}
 
         }
     }
@@ -256,8 +267,8 @@ public class SelectedCharacter_2 extends GameMechanics{
         System.out.print("Status: ");
 
         if(this.isPoisoned == true) System.out.println(misc.PURPLE+misc.BOLD+"POISONED"+misc.RESET);
-
         else if(this.isBleeding == true) System.out.println(misc.RED+misc.BOLD+"BLEEDING"+misc.RESET);
+        else if(this.isThorned == true) System.out.println(misc.GREEN+misc.BOLD+"THORNED"+misc.RESET);
 
         else System.out.println("None");
     }
@@ -271,7 +282,11 @@ public class SelectedCharacter_2 extends GameMechanics{
 
         else if(this.isBleeding == true){
             System.out.println(misc.RED+misc.BOLD+"BLEEDING: "+misc.RESET);
-            minusHealth(misc.getRNG(30, 1));
+            minusHealth(misc.getRNG(40, 1));
+        }
+        else if(this.isThorned == true){ 
+            System.out.println(misc.GREEN+misc.BOLD+"THORNED: "+misc.RESET);
+            minusHealth(misc.getRNG(30, 5));
         }
 
     }

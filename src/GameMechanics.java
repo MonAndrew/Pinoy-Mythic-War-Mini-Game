@@ -15,6 +15,7 @@ public abstract class GameMechanics{
     Random random = new Random();
 //setters
     abstract public void setPlayerSelectedCharacter(String name,int health, int mana);
+    abstract  public void setBuffAndDebuff(int buff,int debuff);
     abstract public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);
     abstract public void setCharacterSkill_1(String skillName, int min,int max, int manaCost);
     abstract public void setCharacterSkill_2(String skillName, int min,int max, int manaCost);
@@ -31,6 +32,8 @@ public abstract class GameMechanics{
     abstract public int getDamagefromNormalSkill();
     abstract public int getDamageFromSkill_1();
     abstract public int getDamageFromSkill_2();
+    abstract public int getBuff();
+    abstract public int getDebuff();
 //battles
     abstract public void minusHealth(int damage);
     abstract public void minusMana(int manaCost);
@@ -39,7 +42,6 @@ public abstract class GameMechanics{
     abstract public void reduceCooldownAndEffectTurns();
 //effects
     abstract public void effectType_Buff(int effectType);
-    abstract public void effectType_Debuff(int effectType);
     abstract public void setStatusEffect_On(int effectType);
     abstract public void displayCurrectStatusEffect();
     abstract public void doStatusEffect();
@@ -83,59 +85,67 @@ class GameMechanics_2{
         switch(num){
 
             case 1 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_1.getCharacterName(), character_1.getHealth(), character_1.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_1.getCharacterName(), character_1.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_1.getNormalSkillName(), character_1.getMinRangeNormalSkill(), character_1.getMaxRangeNormalSkill(), character_1.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_1.getSkillName_1(), character_1.getMinRangeSkill_1(), character_1.getMaxRangeSkill_1(), character_1.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_1.getSkillName_2(), character_1.getMinRangeSkill_2(), character_1.getMaxRangeSkill_2(), character_1.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_1.getBuff(), character_1.getDebuff());
             return 1;}
 
             case 2 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), character_2.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_2.getNormalSkillName(), character_2.getMinRangeNormalSkill(), character_2.getMaxRangeNormalSkill(), character_2.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_2.getSkillName_1(), character_2.getMinRangeSkill_1(), character_2.getMaxRangeSkill_1(), character_2.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_2.getSkillName_2(), character_2.getMinRangeSkill_2(), character_2.getMaxRangeSkill_2(), character_2.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_2.getBuff(), character_2.getDebuff());
             return 2;}
 
             case 3 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_3.getCharacterName(), character_3.getHealth(), character_3.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_3.getCharacterName(), character_3.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_3.getNormalSkillName(), character_3.getMinRangeNormalSkill(), character_3.getMaxRangeNormalSkill(), character_3.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_3.getSkillName_1(), character_3.getMinRangeSkill_1(), character_3.getMaxRangeSkill_1(), character_3.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_3.getSkillName_2(), character_3.getMinRangeSkill_2(), character_3.getMaxRangeSkill_2(), character_3.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_3.getBuff(), character_3.getDebuff());
             return 3;}
 
             case 4 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_4.getCharacterName(), character_4.getHealth(), character_4.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_4.getCharacterName(), character_4.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_4.getNormalSkillName(), character_4.getMinRangeNormalSkill(), character_4.getMaxRangeNormalSkill(), character_4.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_4.getSkillName_1(), character_4.getMinRangeSkill_1(), character_4.getMaxRangeSkill_1(), character_4.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_4.getSkillName_2(), character_4.getMinRangeSkill_2(), character_4.getMaxRangeSkill_2(), character_4.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_4.getBuff(), character_4.getDebuff());
             return 4;}
 
             case 5 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_5.getCharacterName(), character_5.getHealth(), character_5.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_5.getCharacterName(), character_5.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_5.getNormalSkillName(), character_5.getMinRangeNormalSkill(), character_5.getMaxRangeNormalSkill(), character_5.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_5.getSkillName_1(), character_5.getMinRangeSkill_1(), character_5.getMaxRangeSkill_1(), character_5.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_5.getSkillName_2(), character_5.getMinRangeSkill_2(), character_5.getMaxRangeSkill_2(), character_5.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_5.getBuff(), character_5.getDebuff());
             return 5;}
 
             case 6 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_6.getCharacterName(), character_6.getHealth(), character_6.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_6.getCharacterName(), character_6.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_6.getNormalSkillName(), character_6.getMinRangeNormalSkill(), character_6.getMaxRangeNormalSkill(), character_6.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_6.getSkillName_1(), character_6.getMinRangeSkill_1(), character_6.getMaxRangeSkill_1(), character_6.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_6.getSkillName_2(), character_6.getMinRangeSkill_2(), character_6.getMaxRangeSkill_2(), character_6.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_6.getBuff(), character_6.getDebuff());
             return 6;}
 
             case 7 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_7.getCharacterName(), character_7.getHealth(), character_7.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_7.getCharacterName(), character_7.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_7.getNormalSkillName(), character_7.getMinRangeNormalSkill(), character_7.getMaxRangeNormalSkill(), character_7.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_7.getSkillName_1(), character_7.getMinRangeSkill_1(), character_7.getMaxRangeSkill_1(), character_7.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_7.getSkillName_2(), character_7.getMinRangeSkill_2(), character_7.getMaxRangeSkill_2(), character_7.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_7.getBuff(), character_7.getDebuff());
             return 7;}
 
             case 8 -> {
-            selectedCharacter_1.setPlayerSelectedCharacter(character_8.getCharacterName(), character_8.getHealth(), character_8.getMana());
+            selectedCharacter_1.setPlayerSelectedCharacter(character_8.getCharacterName(), character_8.getHealth(), misc.getBaseMana());
             selectedCharacter_1.setCharacterNormalSkill(character_8.getNormalSkillName(), character_8.getMinRangeNormalSkill(), character_8.getMaxRangeNormalSkill(), character_8.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_8.getSkillName_1(), character_8.getMinRangeSkill_1(), character_8.getMaxRangeSkill_1(), character_8.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_8.getSkillName_2(), character_8.getMinRangeSkill_2(), character_8.getMaxRangeSkill_2(), character_8.getManaCost2());
+            selectedCharacter_1.setBuffAndDebuff(character_8.getBuff(), character_8.getDebuff());
             return 8;}
 
         }
@@ -147,59 +157,67 @@ class GameMechanics_2{
         switch(num){
 
             case 1 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_1.getCharacterName(), character_1.getHealth(), character_1.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_1.getCharacterName(), character_1.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_1.getNormalSkillName(), character_1.getMinRangeNormalSkill(), character_1.getMaxRangeNormalSkill(), character_1.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_1.getSkillName_1(), character_1.getMinRangeSkill_1(), character_1.getMaxRangeSkill_1(), character_1.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_1.getSkillName_2(), character_1.getMinRangeSkill_2(), character_1.getMaxRangeSkill_2(), character_1.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_1.getBuff(), character_1.getDebuff());
             return 1;}
 
             case 2 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), character_2.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_2.getCharacterName(), character_2.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_2.getNormalSkillName(), character_2.getMinRangeNormalSkill(), character_2.getMaxRangeNormalSkill(), character_2.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_2.getSkillName_1(), character_2.getMinRangeSkill_1(), character_2.getMaxRangeSkill_1(), character_2.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_2.getSkillName_2(), character_2.getMinRangeSkill_2(), character_2.getMaxRangeSkill_2(), character_2.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_2.getBuff(), character_2.getDebuff());
             return 2;}
 
             case 3 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_3.getCharacterName(), character_3.getHealth(), character_3.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_3.getCharacterName(), character_3.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_3.getNormalSkillName(), character_3.getMinRangeNormalSkill(), character_3.getMaxRangeNormalSkill(), character_3.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_3.getSkillName_1(), character_3.getMinRangeSkill_1(), character_3.getMaxRangeSkill_1(), character_3.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_3.getSkillName_2(), character_3.getMinRangeSkill_2(), character_3.getMaxRangeSkill_2(), character_3.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_3.getBuff(), character_3.getDebuff());
             return 3;}
 
             case 4 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_4.getCharacterName(), character_4.getHealth(), character_4.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_4.getCharacterName(), character_4.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_4.getNormalSkillName(), character_4.getMinRangeNormalSkill(), character_4.getMaxRangeNormalSkill(), character_4.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_4.getSkillName_1(), character_4.getMinRangeSkill_1(), character_4.getMaxRangeSkill_1(), character_4.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_4.getSkillName_2(), character_4.getMinRangeSkill_2(), character_4.getMaxRangeSkill_2(), character_4.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_4.getBuff(), character_4.getDebuff());
             return 4;}
 
             case 5 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_5.getCharacterName(), character_5.getHealth(), character_5.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_5.getCharacterName(), character_5.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_5.getNormalSkillName(), character_5.getMinRangeNormalSkill(), character_5.getMaxRangeNormalSkill(), character_5.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_5.getSkillName_1(), character_5.getMinRangeSkill_1(), character_5.getMaxRangeSkill_1(), character_5.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_5.getSkillName_2(), character_5.getMinRangeSkill_2(), character_5.getMaxRangeSkill_2(), character_5.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_5.getBuff(), character_5.getDebuff());
             return 5;}
 
             case 6 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_6.getCharacterName(), character_6.getHealth(), character_6.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_6.getCharacterName(), character_6.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_6.getNormalSkillName(), character_6.getMinRangeNormalSkill(), character_6.getMaxRangeNormalSkill(), character_6.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_6.getSkillName_1(), character_6.getMinRangeSkill_1(), character_6.getMaxRangeSkill_1(), character_6.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_6.getSkillName_2(), character_6.getMinRangeSkill_2(), character_6.getMaxRangeSkill_2(), character_6.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_6.getBuff(), character_6.getDebuff());
             return 6;}
 
             case 7 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_7.getCharacterName(), character_7.getHealth(), character_7.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_7.getCharacterName(), character_7.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_7.getNormalSkillName(), character_7.getMinRangeNormalSkill(), character_7.getMaxRangeNormalSkill(), character_7.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_7.getSkillName_1(), character_7.getMinRangeSkill_1(), character_7.getMaxRangeSkill_1(), character_7.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_7.getSkillName_2(), character_7.getMinRangeSkill_2(), character_7.getMaxRangeSkill_2(), character_7.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_7.getBuff(), character_7.getDebuff());
             return 7;}
 
             case 8 -> {
-            selectedCharacter_2.setPlayerSelectedCharacter(character_8.getCharacterName(), character_8.getHealth(), character_8.getMana());
+            selectedCharacter_2.setPlayerSelectedCharacter(character_8.getCharacterName(), character_8.getHealth(), misc.getBaseMana());
             selectedCharacter_2.setCharacterNormalSkill(character_8.getNormalSkillName(), character_8.getMinRangeNormalSkill(), character_8.getMaxRangeNormalSkill(), character_8.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_8.getSkillName_1(), character_8.getMinRangeSkill_1(), character_8.getMaxRangeSkill_1(), character_8.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_8.getSkillName_2(), character_8.getMinRangeSkill_2(), character_8.getMaxRangeSkill_2(), character_8.getManaCost2());
+            selectedCharacter_2.setBuffAndDebuff(character_8.getBuff(), character_8.getDebuff());
             return 8;}
 
         }
@@ -259,12 +277,13 @@ class GameMechanics_2{
      
     case 1 -> { dmg  = selectedCharacter_1.getDamagefromNormalSkill(); } 
     case 2 -> { dmg  = selectedCharacter_1.getDamageFromSkill_1(); }
-    case 3 -> { dmg  = selectedCharacter_1.getDamageFromSkill_2();
-        System.out.println("CD" +selectedCharacter_1.getCooldown_2());
-        if(selectedCharacter_1.getMana() >= selectedCharacter_1.getManaCost2()){
-        selectedCharacter_2.setStatusEffect_On(4);
-        
+    case 3 -> {
+
+        //System.out.println("CD" +selectedCharacter_1.getCooldown_2());
+        if((selectedCharacter_1.getMana() >= selectedCharacter_1.getManaCost2()) && selectedCharacter_1.getCooldown_2() <= 0){
+        selectedCharacter_2.setStatusEffect_On(misc.getRNG(6, 4));
         }
+        dmg  = selectedCharacter_1.getDamageFromSkill_2();
     }
 
     }
@@ -280,12 +299,13 @@ class GameMechanics_2{
      
     case 1 -> { dmg  = selectedCharacter_2.getDamagefromNormalSkill(); } 
     case 2 -> { dmg  = selectedCharacter_2.getDamageFromSkill_1(); }
-    case 3 -> { dmg  = selectedCharacter_2.getDamageFromSkill_2();
-        System.out.println("CD" +selectedCharacter_2.getCooldown_2()); 
-        if(selectedCharacter_2.getMana() >= selectedCharacter_2.getManaCost2()){
-        selectedCharacter_1.setStatusEffect_On(5);
-        
+    case 3 -> { 
+
+        //System.out.println("CD" +selectedCharacter_2.getCooldown_2()); 
+        if((selectedCharacter_2.getMana() >= selectedCharacter_2.getManaCost2()) && selectedCharacter_2.getCooldown_2() <= 0){
+        selectedCharacter_1.setStatusEffect_On(misc.getRNG(6, 4));
         }
+        dmg  = selectedCharacter_2.getDamageFromSkill_2();
     }
 
     }

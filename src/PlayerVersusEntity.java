@@ -46,59 +46,67 @@ public class PlayerVersusEntity extends GameMechanics_2{
                 int chance = misc.getFifthyFifhtyChance();
 
                 if(chance == 0){
-                System.out.println("                                Player 1:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  1:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(misc.getRNG(max, min));
+                    dealDamageCharacter_1ToCharacter_2(3);//skill input
                     selectedCharacter_1.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
 
-                System.out.println("                                Player 2:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  2:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(max, min));
+                    dealDamageCharacter_2ToCharacter_1(3);//skill input
                     selectedCharacter_2.doStatusEffect();
 
                 }
                 else //50/50
                 {
-                System.out.println("                                Player 2:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  2:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(max, min));
+                    dealDamageCharacter_2ToCharacter_1(3);//skill input
                     selectedCharacter_2.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
 
-                System.out.println("                                Player 1:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  1:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(misc.getRNG(max, min));
+                    dealDamageCharacter_1ToCharacter_2(3);//skill input
                     selectedCharacter_1.doStatusEffect();
 
                 }
-
+                
                 System.out.println("═════════════════════════════════════════════════════════════════════════════════");
 
             }
 
             //end while loop
         }
-    
+    System.out.println("═════════════════════════════════════════════════════════════════════════════════");
     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
-    
+    System.out.println("═════════════════════════════════════════════════════════════════════════════════");
     misc.displayEndBattle(selectedCharacter_1.getHealth(), selectedCharacter_2.getHealth());
-
+    
         //end game main method
     }
 
@@ -154,60 +162,68 @@ public class PlayerVersusEntity extends GameMechanics_2{
                 int chance = misc.getFifthyFifhtyChance();
 
                 if(chance == 0){
-                System.out.println("                                Player 1:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  1:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(misc.getRNG(max, min));
+                    dealDamageCharacter_1ToCharacter_2(3);//skill input
                     selectedCharacter_1.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
 
-                System.out.println("                                Player 2:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  2:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(max, min));
+                    dealDamageCharacter_2ToCharacter_1(3);//skill input
                     selectedCharacter_2.doStatusEffect();
 
                 }
                 else //50/50
                 {
-                System.out.println("                                Player 2:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  2:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(max, min));
+                    dealDamageCharacter_2ToCharacter_1(3);//skill input
                     selectedCharacter_2.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
 
-                System.out.println("                                Player 1:");
+                System.out.println("                              ╔════════════╗");
+                System.out.println("══════════════════════════════║ "+misc.BOLD+"PLAYER  1:"+misc.RESET+" ║═════════════════════════════════════");
+                System.out.println("                              ╚════════════╝");
 
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(misc.getRNG(max, min));
+                    dealDamageCharacter_1ToCharacter_2(3);//skill input
                     selectedCharacter_1.doStatusEffect();
 
                 }
-
+                
                 System.out.println("═════════════════════════════════════════════════════════════════════════════════");
 
             }
 
             //end while loop
         }
-
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
+        misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         player2++;
 
     }
-        misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
-        misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
-        
         misc.displayDeathScreen();
 
     //end game main method

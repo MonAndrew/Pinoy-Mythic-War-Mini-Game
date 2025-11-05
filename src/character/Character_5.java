@@ -24,8 +24,8 @@ Miscellaneous misc = new Miscellaneous();
     private int manaCost2;
     //support skill
     private String supportSkillName;
-    private double buff;
-    private double debuff;
+    private int buff;
+    private int debuff;
 
     //change for Character
     @Override
@@ -72,6 +72,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println();
     }
 
+
     //setters
     @Override
     public void setCharacterName(String characterName){
@@ -112,73 +113,45 @@ Miscellaneous misc = new Miscellaneous();
 
     //gets
     @Override
-    public String getCharacterName(){
-        return this.characterName;
-    }
+    public String getCharacterName(){ return this.characterName;}
+    @Override
+    public int getHealth(){ return this.health; }
+    @Override
+    public int getMana(){ return this.mana; }
+    @Override
+    public int getManaGain(){ return this.manaGain; }
+    @Override
+    public int getManaCost1(){ return this.manaCost1; }
+    @Override
+    public int getManaCost2(){ return this.manaCost2; }
+
+    //get skills min - max
     @Override
     public String getNormalSkillName(){ return this.normalSkillName; }
     @Override
     public String getSkillName_1(){ return this.skillName1; }
     @Override
     public String getSkillName_2(){ return this.skillName2; }
-
     @Override
-    public int getHealth(){
-        return this.health;
-    }
+    public int getMinRangeNormalSkill(){ return this.normalSkillminRange; }
     @Override
-    public int getMana(){
-        return this.mana;
-    }
+    public int getMaxRangeNormalSkill(){ return this.normalSkillmaxRange; }
     @Override
-    public int getManaGain(){
-        return this.manaGain;
-    }
+    public int getMinRangeSkill_1(){ return this.minRangeSkill_1; }
     @Override
-    public int getManaCost1(){
-        return this.manaCost1;
-    }
+    public int getMaxRangeSkill_1(){ return this.maxRangeSkill_1; }
     @Override
-    public int getManaCost2(){
-        return this.manaCost2;
-    }
-
-
-    //get skills min - max
+    public int getMinRangeSkill_2(){ return this.minRangeSkill_2; }
     @Override
-    public int getMinRangeNormalSkill(){
-        return this.normalSkillminRange;
-    }
-    @Override
-    public int getMaxRangeNormalSkill(){
-        return this.normalSkillmaxRange;
-    }
-    @Override
-    public int getMinRangeSkill_1(){
-        return this.minRangeSkill_1;
-    }
-    @Override
-    public int getMaxRangeSkill_1(){
-        return this.maxRangeSkill_1;
-    }
-    @Override
-    public int getMinRangeSkill_2(){
-        return this.minRangeSkill_2;
-    }
-    @Override
-    public int getMaxRangeSkill_2(){
-        return this.maxRangeSkill_2;
-    }
+    public int getMaxRangeSkill_2(){ return this.maxRangeSkill_2; }
 
     //
     @Override
-    public int getBuff(){
-        return (int)this.buff;
-    }
+    public int getBuff(){ return this.buff; }
     @Override
-    public int getDebuff(){
-        return (int)this.debuff;
-    }
+    public int getDebuff(){ return this.debuff; }
 
 }
+
+
 

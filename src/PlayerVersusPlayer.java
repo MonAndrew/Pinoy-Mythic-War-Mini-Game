@@ -105,7 +105,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
     System.out.println("═════════════════════════════════════════════════════════════════════════════════");
     misc.displayEndBattle(selectedCharacter_1.getHealth(), selectedCharacter_2.getHealth());
-
+    
         //end game main method
     }
 

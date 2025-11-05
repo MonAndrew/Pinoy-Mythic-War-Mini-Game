@@ -455,6 +455,33 @@ public class Miscellaneous {
         System.out.println("█████████████████████████████████████████████████████████████████████████");
         
     }
+
+    public void displayCreditsOrGroupMembers(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("                        ╔══════════════════════════╗");
+        System.out.println("                        ║ CREDITS / GROUP MEMBERS: ║");
+        System.out.println("                        ╚══════════════════════════╝");
+        System.out.println();
+        System.out.println("                                GROUP LEADER:");
+        System.out.println("                                Junwel Conson");
+        System.out.println();
+        System.out.println("                               PROJECT MANAGER:");
+        System.out.println("                                Junwel Conson");
+        System.out.println();
+        System.out.println("                               LEAD DEVELOPER:");
+        System.out.println("                                Junwel Conson");
+        System.out.println();
+        System.out.println("                              LEAD ASCII ARTIST:");
+        System.out.println("                                Kenan Lobiano");
+        System.out.println();
+        System.out.println("       DEBUGGER / TESTER:                       CHARACTER DESIGN AND STORYLINE:");
+        System.out.println("          Ivy Ygoña                                     John Eric Ribo");
+        System.out.println();
+        System.out.println("                             SUPPORT/AUDIENECE:");
+        System.out.println("                       Mon Andrew Ludovice(Canton 1x)");
+        System.out.println();
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+    }
     
 
 
