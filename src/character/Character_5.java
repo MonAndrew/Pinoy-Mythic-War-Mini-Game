@@ -35,7 +35,7 @@ Miscellaneous misc = new Miscellaneous();
         setCharacterNormalSkill("Normal", 75, 80, 25);
         setCharacterSkill_1("Jab", 130, 150, 150);
         setCharacterSkill_2("Block", 175, 250, 250);
-        setCharacterSupportSkill("Right Jab, Left Hook, combo!!!",0.17, 0.10);
+        setCharacterSupportSkill("Right Jab, Left Hook, combo!!!",1, 0);
     }
     @Override
     public void displayBackStory(){
@@ -104,7 +104,7 @@ Miscellaneous misc = new Miscellaneous();
         this.manaCost2 = manaCost;
     }
     @Override
-    public void setCharacterSupportSkill(String skillName,double buff, double debuff){
+    public void setCharacterSupportSkill(String skillName,int buff, int debuff){
          this.supportSkillName = skillName;
          this.buff = buff;
          this.debuff = debuff;

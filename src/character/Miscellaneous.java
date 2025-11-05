@@ -32,7 +32,31 @@ public class Miscellaneous {
         this.playerName_1 = "Player_1";
         this.playerName_2 = "Player_2";
     }
+    public boolean returnTrueOrFalseConfimation(){
+        boolean isValidSelection = false;
+        boolean confirmation = true;
 
+        while(isValidSelection == false){
+            try{
+                System.out.print("(Y/N)");
+                char c = scan.next().charAt(0);
+
+                switch(Character.toUpperCase(c)){
+                    case 'Y' -> {confirmation = true; isValidSelection = true;}
+                    case 'N' -> {confirmation = false; isValidSelection = true;}
+                    default -> {
+                        System.out.println("Invalid Input");
+                        isValidSelection = false;
+                    }
+                }
+            }catch(InputMismatchException e){
+                displayInvalidScreen();
+                scan.next();
+            }
+        }
+
+        return confirmation;
+    }
     public String confirmedCustomPlayerName(){
         boolean confirm = false;
         String playerName= "Anonymous";
@@ -355,8 +379,6 @@ public class Miscellaneous {
         System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
         System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
         System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
-        System.out.println();
-        System.out.println();
         System.out.println("                         ╔══════════════════════╗");
         System.out.println("                         ║ 1:  PLAYER V PLAYER  ║");
         System.out.println("                         ╚══════════════════════╝");
@@ -369,16 +391,17 @@ public class Miscellaneous {
         System.out.println("                         ╔══════════════════════╗");
         System.out.println("                         ║ 4:    SETTINGS       ║");
         System.out.println("                         ╚══════════════════════╝");
-        System.out.println();
-        System.out.println("");
+        System.out.println("                         ╔══════════════════════╗");
+        System.out.println("                         ║ 5:    QUIT GAME      ║");
+        System.out.println("                         ╚══════════════════════╝");
         System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
         System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
         System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
-        System.out.println("█████████████████████████████████████████████████████████████████████████");
+        System.out.print  ("█████████████████████████████████████████████████████████████████████████");
             
         selection = scan.nextInt();
 
-            if(selection < 1 || selection > 4){
+            if(selection < 1 || selection > 5){
             displayInvalidScreen();
             isValidSelection = false;
 

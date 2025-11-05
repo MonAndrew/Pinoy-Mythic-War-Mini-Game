@@ -11,7 +11,7 @@ public interface CharacterStats {
     public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);
     public void setCharacterSkill_1(String skillName, int min,int max, int manaCost);
     public void setCharacterSkill_2(String skillName, int min,int max, int manaCost);
-    public void setCharacterSupportSkill(String skillName,double buff, double debuff);
+    public void setCharacterSupportSkill(String skillName,int buff, int debuff);
     //just gets
     public String getCharacterName();
     public int getHealth();

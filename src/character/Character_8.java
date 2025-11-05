@@ -25,8 +25,8 @@ Miscellaneous misc = new Miscellaneous();
     private int manaCost2;
     //support skill
     private String supportSkillName;
-    private double buff;
-    private double debuff;
+    private int buff;
+    private int debuff;
 
     //change for Character
     @Override
@@ -36,7 +36,7 @@ Miscellaneous misc = new Miscellaneous();
         setCharacterNormalSkill("Normal", 75, 80, 25);
         setCharacterSkill_1("Croco", 130, 150, 150);
         setCharacterSkill_2("Spain Vaccation!", 175, 250, 250);
-        setCharacterSupportSkill("Ghostly Project",0.17, 0.10);
+        setCharacterSupportSkill("Ghostly Project",1, 0);
     }
     @Override
     public void displayBackStory(){
@@ -108,7 +108,7 @@ Miscellaneous misc = new Miscellaneous();
         this.manaCost2 = manaCost;
     }
     @Override
-    public void setCharacterSupportSkill(String skillName,double buff, double debuff){
+    public void setCharacterSupportSkill(String skillName,int buff, int debuff){
          this.supportSkillName = skillName;
          this.buff = buff;
          this.debuff = debuff;
