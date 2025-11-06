@@ -47,7 +47,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
         String text = "Zaldivy Coco was a notorious politician that has the ability to turn ghost projects into real money. He was born from a family of crocodilio bombardinos where you gain more power the more you steal. One day while having a public hearing of his case he suddenly disappeared as the entity itself felt pure greed from Zaldivy Coco.";
-        misc.slowPrint(text);
+        misc.slowPrint(text,10);
         System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
         

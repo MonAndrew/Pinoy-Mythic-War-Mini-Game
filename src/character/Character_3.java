@@ -45,7 +45,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
         String text = "Jhong Kenario was just like any other guy in town. Started out as one of the OG Streetboys, he quickly earned a reputation as the only dancer who could moonwalk while eating pares on the side. He quickly changed from being on the dance floors to straight up battlefield. His secret talent was to out dance the bullets and enemies until they surrender. His dancing was so powerful that even Juncoco Maarti paused mid-shootout to clap. Legends say, “Wag mo yang galawin, baka biglang mag-backflip ";
-        misc.slowPrint(text);
+        misc.slowPrint(text,10);
         System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }

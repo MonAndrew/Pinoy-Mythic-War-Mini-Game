@@ -45,7 +45,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
         String text = "A roaring hearthtrob in the drama industry where Monshee Richards is the sworn brother of Zak Riberto. However, he had an alter ego where he is called Viktor Mananngol where he uses a jeepney hammer to strike villains on the city. One day, his world shattered when his “Aldub” left him for good which he was made fun of. Later on, he went to investigate the disappearance of Zak Riberto and suddenly found himself unconcious in the Realm.";
-        misc.slowPrint(text);
+        misc.slowPrint(text,10);
         System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }

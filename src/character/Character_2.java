@@ -45,7 +45,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
         String text = "He was a drama actor who makes a living by debuting popular teleserye series and gaining more popularity through showing his abs on the internet. Zak Riberto later on became Anti-Selos after numerous guys showed interest in his girlfriend named Wally Forteza. Despite having an Anti-selos barrier, his overwhelming jealousy consumed him which gave the entity an opportunity to take him away to Realm.";
-        misc.slowPrint(text);
+        misc.slowPrint(text,10);
         System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }

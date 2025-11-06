@@ -53,7 +53,7 @@ public class App {
                 case 5 -> {//Quit Game
                     misc.addSpace();
                     System.out.print("Leaving Game");
-                    misc.slowPrint("..........");
+                    misc.slowPrint("..........",20);
                     System.out.println();
                     isLeavingGame = true;
                 }
@@ -68,7 +68,7 @@ public class App {
             scan.nextLine();
             misc.addSpace();
         }
-
+        scan.close();
         //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
         /*Charset cp437 = Charset.forName("Cp437"); // DOS Extended ASCII
         for (int i = 0; i <= 255; i++) {

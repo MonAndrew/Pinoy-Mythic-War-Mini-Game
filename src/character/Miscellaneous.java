@@ -28,6 +28,8 @@ public class Miscellaneous {
     private final int baseHealth = 1000; 
     private final int baseMana = 100;
 
+    public boolean killSwitch = false;
+
     public Miscellaneous(){
         this.playerName_1 = "Player_1";
         this.playerName_2 = "Player_2";
@@ -131,12 +133,43 @@ public class Miscellaneous {
         return this.baseMana;
     }
 
-    public void slowPrint(String text){
+    public void turnKillSwitch(){
+        //Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ═
+        if(killSwitch == false){
+            System.out.println("Kill Switch -> ▒▒▒▒██ Off");
+            killSwitch = false;    
+        }
+        else{
+            System.out.println("Kill Switch -> ██▒▒▒▒ On");
+            killSwitch = true;
+        }
+        
+        //the switch
+        if(returnTrueOrFalseConfimation() == false){
+            System.out.println("Kill Switch -> ▒▒▒▒██ Off");
+            killSwitch = false;    
+        }
+        else{
+            System.out.println("Kill Switch -> ██▒▒▒▒ On");
+            killSwitch = true;
+        }
+        System.err.println("\n");
+    }
+
+    public void displayKillStreak(int killStreak){
+    System.out.print("Defeats: ");
+    for(int i=0; i<=killStreak ;i++){
+        if(i!=0)System.out.print(PURPLE+"▌"+RESET);
+    }
+    System.out.println();
+    }
+
+    public void slowPrint(String text, int timeInMs){
         int nextline = 0;
         for(char c : text.toCharArray()){
             System.out.print(c);
             try{
-                Thread.sleep(10);
+                Thread.sleep(timeInMs);
             }catch(InterruptedException e){
                 Thread.currentThread().interrupt();
             }
@@ -144,6 +177,7 @@ public class Miscellaneous {
         if(c == ' ' || c == '.')nextline++;
         if(nextline == 10){System.out.println(); nextline = 0;}
         }
+        System.out.println();
     }
     public void displayCharacterNameHealthAndMana(String name,int currentHp,int maxHp,int currentMana,int maxMana){
         System.out.println();
@@ -452,8 +486,8 @@ public class Miscellaneous {
         }
            
     }while(isValidSelection != true);
-
-        return selection;
+    
+    return selection;
     }
 
     public void displayInvalidScreen(){

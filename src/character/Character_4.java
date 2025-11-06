@@ -45,7 +45,7 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
         String text = "A Male midnight ballerina dancer who does it for the passion for dancing, and his only main source of income. He created a viral dance move called “The Flying Eagle Dance.”. With his smooth movement despite his large size, he captures the attention of those around him. Just like those sudden rises of attention, he lost his way; he no longer possessed the humble person he was. As his greed grew, the entity took notice and was lured to the darkness, and was never seen again.";
-        misc.slowPrint(text);
+        misc.slowPrint(text,10);
         System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
     }

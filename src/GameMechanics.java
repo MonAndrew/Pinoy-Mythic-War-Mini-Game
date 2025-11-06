@@ -287,7 +287,7 @@ class GameMechanics_2{
     }
 
     }
-         
+    if(misc.killSwitch == true){dmg = 10000;}
     return dmg;
     }
 
