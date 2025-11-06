@@ -64,7 +64,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(3);//skill input
+                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());//skill input
                     selectedCharacter_1.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
@@ -101,7 +101,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(3);//skill input
+                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());//skill input
                     selectedCharacter_1.doStatusEffect();
 
                 }
