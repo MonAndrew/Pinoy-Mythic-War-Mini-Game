@@ -7,11 +7,19 @@ public class PlayerVersusEntity extends GameMechanics_2{
 
         //misc.setPlayerName_1();
         //System.out.println(misc.getPlayerName_1());
+        System.out.println("                                 ╔════════════╗");
+        System.out.println("═════════════════════════════════║ "+misc.BOLD+"PLAYER  1:"+misc.RESET+" ║═════════════════════════════════");
+        System.out.println("                                 ╚════════════╝");
+
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_1(player1);
         displayCharacterStats(player1);
         System.out.print("Show Character BackStory?");
         if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player1);}
+
+        System.out.println("                                 ╔════════════╗");
+        System.out.println("═════════════════════════════════║ "+misc.BOLD+"PLAYER  2:"+misc.RESET+" ║═════════════════════════════════");
+        System.out.println("                                 ╚════════════╝");
 
         System.out.println("Do you want to select Character for player 2?");
         int player2 = (misc.returnTrueOrFalseConfimation()) ? misc.characterSelectionTryCatch(maxCharacter) : misc.getRNG(8, 1);
@@ -23,8 +31,8 @@ public class PlayerVersusEntity extends GameMechanics_2{
         
         misc.startButton();
 
-        int min = 1;
-        int max = 3;
+        //int min = 1;
+        //int max = 3;
 
         int round = 1;
         while(selectedCharacter_1.getHealth() > 0 && selectedCharacter_2.getHealth() > 0){
@@ -108,7 +116,8 @@ public class PlayerVersusEntity extends GameMechanics_2{
     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
     System.out.println("═════════════════════════════════════════════════════════════════════════════════");
     misc.displayEndBattle(selectedCharacter_1.getHealth(), selectedCharacter_2.getHealth());
-    
+    selectedCharacter_1.clearCooldownsAndEffectTurns();
+    selectedCharacter_2.clearCooldownsAndEffectTurns();
         //end game main method
     }
 
@@ -120,11 +129,20 @@ public class PlayerVersusEntity extends GameMechanics_2{
 
         //misc.setPlayerName_1();
         //System.out.println(misc.getPlayerName_1());
+
+        System.out.println("                                 ╔════════════╗");
+        System.out.println("═════════════════════════════════║ "+misc.BOLD+"PLAYER  1:"+misc.RESET+" ║═════════════════════════════════");
+        System.out.println("                                 ╚════════════╝");
+
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_1(player1);
         displayCharacterStats(player1);
         System.out.print("Show Character BackStory?");
         if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player1);}
+
+        System.out.println("                                 ╔════════════╗");
+        System.out.println("═════════════════════════════════║ "+misc.BOLD+"PLAYER  2:"+misc.RESET+" ║═════════════════════════════════");
+        System.out.println("                                 ╚════════════╝");
 
         int player2 = 1;
         if(player1 == player2){ player2++; characterSelection_2(player2);}
@@ -135,8 +153,8 @@ public class PlayerVersusEntity extends GameMechanics_2{
         
         misc.startButton();
 
-        int min = 1;
-        int max = 3;
+        //int min = 1;
+        //int max = 3;
 
     while(selectedCharacter_1.getHealth() > 0 && player2 <= 8){
 
@@ -173,7 +191,7 @@ public class PlayerVersusEntity extends GameMechanics_2{
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(3);//skill input
+                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());//skill input
                     selectedCharacter_1.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
@@ -185,7 +203,7 @@ public class PlayerVersusEntity extends GameMechanics_2{
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(3);//skill input
+                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(3, 1));//skill input
                     selectedCharacter_2.doStatusEffect();
 
                 }
@@ -198,7 +216,7 @@ public class PlayerVersusEntity extends GameMechanics_2{
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(3);//skill input
+                    dealDamageCharacter_2ToCharacter_1(misc.getRNG(3, 1));//skill input
                     selectedCharacter_2.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
@@ -210,7 +228,7 @@ public class PlayerVersusEntity extends GameMechanics_2{
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(3);//skill input
+                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());//skill input
                     selectedCharacter_1.doStatusEffect();
 
                 }
@@ -228,7 +246,9 @@ public class PlayerVersusEntity extends GameMechanics_2{
         player2++;
 
     }
-        misc.displayDeathScreen();
+    misc.displayDeathScreen();
+    selectedCharacter_1.clearCooldownsAndEffectTurns();
+    selectedCharacter_2.clearCooldownsAndEffectTurns();
 
     //end game main method
     }

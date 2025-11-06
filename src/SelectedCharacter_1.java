@@ -18,8 +18,10 @@ public class SelectedCharacter_1 extends GameMechanics{
     private int paralyzedEffectTurn;
 
     private boolean isIncreasedDamage = false;
+    private int increaseDamageEffectTurn;
     private int increaseDamageEffect;
     private boolean isDecreasedDamage = false;
+    private int decreaseDamageEffectTurn;
     private int decreaseDamageEffect;
 
     //cooldown
@@ -111,19 +113,34 @@ public class SelectedCharacter_1 extends GameMechanics{
 
     @Override
     public int getDamagefromNormalSkill(){
-
+        //paralyzed
         if(this.isParalyzed == true){ 
-            if(misc.getRNG(2, 1) ==  1){
+            if(misc.getRNG(3, 1) ==  1){
             System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED: "+misc.RESET);
             System.out.println(misc.BOLD+"** "+misc.YELLOW+getCharacterName()+" is Paralyzed, can't move."+misc.WHITE+" **"+misc.RESET);
             return 0;
             }
         }
 
+        int dmg = random.nextInt((this.normalSkillmaxRange - this.normalSkillminRange) + 1) + this.normalSkillminRange;
+        
+        if(this.isIncreasedDamage == true){ 
+            int increase = (int)((double)dmg * (double)((double)this.increaseDamageEffect/(double)100));
+            dmg += increase;
+            System.out.println(misc.CYAN+misc.BOLD+"Increased Damage: (+"+increase+")"+misc.RESET);
+        }
+
+        if(this.isDecreasedDamage == true){ 
+            int decrease = (int)((double)dmg * (double)((double)this.decreaseDamageEffect/(double)100));
+            dmg -= decrease;
+            System.out.println(misc.BLUE+misc.BOLD+"Decreased Damage: (-"+decrease+")"+misc.RESET);
+        }
+
         System.out.println("("+this.characterName+") Used: "+this.normalSkillName);
         addMana(this.manaGain);
         checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.normalSkillmaxRange - this.normalSkillminRange) + 1) + this.normalSkillminRange;
+
+        return dmg;
     }
 
     @Override
@@ -140,19 +157,37 @@ public class SelectedCharacter_1 extends GameMechanics{
         }
 
         if(this.isParalyzed == true){ 
-            if(misc.getRNG(2, 1) ==  1){
+            if(misc.getRNG(3, 1) ==  1){
             System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED: "+misc.RESET);
             System.out.println(misc.BOLD+"** "+misc.YELLOW+getCharacterName()+" is Paralyzed, can't move."+misc.WHITE+" **"+misc.RESET);
             return 0;
             }
         }
 
+
+        
         this.cooldown_1 = 2;
+        int dmg = random.nextInt((this.maxRangeSkill_1 - this.minRangeSkill_1) + 1) + this.minRangeSkill_1;
+
+        if(this.isIncreasedDamage == true){ 
+            int increase = (int)((double)dmg * (double)((double)this.increaseDamageEffect/(double)100));
+            dmg += increase;
+            System.out.println(misc.CYAN+misc.BOLD+"Increased Damage: (+"+increase+")"+misc.RESET);
+        }
+
+        if(this.isDecreasedDamage == true){ 
+            int decrease = (int)((double)dmg * (double)((double)this.decreaseDamageEffect/(double)100));
+            dmg -= decrease;
+            System.out.println(misc.BLUE+misc.BOLD+"Decreased Damage: (-"+decrease+")"+misc.RESET);
+        }
+
         System.out.println("("+this.characterName+") Used: "+this.skillName1);
         minusMana(this.manaCost1);
         checkHealthAndManaIfBelowZero();
-        return random.nextInt((this.maxRangeSkill_1 - this.minRangeSkill_1) + 1) + this.minRangeSkill_1;
+
+        return dmg;
     }
+
     @Override
     public int getDamageFromSkill_2(){
 
@@ -167,22 +202,37 @@ public class SelectedCharacter_1 extends GameMechanics{
         }
 
         if(this.isParalyzed == true){ 
-            if(misc.getRNG(2, 1) ==  1){
+            if(misc.getRNG(3, 1) ==  1){
             System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED: "+misc.RESET);
             System.out.println(misc.BOLD+"** "+misc.YELLOW+getCharacterName()+" is Paralyzed, can't move."+misc.WHITE+" **"+misc.RESET);
             return 0;
             }
         }
 
-        this.cooldown_2 = 6;
+        this.cooldown_2 = 9;
+        int dmg = random.nextInt((this.maxRangeSkill_2 - this.minRangeSkill_2) + 1) + this.minRangeSkill_2;
+
+        if(this.isIncreasedDamage == true){ 
+            int increase = (int)((double)dmg * (double)((double)this.increaseDamageEffect/(double)100));
+            dmg += increase;
+            System.out.println(misc.CYAN+misc.BOLD+"Increased Damage: (+"+increase+")"+misc.RESET);
+        }
+
+        if(this.isDecreasedDamage == true){ 
+            int decrease = (int)((double)dmg * (double)((double)this.decreaseDamageEffect/(double)100));
+            dmg -= decrease;
+            System.out.println(misc.BLUE+misc.BOLD+"Decreased Damage: (-"+decrease+")"+misc.RESET);
+        }
+
         System.out.println("("+this.characterName+") Used: "+this.skillName2+" Turn/s");
         minusMana(this.manaCost2);
         checkHealthAndManaIfBelowZero();
+
         //random effect
         System.out.println("Support Skill/ Passive: ");
-        effectType_Buff(getBuff());
+        effectType_Buff(misc.getRNG(3, 1));
 
-        return random.nextInt((this.maxRangeSkill_2 - this.minRangeSkill_2) + 1) + this.minRangeSkill_2;
+        return dmg;
     }
 
    @Override
@@ -239,16 +289,19 @@ public class SelectedCharacter_1 extends GameMechanics{
     @Override
     public void reduceCooldownAndEffectTurns(){
         this.effectTurn--;
-        if(this.effectTurn <= 0){ 
-            this.effectTurn = 0;
-            //turn off effects
-            //buff
-            this.isIncreasedDamage = false;
-            this.increaseDamageEffect = 1;
-            //debuff
-            this.isDecreasedDamage = false;
-            this.decreaseDamageEffect = 1;
-        }
+        if(this.effectTurn <= 0){ this.effectTurn = 0;}
+        
+        this.increaseDamageEffectTurn--;
+        if(this.increaseDamageEffectTurn <= 0){
+        this.increaseDamageEffectTurn = 0;
+        this.isIncreasedDamage = false;
+        this.increaseDamageEffect = 1;}
+        
+        this.decreaseDamageEffectTurn--;
+        if(this.decreaseDamageEffectTurn <= 0){
+        this.decreaseDamageEffectTurn = 0;
+        this.isDecreasedDamage = false;
+        this.decreaseDamageEffect = 1;}
 
         this.poisonEffectTurn--;
         if(this.poisonEffectTurn <= 0){ this.poisonEffectTurn = 0; this.isPoisoned = false;}
@@ -268,15 +321,52 @@ public class SelectedCharacter_1 extends GameMechanics{
         this.cooldown_2--;
         if(this.cooldown_2 <= 0) this.cooldown_2 = 0;
     }
+    @Override
+    public void clearCooldownsAndEffectTurns(){
+
+    this.effectTurn = 0;
+        
+    this.increaseDamageEffectTurn = 0;
+    this.isIncreasedDamage = false;
+    this.increaseDamageEffect = 1;
+        
+    this.decreaseDamageEffectTurn = 0;
+    this.isDecreasedDamage = false;
+    this.decreaseDamageEffect = 1;
+
+    this.poisonEffectTurn = 0; 
+    this.isPoisoned = false;
+
+    this.bleedingEffectTurn = 0; 
+    this.isBleeding = false;
+        
+    this.thornedEffectTurn = 0; 
+    this.isThorned = false;
+
+    this.paralyzedEffectTurn = 0; 
+    this.isParalyzed = false;
+
+    this.cooldown_1 = 0;
+    this.cooldown_2 = 0;
+
+    }
 
 //statusEffects
+//just a reminder for effectTurns, it is automatically minus 1, like set to 5, it deducts 1 right after use
+
     @Override
     public void effectType_Buff(int effectType){
         switch(effectType){
         //buff
             case 1 -> { addHealth(misc.getRNG(200, 50)); }
             case 2 -> { addMana(misc.getRNG(100, 25)); }
-            case 3 -> { System.out.println("Increase Damage 10% for 4 turns");}
+            case 3 -> { System.out.println("Increase Damage 10% for 4 turns");
+                    this.increaseDamageEffectTurn = 5;
+                    this.isIncreasedDamage = true;
+                    this.increaseDamageEffect = 10;
+                }
+            
+            default -> {}//just catch the 0, empty, no ability
         }
 
     }
@@ -287,10 +377,16 @@ public class SelectedCharacter_1 extends GameMechanics{
             case 2 -> { System.out.println("bleed_on");this.bleedingEffectTurn = 6; this.isBleeding = true;}
             case 3 -> { System.out.println("thorn_on");this.thornedEffectTurn = 6; this.isThorned = true;}
             case 4 -> { System.out.println("paralyzed_on");this.paralyzedEffectTurn = 8; this.isParalyzed = true;}
-            case 5 -> { System.out.println("decrease dmg_on");this.effectTurn = 4; this.isDecreasedDamage = true;}
+            case 5 -> { System.out.println("decrease dmg_on");
+            this.decreaseDamageEffectTurn = 5; 
+            this.isDecreasedDamage = true;
+            this.decreaseDamageEffect = 10;
+            }
 
+            default -> {}//just catch the 0, empty
         }
     }
+
     @Override
     public void displayCurrectStatusEffect(){
         
@@ -301,36 +397,46 @@ public class SelectedCharacter_1 extends GameMechanics{
         if(this.isThorned == true) System.out.println(misc.GREEN+misc.BOLD+"THORNED"+misc.RESET);
         if(this.isParalyzed == true) System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED"+misc.RESET);
 
-        if(this.isPoisoned == false && this.isBleeding == false && this.isThorned == false && this.isParalyzed == false)
+        if(this.isIncreasedDamage == true) System.out.println(misc.CYAN+misc.BOLD+"INCREASE DMG"+misc.RESET);
+        if(this.isDecreasedDamage == true) System.out.println(misc.BLUE+misc.BOLD+"DECREASE DMG"+misc.RESET);
+
+        if(this.isPoisoned == false && this.isBleeding == false && this.isThorned == false && this.isParalyzed == false && this.isIncreasedDamage == false && this.isDecreasedDamage == false)
         System.out.println("None");
     }
+
     @Override
     public void doStatusEffect(){
 
         if(this.isPoisoned == true){ 
-            System.out.println(misc.PURPLE+misc.BOLD+"POISONED: "+misc.RESET);
-            minusHealth(misc.getRNG(25, 5));
+            isPoisoned_Effects();
         }
 
         if(this.isBleeding == true){
-            System.out.println(misc.RED+misc.BOLD+"BLEEDING: "+misc.RESET);
-            minusHealth(misc.getRNG(40, 1));
+            isBleeding_Effects();
         }
         if(this.isThorned == true){ 
-            System.out.println(misc.GREEN+misc.BOLD+"THORNED: "+misc.RESET);
-            minusHealth(misc.getRNG(30, 5));
+            isThorned_Effects();
         }
         //paralyzed is set in every attacks
+        // increase and decrease too
 
     }
 
     @Override
     public void isPoisoned_Effects(){
-
+        System.out.println(misc.PURPLE+misc.BOLD+"POISONED: "+misc.RESET);
+        minusHealth(misc.getRNG(25, 5));
     }
+    
     @Override
     public void isBleeding_Effects(){
-
+        System.out.println(misc.RED+misc.BOLD+"BLEEDING: "+misc.RESET);
+        minusHealth(misc.getRNG(40, 1));
+    }
+    @Override
+    public void isThorned_Effects(){
+        System.out.println(misc.GREEN+misc.BOLD+"THORNED: "+misc.RESET);
+        minusHealth(misc.getRNG(30, 5));
     }
 
 }

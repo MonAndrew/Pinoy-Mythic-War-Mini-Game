@@ -40,6 +40,7 @@ public abstract class GameMechanics{
     abstract public void addHealth(int health);
     abstract public void addMana(int mana);
     abstract public void reduceCooldownAndEffectTurns();
+    abstract public void clearCooldownsAndEffectTurns();
 //effects
     abstract public void effectType_Buff(int effectType);
     abstract public void setStatusEffect_On(int effectType);
@@ -48,11 +49,12 @@ public abstract class GameMechanics{
     //debuff
     abstract public void isPoisoned_Effects();
     abstract public void isBleeding_Effects();
-    //abstract public void isDecreased_Effects();
+    abstract public void isThorned_Effects();
 
     abstract public void checkHealthAndManaIfBelowZero();
 }
 
+@SuppressWarnings("unused")
 class GameMechanics_2{
     Miscellaneous misc = new Miscellaneous();
     CharacterStats character_1 = new Character_1();
@@ -253,18 +255,18 @@ class GameMechanics_2{
     
     //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
     public void displayCharacters(){
-        System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║   SELECT CHARACTER:  ║");
-        System.out.println("                         ╚══════════════════════╝");
-        System.out.println("      ╔══════════════════╦══════════════════════╦══════════════════╗");
+        System.out.println("                            ╔══════════════════════╗");
+        System.out.println("                            ║   SELECT CHARACTER:  ║");
+        System.out.println("                            ╚══════════════════════╝");
+        System.out.println("         ╔══════════════════╦══════════════════════╦══════════════════╗");
 
-        System.out.println("      ║ 0:   RANDOM      ║ 1: "+character_1.getCharacterName()+"    ║ 2: "+ character_2.getCharacterName()+"   ║");
-        System.out.println("      ╠══════════════════╬══════════════════════╬══════════════════╣");
-        System.out.println("      ║ 3: "+character_3.getCharacterName()+" ║ 4: "+character_4.getCharacterName()+"      ║ 5: "+ character_5.getCharacterName()+" ║");
-        System.out.println("      ╠══════════════════╬══════════════════════╬══════════════════╣");
-        System.out.println("      ║ 6: "+character_6.getCharacterName()+"  ║ 7: "+character_7.getCharacterName()+"  ║ 8: "+ character_8.getCharacterName()+"  ║");
+        System.out.println("         ║ 0:   RANDOM      ║ 1: "+character_1.getCharacterName()+"    ║ 2: "+ character_2.getCharacterName()+"   ║");
+        System.out.println("         ╠══════════════════╬══════════════════════╬══════════════════╣");
+        System.out.println("         ║ 3: "+character_3.getCharacterName()+" ║ 4: "+character_4.getCharacterName()+"      ║ 5: "+ character_5.getCharacterName()+" ║");
+        System.out.println("         ╠══════════════════╬══════════════════════╬══════════════════╣");
+        System.out.println("         ║ 6: "+character_6.getCharacterName()+"  ║ 7: "+character_7.getCharacterName()+"  ║ 8: "+ character_8.getCharacterName()+"  ║");
 
-        System.out.println("      ╚══════════════════╩══════════════════════╩══════════════════╝");
+        System.out.println("         ╚══════════════════╩══════════════════════╩══════════════════╝");
         System.out.println("\n\n\n\n");
     } 
 
@@ -278,10 +280,8 @@ class GameMechanics_2{
     case 1 -> { dmg  = selectedCharacter_1.getDamagefromNormalSkill(); } 
     case 2 -> { dmg  = selectedCharacter_1.getDamageFromSkill_1(); }
     case 3 -> {
-
-        //System.out.println("CD" +selectedCharacter_1.getCooldown_2());
         if((selectedCharacter_1.getMana() >= selectedCharacter_1.getManaCost2()) && selectedCharacter_1.getCooldown_2() <= 0){
-        selectedCharacter_2.setStatusEffect_On(misc.getRNG(4, 1));
+        selectedCharacter_2.setStatusEffect_On(misc.getRNG(5, 1));//should be change to character debuff
         }
         dmg  = selectedCharacter_1.getDamageFromSkill_2();
     }
@@ -300,10 +300,8 @@ class GameMechanics_2{
     case 1 -> { dmg  = selectedCharacter_2.getDamagefromNormalSkill(); } 
     case 2 -> { dmg  = selectedCharacter_2.getDamageFromSkill_1(); }
     case 3 -> { 
-
-        //System.out.println("CD" +selectedCharacter_2.getCooldown_2()); 
         if((selectedCharacter_2.getMana() >= selectedCharacter_2.getManaCost2()) && selectedCharacter_2.getCooldown_2() <= 0){
-        selectedCharacter_1.setStatusEffect_On(misc.getRNG(4, 1));
+        selectedCharacter_1.setStatusEffect_On(misc.getRNG(5, 1));//should be change to character debuff
         }
         dmg  = selectedCharacter_2.getDamageFromSkill_2();
     }

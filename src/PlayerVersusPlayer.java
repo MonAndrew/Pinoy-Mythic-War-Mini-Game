@@ -8,12 +8,20 @@ public class PlayerVersusPlayer extends GameMechanics_2{
 
         //misc.setPlayerName_1();
         //System.out.println(misc.getPlayerName_1());
+        System.out.println("                                 ╔════════════╗");
+        System.out.println("═════════════════════════════════║ "+misc.BOLD+"PLAYER  1:"+misc.RESET+" ║═════════════════════════════════");
+        System.out.println("                                 ╚════════════╝");
+
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_1(player1);
         displayCharacterStats(player1);
 
         System.out.print("Show Character BackStory?");
         if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player1);}
+
+        System.out.println("                                 ╔════════════╗");
+        System.out.println("═════════════════════════════════║ "+misc.BOLD+"PLAYER  2:"+misc.RESET+" ║═════════════════════════════════");
+        System.out.println("                                 ╚════════════╝");
 
         int player2 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_2(player2);
@@ -22,8 +30,8 @@ public class PlayerVersusPlayer extends GameMechanics_2{
         System.out.print("Show Character BackStory?");
         if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player2);}
         
-        int min = 2;
-        int max = 3;
+        //int min = 2;
+        //int max = 3;
 
         misc.startButton();
 
@@ -68,7 +76,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(3);//skill input
+                    dealDamageCharacter_2ToCharacter_1(misc.enterSkillTryCatch());//skill input
                     selectedCharacter_2.doStatusEffect();
 
                 }
@@ -81,7 +89,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(3);//skill input
+                    dealDamageCharacter_2ToCharacter_1(misc.enterSkillTryCatch());//skill input
                     selectedCharacter_2.doStatusEffect();
                 
                 if(selectedCharacter_1.getHealth() <= 0 || selectedCharacter_2.getHealth() <= 0) break;
@@ -109,6 +117,9 @@ public class PlayerVersusPlayer extends GameMechanics_2{
     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
     System.out.println("═════════════════════════════════════════════════════════════════════════════════");
     misc.displayEndBattle(selectedCharacter_1.getHealth(), selectedCharacter_2.getHealth());
+
+    selectedCharacter_1.clearCooldownsAndEffectTurns();
+    selectedCharacter_2.clearCooldownsAndEffectTurns();
     
         //end game main method
     }

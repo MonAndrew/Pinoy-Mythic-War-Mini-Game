@@ -53,15 +53,15 @@ Miscellaneous misc = new Miscellaneous();
     public void displayCharacterStats(){
         System.out.println();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
-        System.out.println("                                ╔═════════╗");
-        System.out.println("                                ║"+misc.BOLD+misc.YELLOW+"  STATS: "+misc.RESET+"║");
-        System.out.println("                                ╚═════════╝");
+        System.out.println("                                   ╔════════╗");
+        System.out.println("                                   ║"+misc.BOLD+misc.YELLOW+" STATS: "+misc.RESET+"║");
+        System.out.println("                                   ╚════════╝");
 
         misc. displayCharacterNameHealthAndMana(getCharacterName(),misc.getMaxHealth(),misc.getMaxHealth(),misc.getMaxMana(),misc.getMaxMana());
 
-        System.out.println("                                ╔═════════╗");
-        System.out.println("                                ║"+misc.BOLD+misc.YELLOW+" SKILLS: "+misc.RESET+"║");
-        System.out.println("                                ╚═════════╝");
+        System.out.println("                                   ╔═════════╗");
+        System.out.println("                                   ║"+misc.BOLD+misc.YELLOW+" SKILLS: "+misc.RESET+"║");
+        System.out.println("                                   ╚═════════╝");
         System.out.println("(" + this.normalSkillName+"): Damage: "+this.normalSkillminRange+"-"+this.normalSkillmaxRange+", Mana Gain: "+this.manaGain);
         System.out.println("(" + this.skillName1+"): Damage: "+this.minRangeSkill_1+"-"+this.maxRangeSkill_1+", Mana Cost: "+this.manaCost1);
         System.out.println("(" + this.skillName2+"): Damage: "+this.minRangeSkill_2+"-"+this.maxRangeSkill_2+", Mana Cost: "+this.manaCost2);

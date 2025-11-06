@@ -262,16 +262,49 @@ public class Miscellaneous {
 
     return skillNumber;
     } 
+
+    public int tryCatchIntWithMinMax(int min, int max){
+        boolean isValidSelection = false;
+        int num = 0;
+        while(isValidSelection == false){
+            try {
+                System.out.print("Enter num:");
+                num = scan.nextInt();
+
+                if(num < min || min > max){
+                System.out.println("Invalid Input!");
+                }
+                else
+                isValidSelection = true;
+
+            }catch (InputMismatchException e) {
+                System.out.println("Invalid Input!");
+                scan.next();
+            }
+        }
+
+        return num;
+    }
     // end of UserInput
 
 
     //battle design?? idk
     public int startButton(){
-        System.out.println("═════════════════════════════════════════════════════════════════════════════════\n\n");
-        System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ "+RED+"PRESS ENTER TO START "+RESET+"║");
-        System.out.println("                         ╚══════════════════════╝");
-        System.out.println("\n\n═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("─────────────────────────────────────────────────────────────────────────────────");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
+        System.out.println("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+        System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
+        System.out.println("\n\n");
+        System.out.println("                            ╔══════════════════════╗");
+        System.out.println("                      « « « ║ "+RED+"PRESS ENTER TO START "+RESET+"║ » » »");
+        System.out.println("                            ╚══════════════════════╝");
+        System.out.println("\n\n");
+        System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
+        System.out.println("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+        System.out.println("    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("─────────────────────────────────────────────────────────────────────────────────");
         scan.nextLine();
         scan.nextLine();
         return 0;
@@ -320,49 +353,50 @@ public class Miscellaneous {
     //conclusion battle
     public void displayEndBattle(int player1, int player2){
 
-            System.out.println("██████████████████████████████████████████████████████████████");
-            System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
-            System.out.println("███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");    
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ██████████████████████████████████████████████████████████████");
+            System.out.println("          ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");    
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         if(player1>player2)
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░ PLAYER 1 WINS! ░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░ PLAYER 1 WINS! ░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         else if(player1<player2)
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░ PLAYER 2 WINS! ░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░ PLAYER 2 WINS! ░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
         else
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░ T I E ! ░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░ T I E ! ░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
 
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
-            System.out.println("███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
-            System.out.println("███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");
-            System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
-            System.out.println("██████████████████████████████████████████████████████████████");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");
+            System.out.println("          ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+            System.out.println("          ██████████████████████████████████████████████████████████████");
+            
     }
 
     public int displayGameMainScreen(){
-        System.out.println("╔═══════════════════════════════════════════════════════════════════════╗");
-        System.out.println("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-        System.out.println("║                                                                       ║");
-        System.out.println("║              █▀█ █ █▄░█ █▀█ █▄█  █▀▄▀█ █▄█ ▀█▀ █_█ █ █▀▀              ║");
-        System.out.println("║              █▀  █ █░▀█ █▄█ ░█░  █░▀░█ ░█░  █ ░█░█ █ █▄▄              ║");
-        System.out.println("║                                                                       ║");
-        System.out.println("║              ▓▓ ██╗    ██╗  █████╗  ██████╗  ███████╗ ▓▓              ║");
-        System.out.println("║              ▓▓ ██║    ██║ ██╔══██╗ ██╔══██╗ ██╔════╝ ▓▓              ║");
-        System.out.println("║              ▓▓ ██║ █╗ ██║ ███████║ ██████╔╝ ██████╗  ▓▓              ║");
-        System.out.println("║              ▓▓ ██║███╗██║ ██╔══██║ ██╔══██╗ ╔══╝ ██  ▓▓              ║");
-        System.out.println("║              ▓▓ ╚███╔███╔╝ ██║  ██║ ██║  ██║ ███████╗ ▓▓              ║");
-        System.out.println("║              ▓▓  ╚══╝╚══╝  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚══════╝ ▓▓              ║");
-        System.out.println("║                                                                       ║");
-        System.out.println("║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
-        System.out.println("╠═══════════════════════════════════════════════════════════════════════╣");
-        System.out.println("║    «  From the depths of myth and blood... the war begins anew.  »    ║");
-        System.out.println("║          «  A Clash of Gods, Heroes, and COCO MARTIN?!  »             ║");
-        System.out.println("║                                                                       ║");
-        System.out.println("║               » » »  PRESS  ENTER  TO  BEGIN  « « «                   ║");
-        System.out.println("║                                                                       ║");
-        System.out.println("╚═══════════════════════════════════════════════════════════════════════╝");
+        System.out.println("    ╔═══════════════════════════════════════════════════════════════════════╗");
+        System.out.println("    ║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+        System.out.println("    ║                                                                       ║");
+        System.out.println("    ║              █▀█ █ █▄░█ █▀█ █▄█  █▀▄▀█ █▄█ ▀█▀ █_█ █ █▀▀              ║");
+        System.out.println("    ║              █▀  █ █░▀█ █▄█ ░█░  █░▀░█ ░█░  █ ░█░█ █ █▄▄              ║");
+        System.out.println("    ║                                                                       ║");
+        System.out.println("    ║              ▓▓ ██╗    ██╗  █████╗  ██████╗  ███████╗ ▓▓              ║");
+        System.out.println("    ║              ▓▓ ██║    ██║ ██╔══██╗ ██╔══██╗ ██╔════╝ ▓▓              ║");
+        System.out.println("    ║              ▓▓ ██║ █╗ ██║ ███████║ ██████╔╝ ██████╗  ▓▓              ║");
+        System.out.println("    ║              ▓▓ ██║███╗██║ ██╔══██║ ██╔══██╗ ╔══╝ ██  ▓▓              ║");
+        System.out.println("    ║              ▓▓ ╚███╔███╔╝ ██║  ██║ ██║  ██║ ███████╗ ▓▓              ║");
+        System.out.println("    ║              ▓▓  ╚══╝╚══╝  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚══════╝ ▓▓              ║");
+        System.out.println("    ║                                                                       ║");
+        System.out.println("    ║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║");
+        System.out.println("    ╠═══════════════════════════════════════════════════════════════════════╣");
+        System.out.println("    ║    «  From the depths of myth and blood... the war begins anew.  »    ║");
+        System.out.println("    ║          «  A Clash of Gods, Heroes, and COCO MARTIN?!  »             ║");
+        System.out.println("    ║                                                                       ║");
+        System.out.println("    ║               » » »  PRESS  ENTER  TO  BEGIN  « « «                   ║");
+        System.out.println("    ║                                                                       ║");
+        System.out.println("    ╚═══════════════════════════════════════════════════════════════════════╝");
         scan.nextLine();
         return 0;
     }
@@ -375,30 +409,31 @@ public class Miscellaneous {
     do{
 
         try{
-        
-        System.out.println("█████████████████████████████████████████████████████████████████████████");
-        System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
-        System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
-        System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
-        System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ 1:  PLAYER V PLAYER  ║");
-        System.out.println("                         ╚══════════════════════╝");
-        System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ 2:  PLAYER V ENTITY  ║");
-        System.out.println("                         ╚══════════════════════╝");
-        System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ 3:   ARCADE MODE     ║");
-        System.out.println("                         ╚══════════════════════╝");
-        System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ 4:    SETTINGS       ║");
-        System.out.println("                         ╚══════════════════════╝");
-        System.out.println("                         ╔══════════════════════╗");
-        System.out.println("                         ║ 5:    QUIT GAME      ║");
-        System.out.println("                         ╚══════════════════════╝");
-        System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
-        System.out.println("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
-        System.out.println("▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
-        System.out.print  ("█████████████████████████████████████████████████████████████████████████");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
+        System.out.println("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+        System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
+        System.out.println();
+        System.out.println("                             ╔══════════════════════╗");
+        System.out.println("                             ║ 1:  PLAYER V PLAYER  ║");
+        System.out.println("                             ╚══════════════════════╝");
+        System.out.println("                             ╔══════════════════════╗");
+        System.out.println("                             ║ 2:  PLAYER V ENTITY  ║");
+        System.out.println("                             ╚══════════════════════╝");
+        System.out.println("                             ╔══════════════════════╗");
+        System.out.println("                             ║ 3:   ARCADE MODE     ║");
+        System.out.println("                             ╚══════════════════════╝");
+        System.out.println("                             ╔══════════════════════╗");
+        System.out.println("                             ║ 4:    SETTINGS       ║");
+        System.out.println("                             ╚══════════════════════╝");
+        System.out.println("                             ╔══════════════════════╗");
+        System.out.println("                             ║ 5:    QUIT GAME      ║");
+        System.out.println("                             ╚══════════════════════╝");
+        System.out.println();
+        System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
+        System.out.println("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+        System.out.println("    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
+        System.out.print  ("    █████████████████████████████████████████████████████████████████████████");
             
         selection = scan.nextInt();
 
@@ -513,8 +548,31 @@ public class Miscellaneous {
         System.out.println(YELLOW+BOLD+"   PARALYZED"+RESET);
         System.out.println("  - Effect makes character unable to move ");
         System.out.println("  - A chance of Unable to move is (1/2) \n");
+        System.out.println(CYAN+BOLD+"   INCREASE DMG"+RESET);
+        System.out.println("  - Increases damage by 10%");
+        System.out.println("  - All Skills with Damage are affected\n");
+        System.out.println(BLUE+BOLD+"   DECREASE DMG"+RESET);
+        System.out.println("  - Decreases damage by 10%");
+        System.out.println("  - All Skills with Damage are affected\n");
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
 
+    }
+
+    public void displayOptions(){
+        boolean confirmation = false;
+            System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");
+        do{ 
+            int optNum = tryCatchIntWithMinMax(1, 4);
+            scan.nextLine();
+            switch(optNum){
+                case 1 -> {System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");}
+                case 2 -> {displayCreditsOrGroupMembers();}
+                case 3 -> {displayFunctionsAndAboutOfTheGame();}
+                case 4 -> {
+            System.out.println("BACK?");
+            confirmation = returnTrueOrFalseConfimation();}
+            }
+         }while(confirmation == false);
     }
     
 

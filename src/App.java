@@ -1,8 +1,8 @@
 
 import character.Miscellaneous;
 import java.util.Scanner;
-import playerversusentity.Main;
-import java.nio.charset.Charset;
+//import playerversusentity.Main;
+//import java.nio.charset.Charset;
 
 public class App {
     public static void main(String[] args){
@@ -15,12 +15,11 @@ public class App {
 
         boolean confirmation = true;
         boolean isLeavingGame = false;
-
+        misc.addSpace();
         misc.displayGameMainScreen();
         misc.addSpace();
 
         while(isLeavingGame == false){
-
             int test = misc.displayGamePlayOptions();
             switch(test) {
                 case 1 -> {
@@ -48,13 +47,8 @@ public class App {
                     }while(confirmation == true);
                 }
                 case 4 -> {//options
-                    do{
                     misc.addSpace();
-                    System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");
-                    misc.displayCreditsOrGroupMembers();
-                    misc.displayFunctionsAndAboutOfTheGame();
-                    confirmation = misc.returnTrueOrFalseConfimation();
-                    }while(confirmation == true);
+                    misc.displayOptions();
                 }
                 case 5 -> {//Quit Game
                     misc.addSpace();
@@ -69,6 +63,7 @@ public class App {
                     misc.displayDeathScreen();
                 }
             }
+            misc.addSpace();
             misc.displayGameMainScreen();
             scan.nextLine();
             misc.addSpace();
