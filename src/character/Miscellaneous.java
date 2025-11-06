@@ -26,7 +26,7 @@ public class Miscellaneous {
     private final int maxMana = 600;
     //base
     private final int baseHealth = 1000; 
-    private final int baseMana = 250;
+    private final int baseMana = 100;
 
     public Miscellaneous(){
         this.playerName_1 = "Player_1";
@@ -267,10 +267,11 @@ public class Miscellaneous {
 
     //battle design?? idk
     public int startButton(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════\n\n");
         System.out.println("                         ╔══════════════════════╗");
         System.out.println("                         ║ "+RED+"PRESS ENTER TO START "+RESET+"║");
         System.out.println("                         ╚══════════════════════╝");
-        System.out.println();
+        System.out.println("\n\n═════════════════════════════════════════════════════════════════════════════════");
         scan.nextLine();
         scan.nextLine();
         return 0;
@@ -478,9 +479,42 @@ public class Miscellaneous {
         System.out.println("          Ivy Ygoña                                     John Eric Ribo");
         System.out.println();
         System.out.println("                             SUPPORT/AUDIENECE:");
-        System.out.println("                       Mon Andrew Ludovice(Canton 1x)");
+        System.out.println("                       Mon Andrew Ludovice (Canton 1x)");
         System.out.println();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+    }
+
+    public void displayFunctionsAndAboutOfTheGame(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("                                 ╔════════════╗");
+        System.out.println("                                 ║ FUNCTIONS: ║");
+        System.out.println("                                 ╚════════════╝");
+        System.out.println();
+        System.out.println(BOLD+"  Player Turns:"+RESET);
+        System.out.println("   - Each Player has a 50/50 chance of attacking first Per TURN ");
+        System.out.println("   - Every round has a maximum of 10 TURNS \n");
+        System.out.println(BOLD+"  Character Attack Mechanics:"+RESET);
+        System.out.println(BOLD+RED+"**"+YELLOW+" CRITICAL DAMAGE +(Damage)"+RED+" **"+RESET);
+        System.out.println("   - Critical Chance is 30%");
+        System.out.println("   - Critical Increase Damage is 50% of the given damage \n");
+        System.out.println(BOLD+RED+"** "+WHITE+" Attacks Missed!"+RED+" ** "+RESET);
+        System.out.println("   - Character has a Chance to miss their attack by 30%");
+        System.out.println();
+        System.out.println(BOLD+"  Character Passive Skill: "+RESET);
+        System.out.println("   - Character has a range of 50 - 200 additional Health");
+        System.out.println("   - Character has a range of 25 - 100 additional Mana \n");
+        System.out.println(BOLD+"  Character Status Effects: "+RESET);
+        System.out.println(PURPLE+BOLD+"   POISONED"+RESET);
+        System.out.println("  - Effect does 5 - 25 Damage per turn \n");
+        System.out.println(RED+BOLD+"   BLEEDING"+RESET);
+        System.out.println("  - Effect does 1 - 40 Damage per turn \n");
+        System.out.println(GREEN+BOLD+"   THORNED"+RESET);
+        System.out.println("  - Effect does 5 - 30 Damage per turn \n");
+        System.out.println(YELLOW+BOLD+"   PARALYZED"+RESET);
+        System.out.println("  - Effect makes character unable to move ");
+        System.out.println("  - A chance of Unable to move is (1/2) \n");
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+
     }
     
 

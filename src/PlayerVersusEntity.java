@@ -10,14 +10,16 @@ public class PlayerVersusEntity extends GameMechanics_2{
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_1(player1);
         displayCharacterStats(player1);
-        displayBackStory(player1);
+        System.out.print("Show Character BackStory?");
+        if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player1);}
 
         System.out.println("Do you want to select Character for player 2?");
         int player2 = (misc.returnTrueOrFalseConfimation()) ? misc.characterSelectionTryCatch(maxCharacter) : misc.getRNG(8, 1);
         
         characterSelection_2(player2);
         displayCharacterStats(player2);
-        displayBackStory(player2);
+        System.out.print("Show Character BackStory?");
+        if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player2);}
         
         misc.startButton();
 
@@ -121,13 +123,15 @@ public class PlayerVersusEntity extends GameMechanics_2{
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_1(player1);
         displayCharacterStats(player1);
-        displayBackStory(player1);
+        System.out.print("Show Character BackStory?");
+        if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player1);}
 
         int player2 = 1;
         if(player1 == player2){ player2++; characterSelection_2(player2);}
         characterSelection_2(player2);
         displayCharacterStats(player2);
-        displayBackStory(player2);
+        System.out.print("Show Character BackStory?");
+        if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player2);}
         
         misc.startButton();
 

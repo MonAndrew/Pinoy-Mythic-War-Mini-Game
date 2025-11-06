@@ -11,12 +11,16 @@ public class PlayerVersusPlayer extends GameMechanics_2{
         int player1 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_1(player1);
         displayCharacterStats(player1);
-        displayBackStory(player1);
+
+        System.out.print("Show Character BackStory?");
+        if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player1);}
 
         int player2 = misc.characterSelectionTryCatch(maxCharacter);
         characterSelection_2(player2);
         displayCharacterStats(player2);
-        displayBackStory(player2);
+
+        System.out.print("Show Character BackStory?");
+        if(misc.returnTrueOrFalseConfimation() == true){displayBackStory(player2);}
         
         int min = 2;
         int max = 3;

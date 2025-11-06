@@ -52,6 +52,7 @@ public class App {
                     misc.addSpace();
                     System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");
                     misc.displayCreditsOrGroupMembers();
+                    misc.displayFunctionsAndAboutOfTheGame();
                     confirmation = misc.returnTrueOrFalseConfimation();
                     }while(confirmation == true);
                 }

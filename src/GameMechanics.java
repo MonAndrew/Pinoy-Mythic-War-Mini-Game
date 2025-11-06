@@ -281,7 +281,7 @@ class GameMechanics_2{
 
         //System.out.println("CD" +selectedCharacter_1.getCooldown_2());
         if((selectedCharacter_1.getMana() >= selectedCharacter_1.getManaCost2()) && selectedCharacter_1.getCooldown_2() <= 0){
-        selectedCharacter_2.setStatusEffect_On(misc.getRNG(6, 4));
+        selectedCharacter_2.setStatusEffect_On(misc.getRNG(4, 1));
         }
         dmg  = selectedCharacter_1.getDamageFromSkill_2();
     }
@@ -303,7 +303,7 @@ class GameMechanics_2{
 
         //System.out.println("CD" +selectedCharacter_2.getCooldown_2()); 
         if((selectedCharacter_2.getMana() >= selectedCharacter_2.getManaCost2()) && selectedCharacter_2.getCooldown_2() <= 0){
-        selectedCharacter_1.setStatusEffect_On(misc.getRNG(6, 4));
+        selectedCharacter_1.setStatusEffect_On(misc.getRNG(4, 1));
         }
         dmg  = selectedCharacter_2.getDamageFromSkill_2();
     }
