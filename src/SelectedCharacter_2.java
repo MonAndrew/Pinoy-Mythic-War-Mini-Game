@@ -224,7 +224,7 @@ public class SelectedCharacter_2 extends GameMechanics{
             System.out.println(misc.BLUE+misc.BOLD+"Decreased Damage: (-"+decrease+")"+misc.RESET);
         }
 
-        System.out.println("("+this.characterName+") Used: "+this.skillName2+" Turn/s");
+        System.out.println("("+this.characterName+") Used: "+this.skillName2);
         minusMana(this.manaCost2);
         checkHealthAndManaIfBelowZero();
 

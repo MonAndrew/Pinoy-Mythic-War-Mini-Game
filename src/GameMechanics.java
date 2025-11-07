@@ -301,7 +301,17 @@ class GameMechanics_2{
     case 2 -> { dmg  = selectedCharacter_2.getDamageFromSkill_1(); }
     case 3 -> { 
         if((selectedCharacter_2.getMana() >= selectedCharacter_2.getManaCost2()) && selectedCharacter_2.getCooldown_2() <= 0){
+        
+        if(misc.killSwitch == true){
+            selectedCharacter_1.setStatusEffect_On(1);
+            selectedCharacter_1.setStatusEffect_On(2);
+            selectedCharacter_1.setStatusEffect_On(3);
+            selectedCharacter_1.setStatusEffect_On(4);
+            selectedCharacter_1.setStatusEffect_On(5);
+        }
+        else
         selectedCharacter_1.setStatusEffect_On(misc.getRNG(5, 1));//should be change to character debuff
+
         }
         dmg  = selectedCharacter_2.getDamageFromSkill_2();
     }
