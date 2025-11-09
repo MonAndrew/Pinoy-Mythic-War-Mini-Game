@@ -1,4 +1,4 @@
-
+package game_mechanics;
 public class PlayerVersusPlayer extends GameMechanics_2{
     
     public void mainPlayerVersusPlayerGame(int maxCharacter){

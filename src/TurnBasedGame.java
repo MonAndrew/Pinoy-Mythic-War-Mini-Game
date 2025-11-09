@@ -1,5 +1,8 @@
 
 import character.Miscellaneous;
+import game_mechanics.PlayerVersusEntity;
+import game_mechanics.PlayerVersusPlayer;
+
 import java.util.Scanner;
 //import playerversusentity.Main;
 //import java.nio.charset.Charset;

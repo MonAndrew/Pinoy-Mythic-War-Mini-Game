@@ -1,3 +1,4 @@
+package game_mechanics;
 public class PlayerVersusEntity extends GameMechanics_2{
     
     public void mainPlayerVersusAIGame(int maxCharacter){

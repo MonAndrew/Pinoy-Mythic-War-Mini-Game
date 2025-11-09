@@ -1,4 +1,5 @@
-public class SelectedCharacter_2 extends GameMechanics{
+package game_mechanics;
+public class SelectedCharacter_1 extends GameMechanics{
     private String characterName;
     private int health;
     private int mana;
