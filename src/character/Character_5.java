@@ -34,7 +34,7 @@ Miscellaneous misc = new Miscellaneous();
         setCharacterStats(super.getMaxHealth(),super.getMaxMana()); //HP[1000] && Mana[250]
         setCharacterNormalSkill("Normal", 75, 80, 25);
         setCharacterSkill_1("Jab", 130, 150, 150);
-        setCharacterSkill_2("Block", 175, 250, 250);
+        setCharacterSkill_2("UpperCut", 175, 250, 250);
         setCharacterSupportSkill("Right Jab, Left Hook, combo!!!",1, 0);
     }
     @Override

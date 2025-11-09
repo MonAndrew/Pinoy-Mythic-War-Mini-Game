@@ -49,6 +49,7 @@ public class SelectedCharacter_1 extends GameMechanics{
     //block
     public boolean isBlocked = false;
     private int blockCooldown;
+    private int blockEffectTurn;
 
     @Override
     public void setPlayerSelectedCharacter(String name,int health, int mana){
@@ -85,8 +86,12 @@ public class SelectedCharacter_1 extends GameMechanics{
         this.cooldown_2 = 0;
     }
     @Override
-    public void setBlockedTrueOrFalse(){
-        this.isBlocked = getIsBlocked() != true;
+    public void setBlockedToTrue(){
+        this.isBlocked =  true;
+    }
+    @Override
+    public void setBlockedToFalse(){
+        this.isBlocked =  false;
     }
 
     @Override
@@ -256,8 +261,9 @@ public class SelectedCharacter_1 extends GameMechanics{
         }
 
         System.out.println(misc.BOLD+getCharacterName()+" Block "+misc.RESET);
-        setBlockedTrueOrFalse();
+        this.isBlocked = true;
         this.blockCooldown = 5;
+        this.blockEffectTurn = 1;
     }
     @Override
     public boolean getIsBlocked(){
@@ -356,6 +362,8 @@ public class SelectedCharacter_1 extends GameMechanics{
         this.cooldown_2--;
         if(this.cooldown_2 <= 0) this.cooldown_2 = 0;
 
+        this.blockEffectTurn--;
+        if(this.blockEffectTurn <= 0){this.blockEffectTurn = 0; this.isBlocked = false;}
         this.blockCooldown--;
         if(this.blockCooldown <= 0){this.blockCooldown = 0; this.isBlocked = false;}
     }
@@ -389,6 +397,10 @@ public class SelectedCharacter_1 extends GameMechanics{
 
     this.cooldown_1 = 0;
     this.cooldown_2 = 0;
+
+    this.blockEffectTurn = 0;
+    this.blockCooldown = 0; 
+    this.isBlocked = false;
 
     }
 

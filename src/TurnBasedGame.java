@@ -4,8 +4,9 @@ import java.util.Scanner;
 //import playerversusentity.Main;
 //import java.nio.charset.Charset;
 
-public class App {
-    public static void main(String[] args){
+public class TurnBasedGame {
+    @SuppressWarnings("ConvertToTryWithResources")
+    public TurnBasedGame(){
         Scanner scan = new Scanner(System.in);
         int maxCharacter = 8;
 
@@ -13,7 +14,7 @@ public class App {
         PlayerVersusEntity pve = new PlayerVersusEntity();
         PlayerVersusPlayer pvp = new PlayerVersusPlayer();
 
-        boolean confirmation = true;
+        boolean confirmation;
         boolean isLeavingGame = false;
         misc.addSpace();
         misc.displayGameMainScreen();
@@ -53,8 +54,9 @@ public class App {
                 case 5 -> {//Quit Game
                     misc.addSpace();
                     System.out.print("Leaving Game");
-                    misc.slowPrint("..........",20);
+                    misc.slowPrint("..........",120);
                     System.out.println();
+                    misc.addSpace();
                     isLeavingGame = true;
                 }
                 default -> {
@@ -63,10 +65,13 @@ public class App {
                     misc.displayDeathScreen();
                 }
             }
+
+            if(test != 5){
             misc.addSpace();
             misc.displayGameMainScreen();
             scan.nextLine();
             misc.addSpace();
+            }
         }
         scan.close();
         //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");

@@ -19,7 +19,8 @@ public abstract class GameMechanics{
     abstract public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);
     abstract public void setCharacterSkill_1(String skillName, int min,int max, int manaCost);
     abstract public void setCharacterSkill_2(String skillName, int min,int max, int manaCost);
-    abstract public void setBlockedTrueOrFalse();
+    abstract public void setBlockedToTrue();
+    abstract public void setBlockedToFalse();
 
     abstract public void displaySkillsAndIfAvailable();
     abstract public String getCharacterName();
@@ -295,7 +296,7 @@ class GameMechanics_2{
     }
     if(selectedCharacter_2.getIsBlocked() ==  true){dmg = 0;
         System.out.println(misc.BOLD+"** "+selectedCharacter_2.getCharacterName()+" is protected! **"+misc.RESET);
-        selectedCharacter_2.setBlockedTrueOrFalse();}
+        selectedCharacter_2.setBlockedToFalse();}
     if(misc.killSwitch == true){dmg = 10000;}
     return dmg;
     }
@@ -310,7 +311,7 @@ class GameMechanics_2{
     case 2 -> { dmg  = selectedCharacter_2.getDamageFromSkill_1(); }
     case 3 -> { 
         if((selectedCharacter_2.getMana() >= selectedCharacter_2.getManaCost2()) && selectedCharacter_2.getCooldown_2() <= 0){
-        
+        //can be bypassed with kill switch
         if(misc.killSwitch == true){
             selectedCharacter_1.setStatusEffect_On(1);
             selectedCharacter_1.setStatusEffect_On(2);
@@ -330,7 +331,7 @@ class GameMechanics_2{
     }
     if(selectedCharacter_1.getIsBlocked() ==  true){dmg = 0;
         System.out.println(misc.BOLD+"** "+selectedCharacter_1.getCharacterName()+" is protected! **"+misc.RESET);
-        selectedCharacter_1.setBlockedTrueOrFalse();}         
+        selectedCharacter_1.setBlockedToFalse();}         
     return dmg;
     }
     

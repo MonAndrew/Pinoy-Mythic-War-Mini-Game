@@ -60,7 +60,7 @@ public class Miscellaneous {
         return confirmation;
     }
     public String confirmedCustomPlayerName(){
-        boolean confirm = false;
+        boolean confirm;
         String playerName= "Anonymous";
 
          do{
@@ -272,7 +272,7 @@ public class Miscellaneous {
 
     public int enterSkillTryCatch(){
 
-        boolean isValidSelection = true;
+        boolean isValidSelection;
         int skillNumber = 1;
         do{
 
@@ -302,7 +302,7 @@ public class Miscellaneous {
         int num = 0;
         while(isValidSelection == false){
             try {
-                System.out.print("Enter num:");
+                //System.out.print("Enter num:");
                 num = scan.nextInt();
 
                 if(num < min || min > max){
@@ -437,7 +437,7 @@ public class Miscellaneous {
  
     public int displayGamePlayOptions(){
         
-        boolean isValidSelection = false;
+        boolean isValidSelection;
         int selection = 1;
 
     do{
@@ -592,19 +592,86 @@ public class Miscellaneous {
 
     }
 
+    
+    public void displayOptionTab_0(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("         ╔════════════════╗ ╔═════════════╗ ╔══════════════╗ ╔═════════╗         ");
+        System.out.println("         ║ 1: Kill Switch ║ ║ 2: Credits  ║ ║ 3: Functions ║ ║ 4: Back ║         ");
+        System.out.println("═════════╩════════════════╩═╩═════════════╩═╩══════════════╩═╩═════════╩═════════");
+    }
+
+    public void displayOptionTab_1(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("         ╔════════════════╗ ╔═════════════╗ ╔══════════════╗ ╔═════════╗         ");
+        System.out.println("         ║"+BOLD+" 1: Kill Switch "+RESET+"║ ║ 2: Credits  ║ ║ 3: Functions ║ ║ 4: Back ║         ");
+        System.out.println("═════════╩════════════════╩═╩═════════════╩═╩══════════════╩═╩═════════╩═════════");
+    }
+
+    public void displayOptionTab_2(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("         ╔════════════════╗ ╔═════════════╗ ╔══════════════╗ ╔═════════╗         ");
+        System.out.println("         ║ 1: Kill Switch ║ ║"+BOLD+" 2: Credits "+RESET+" ║ ║ 3: Functions ║ ║ 4: Back ║         ");
+        System.out.println("═════════╩════════════════╩═╩═════════════╩═╩══════════════╩═╩═════════╩═════════");
+    }
+    public void displayOptionTab_3(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("         ╔════════════════╗ ╔═════════════╗ ╔══════════════╗ ╔═════════╗         ");
+        System.out.println("         ║ 1: Kill Switch ║ ║ 2: Credits  ║ ║"+BOLD+" 3: Functions"+RESET+" ║ ║ 4: Back ║         ");
+        System.out.println("═════════╩════════════════╩═╩═════════════╩═╩══════════════╩═╩═════════╩═════════");
+    }
+    public void displayOptionTab_4(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("         ╔════════════════╗ ╔═════════════╗ ╔══════════════╗ ╔═════════╗         ");
+        System.out.println("         ║ 1: Kill Switch ║ ║ 2: Credits  ║ ║ 3: Functions ║ ║"+BOLD+" 4: Back"+RESET+" ║         ");
+        System.out.println("═════════╩════════════════╩═╩═════════════╩═╩══════════════╩═╩═════════╩═════════");
+    }
+
+    
+
     public void displayOptions(){
         boolean confirmation = false;
-            System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");
+        displayOptionTab_1();
+        System.out.println("                                   ╔══════════════╗");
+        System.out.println("                                   ║ Kill Switch: ║");
+        System.out.println("                                   ╚══════════════╝");
+        System.out.println("\n\nKill switch (Press 1 after turning on/off to switch):\n");
+        turnKillSwitch();
         do{ 
+            System.out.println("Option Number (1-4):");
             int optNum = tryCatchIntWithMinMax(1, 4);
             scan.nextLine();
+
             switch(optNum){
-                case 1 -> {System.out.println("Options/Settings : kill switch lol(insta kill bots EZ) && credits/groupMembers: ...");}
-                case 2 -> {displayCreditsOrGroupMembers();}
-                case 3 -> {displayFunctionsAndAboutOfTheGame();}
+                case 1 -> {
+                addSpace();
+                displayOptionTab_1();
+                System.out.println("                                   ╔══════════════╗");
+                System.out.println("                                   ║ Kill Switch: ║");
+                System.out.println("                                   ╚══════════════╝");
+                System.out.println("\n\nKill switch (Press 1 after turning on/off to switch):\n");
+                turnKillSwitch();
+                }
+
+                case 2 -> {
+                    addSpace();
+                    displayOptionTab_2();
+                    displayCreditsOrGroupMembers();
+                }
+
+                case 3 -> {
+                    addSpace();
+                    displayOptionTab_3();
+                    displayFunctionsAndAboutOfTheGame();
+                }
+
                 case 4 -> {
-            System.out.println("BACK?");
-            confirmation = returnTrueOrFalseConfimation();}
+                    addSpace();
+                    displayOptionTab_4();
+                    System.out.println("BACK?");
+                    confirmation = returnTrueOrFalseConfimation();
+                }
+
+                default -> {System.out.println("Invalid Input!");}
             }
          }while(confirmation == false);
     }

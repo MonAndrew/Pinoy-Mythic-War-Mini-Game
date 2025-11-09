@@ -49,6 +49,7 @@ public class SelectedCharacter_2 extends GameMechanics{
     //block
     public boolean isBlocked = false;
     private int blockCooldown;
+    private int blockEffectTurn;
 
     @Override
     public void setPlayerSelectedCharacter(String name,int health, int mana){
@@ -85,9 +86,12 @@ public class SelectedCharacter_2 extends GameMechanics{
         this.cooldown_2 = 0;
     }
     @Override
-    public void setBlockedTrueOrFalse(){
-        if(getIsBlocked() == true){this.isBlocked = false; }
-        else {this.isBlocked = true;}
+    public void setBlockedToTrue(){
+        this.isBlocked =  true;
+    }
+    @Override
+    public void setBlockedToFalse(){
+        this.isBlocked =  false;
     }
 
     @Override
@@ -257,8 +261,9 @@ public class SelectedCharacter_2 extends GameMechanics{
         }
 
         System.out.println(misc.BOLD+getCharacterName()+" Block "+misc.RESET);
-        setBlockedTrueOrFalse();
+        this.isBlocked = true;
         this.blockCooldown = 5;
+        this.blockEffectTurn = 1;
     }
     @Override
     public boolean getIsBlocked(){
@@ -357,6 +362,8 @@ public class SelectedCharacter_2 extends GameMechanics{
         this.cooldown_2--;
         if(this.cooldown_2 <= 0) this.cooldown_2 = 0;
 
+        this.blockEffectTurn--;
+        if(this.blockEffectTurn <= 0){this.blockEffectTurn = 0; this.isBlocked = false;}
         this.blockCooldown--;
         if(this.blockCooldown <= 0){this.blockCooldown = 0; this.isBlocked = false;}
     }
@@ -390,6 +397,10 @@ public class SelectedCharacter_2 extends GameMechanics{
 
     this.cooldown_1 = 0;
     this.cooldown_2 = 0;
+
+    this.blockEffectTurn = 0;
+    this.blockCooldown = 0; 
+    this.isBlocked = false;
 
     }
 
@@ -439,7 +450,7 @@ public class SelectedCharacter_2 extends GameMechanics{
         if(this.isBleeding == true) System.out.println(misc.RED+misc.BOLD+"BLEEDING"+misc.RESET);
         if(this.isThorned == true) System.out.println(misc.GREEN+misc.BOLD+"THORNED"+misc.RESET);
         if(this.isParalyzed == true) System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED"+misc.RESET);
-        if(this.isBurned == true) System.out.println(misc.RED+misc.BOLD+"BURNING"+misc.RESET);
+        if(this.isBurned == true) System.out.println(misc.YELLOW+misc.BOLD+"BURNING"+misc.RESET);
 
         if(this.isIncreasedDamage == true) System.out.println(misc.CYAN+misc.BOLD+"INCREASE DMG"+misc.RESET);
         if(this.isDecreasedDamage == true) System.out.println(misc.BLUE+misc.BOLD+"DECREASE DMG"+misc.RESET);
@@ -487,8 +498,8 @@ public class SelectedCharacter_2 extends GameMechanics{
     }
     @Override
     public void isBurned_Effects(){
-        System.out.println(misc.RED+misc.BOLD+"BLEEDING: "+misc.RESET);
-        minusHealth(misc.getRNG(100, 40));
+        System.out.println(misc.YELLOW+misc.BOLD+"BURNING: "+misc.RESET);
+        minusHealth(misc.getRNG(150, 40));
     }
 
 }
