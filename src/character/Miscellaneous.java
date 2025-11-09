@@ -280,7 +280,7 @@ public class Miscellaneous {
             System.out.println("Enter Skill Number to Use: ");
             skillNumber = scan.nextInt();
 
-            if(skillNumber < 1 || skillNumber > 3){
+            if(skillNumber < 1 || skillNumber > 4){
             System.out.println("Invalid Skill Number Selection!\n");
             isValidSelection = false;
             }

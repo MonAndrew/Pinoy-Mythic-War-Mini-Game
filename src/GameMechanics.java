@@ -19,6 +19,7 @@ public abstract class GameMechanics{
     abstract public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);
     abstract public void setCharacterSkill_1(String skillName, int min,int max, int manaCost);
     abstract public void setCharacterSkill_2(String skillName, int min,int max, int manaCost);
+    abstract public void setBlockedTrueOrFalse();
 
     abstract public void displaySkillsAndIfAvailable();
     abstract public String getCharacterName();
@@ -29,9 +30,12 @@ public abstract class GameMechanics{
     abstract public int getManaCost2();
     abstract public int getCooldown_1();
     abstract public int getCooldown_2();
+    abstract public int getBlockedCooldown();
     abstract public int getDamagefromNormalSkill();
     abstract public int getDamageFromSkill_1();
     abstract public int getDamageFromSkill_2();
+    abstract public void useBlockOrProtect();
+    abstract public boolean getIsBlocked();
     abstract public int getBuff();
     abstract public int getDebuff();
 //battles
@@ -50,6 +54,7 @@ public abstract class GameMechanics{
     abstract public void isPoisoned_Effects();
     abstract public void isBleeding_Effects();
     abstract public void isThorned_Effects();
+    abstract public void isBurned_Effects();
 
     abstract public void checkHealthAndManaIfBelowZero();
 }
@@ -280,13 +285,17 @@ class GameMechanics_2{
     case 1 -> { dmg  = selectedCharacter_1.getDamagefromNormalSkill(); } 
     case 2 -> { dmg  = selectedCharacter_1.getDamageFromSkill_1(); }
     case 3 -> {
-        if((selectedCharacter_1.getMana() >= selectedCharacter_1.getManaCost2()) && selectedCharacter_1.getCooldown_2() <= 0){
-        selectedCharacter_2.setStatusEffect_On(misc.getRNG(5, 1));//should be change to character debuff
+        if((selectedCharacter_1.getMana() >= selectedCharacter_1.getManaCost2()) && selectedCharacter_1.getCooldown_2() <= 0 && selectedCharacter_2.getIsBlocked() == false){
+        selectedCharacter_2.setStatusEffect_On(misc.getRNG(6, 1));//should be change to character debuff
         }
         dmg  = selectedCharacter_1.getDamageFromSkill_2();
     }
+    //case 4 ->{selectedCharacter_1.useBlockOrProtect();}
 
     }
+    if(selectedCharacter_2.getIsBlocked() ==  true){dmg = 0;
+        System.out.println(misc.BOLD+"** "+selectedCharacter_2.getCharacterName()+" is protected! **"+misc.RESET);
+        selectedCharacter_2.setBlockedTrueOrFalse();}
     if(misc.killSwitch == true){dmg = 10000;}
     return dmg;
     }
@@ -308,21 +317,29 @@ class GameMechanics_2{
             selectedCharacter_1.setStatusEffect_On(3);
             selectedCharacter_1.setStatusEffect_On(4);
             selectedCharacter_1.setStatusEffect_On(5);
+            selectedCharacter_1.setStatusEffect_On(6);
         }
-        else
-        selectedCharacter_1.setStatusEffect_On(misc.getRNG(5, 1));//should be change to character debuff
+        else if(selectedCharacter_1.getIsBlocked() == false)
+        selectedCharacter_1.setStatusEffect_On(misc.getRNG(6, 1));//should be change to character debuff
 
         }
         dmg  = selectedCharacter_2.getDamageFromSkill_2();
     }
+    //case 4 ->{selectedCharacter_2.setBlockedTrueOrFalse();}
 
     }
-            
+    if(selectedCharacter_1.getIsBlocked() ==  true){dmg = 0;
+        System.out.println(misc.BOLD+"** "+selectedCharacter_1.getCharacterName()+" is protected! **"+misc.RESET);
+        selectedCharacter_1.setBlockedTrueOrFalse();}         
     return dmg;
     }
     
     public void dealDamageCharacter_1ToCharacter_2(int skillnum){
         // add 30% chance to miss :))
+        if(skillnum == 4){
+            selectedCharacter_1.useBlockOrProtect();
+            return;
+        }
         int missChance = misc.getRNG(100, 1);
         // to <- from
         if(missChance > 30)
@@ -334,6 +351,11 @@ class GameMechanics_2{
     }
 
     public void dealDamageCharacter_2ToCharacter_1(int skillnum){
+
+        if(skillnum == 4){
+            selectedCharacter_2.useBlockOrProtect();
+            return;
+        }
 
         int missChance = misc.getRNG(100, 1);
         // to <- from

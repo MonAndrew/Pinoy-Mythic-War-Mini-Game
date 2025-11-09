@@ -16,6 +16,8 @@ public class SelectedCharacter_2 extends GameMechanics{
     private int thornedEffectTurn;
     private boolean isParalyzed = false;
     private int paralyzedEffectTurn;
+    private boolean isBurned = false;
+    private int burnedEffectTurn;
 
     private boolean isIncreasedDamage = false;
     private int increaseDamageEffectTurn;
@@ -44,6 +46,9 @@ public class SelectedCharacter_2 extends GameMechanics{
     private int minRangeSkill_2;
     private int maxRangeSkill_2;
     private int manaCost2;
+    //block
+    public boolean isBlocked = false;
+    private int blockCooldown;
 
     @Override
     public void setPlayerSelectedCharacter(String name,int health, int mana){
@@ -79,6 +84,11 @@ public class SelectedCharacter_2 extends GameMechanics{
         this.manaCost2 = manaCost;
         this.cooldown_2 = 0;
     }
+    @Override
+    public void setBlockedTrueOrFalse(){
+        if(getIsBlocked() == true){this.isBlocked = false; }
+        else {this.isBlocked = true;}
+    }
 
     @Override
     public String getCharacterName(){ return this.characterName;
@@ -109,6 +119,9 @@ public class SelectedCharacter_2 extends GameMechanics{
     }
     @Override
     public int getDebuff(){ return this.debuff; 
+    }
+    @Override
+    public int getBlockedCooldown(){ return this.blockCooldown;
     }
 
     @Override
@@ -215,7 +228,7 @@ public class SelectedCharacter_2 extends GameMechanics{
         if(this.isIncreasedDamage == true){ 
             int increase = (int)((double)dmg * (double)((double)this.increaseDamageEffect/(double)100));
             dmg += increase;
-            System.out.println(misc.CYAN+misc.BOLD+"Increased Damage: (+z"+increase+")"+misc.RESET);
+            System.out.println(misc.CYAN+misc.BOLD+"Increased Damage: (+"+increase+")"+misc.RESET);
         }
 
         if(this.isDecreasedDamage == true){ 
@@ -234,18 +247,38 @@ public class SelectedCharacter_2 extends GameMechanics{
 
         return dmg;
     }
+    @Override
+    public void useBlockOrProtect(){
+        if(getBlockedCooldown() != 0){
+            System.out.println(misc.BOLD+getCharacterName()+" Failed To use Block "+misc.RESET);
+            System.out.println("(Block) Cooldown: "+getBlockedCooldown());
+            this.isBlocked = false;
+            return;
+        }
+
+        System.out.println(misc.BOLD+getCharacterName()+" Block "+misc.RESET);
+        setBlockedTrueOrFalse();
+        this.blockCooldown = 5;
+    }
+    @Override
+    public boolean getIsBlocked(){
+        return this.isBlocked;
+    }
 
    @Override
     public void displaySkillsAndIfAvailable(){
 
-        System.out.print(misc.BOLD+"Normal: "+misc.RESET);
+        System.out.print(misc.BOLD+"Skill 1: (Normal) "+misc.RESET);
         System.out.println(misc.RED+normalSkillmaxRange+" - "+normalSkillminRange+misc.RESET+", "+misc.CYAN+"+"+this.manaGain+misc.RESET);
 
-        System.out.print(misc.BOLD+"Skill 1: ("+skillName1+misc.RESET+") ");
+        System.out.print(misc.BOLD+"Skill 2: ("+skillName1+") "+misc.RESET);
         System.out.println(misc.RED+maxRangeSkill_1+" - "+minRangeSkill_1+misc.RESET+", "+misc.PURPLE+"-"+this.manaCost1+misc.RESET);
 
-        System.out.print(misc.BOLD+"Skill 2: ("+skillName2+misc.RESET+") ");
+        System.out.print(misc.BOLD+"Skill 3: ("+skillName2+") "+misc.RESET);
         System.out.println(misc.RED+maxRangeSkill_2+" - "+minRangeSkill_2+misc.RESET+", "+misc.PURPLE+"-"+this.manaCost2+misc.RESET);
+
+        System.out.print(misc.BOLD+"Skill 4: (Block) "+misc.RESET);
+        System.out.println("Blocks/Protected by any dmg in the Opponent's Turn");
 
         System.out.println();
     }
@@ -315,11 +348,17 @@ public class SelectedCharacter_2 extends GameMechanics{
         this.paralyzedEffectTurn--;
         if(this.paralyzedEffectTurn <= 0){ this.paralyzedEffectTurn = 0; this.isParalyzed = false;}
 
+        this.burnedEffectTurn--;
+        if(this.burnedEffectTurn <= 0){ this.burnedEffectTurn = 0; this.isBurned = false;}
+
         this.cooldown_1--;
         if(this.cooldown_1 <= 0) this.cooldown_1 = 0;
 
         this.cooldown_2--;
         if(this.cooldown_2 <= 0) this.cooldown_2 = 0;
+
+        this.blockCooldown--;
+        if(this.blockCooldown <= 0){this.blockCooldown = 0; this.isBlocked = false;}
     }
     @Override
     public void clearCooldownsAndEffectTurns(){
@@ -345,6 +384,9 @@ public class SelectedCharacter_2 extends GameMechanics{
 
     this.paralyzedEffectTurn = 0; 
     this.isParalyzed = false;
+
+    this.burnedEffectTurn = 0; 
+    this.isBurned = false;
 
     this.cooldown_1 = 0;
     this.cooldown_2 = 0;
@@ -377,7 +419,8 @@ public class SelectedCharacter_2 extends GameMechanics{
             case 2 -> { System.out.println("bleed_on");this.bleedingEffectTurn = 6; this.isBleeding = true;}
             case 3 -> { System.out.println("thorn_on");this.thornedEffectTurn = 6; this.isThorned = true;}
             case 4 -> { System.out.println("paralyzed_on");this.paralyzedEffectTurn = 8; this.isParalyzed = true;}
-            case 5 -> { System.out.println("decrease dmg_on");
+            case 5 -> { System.out.println("Burned_on");this.burnedEffectTurn = 3; this.isBurned = true;}
+            case 6 -> { System.out.println("decrease dmg_on");
             this.decreaseDamageEffectTurn = 5; 
             this.isDecreasedDamage = true;
             this.decreaseDamageEffect = 10;
@@ -396,6 +439,7 @@ public class SelectedCharacter_2 extends GameMechanics{
         if(this.isBleeding == true) System.out.println(misc.RED+misc.BOLD+"BLEEDING"+misc.RESET);
         if(this.isThorned == true) System.out.println(misc.GREEN+misc.BOLD+"THORNED"+misc.RESET);
         if(this.isParalyzed == true) System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED"+misc.RESET);
+        if(this.isBurned == true) System.out.println(misc.RED+misc.BOLD+"BURNING"+misc.RESET);
 
         if(this.isIncreasedDamage == true) System.out.println(misc.CYAN+misc.BOLD+"INCREASE DMG"+misc.RESET);
         if(this.isDecreasedDamage == true) System.out.println(misc.BLUE+misc.BOLD+"DECREASE DMG"+misc.RESET);
@@ -417,6 +461,9 @@ public class SelectedCharacter_2 extends GameMechanics{
         if(this.isThorned == true){ 
             isThorned_Effects();
         }
+        if(this.isBurned == true){ 
+            isBurned_Effects();
+        }
         //paralyzed is set in every attacks
         // increase and decrease too
 
@@ -437,6 +484,11 @@ public class SelectedCharacter_2 extends GameMechanics{
     public void isThorned_Effects(){
         System.out.println(misc.GREEN+misc.BOLD+"THORNED: "+misc.RESET);
         minusHealth(misc.getRNG(30, 5));
+    }
+    @Override
+    public void isBurned_Effects(){
+        System.out.println(misc.RED+misc.BOLD+"BLEEDING: "+misc.RESET);
+        minusHealth(misc.getRNG(100, 40));
     }
 
 }
