@@ -264,7 +264,7 @@ public class SelectedCharacter_2 extends GameMechanics{
         System.out.println(misc.BOLD+getCharacterName()+" Block "+misc.RESET);
         this.isBlocked = true;
         this.blockCooldown = 5;
-        this.blockEffectTurn = 1;
+        this.blockEffectTurn = 2;
     }
     @Override
     public boolean getIsBlocked(){
@@ -462,6 +462,11 @@ public class SelectedCharacter_2 extends GameMechanics{
 
     @Override
     public void doStatusEffect(){
+        if(this.isPoisoned == true || this.isBleeding == true || this.isThorned == true || this.isBurned == true){
+        System.out.println("─────────────────────────────────────────────────────────────────────────────────");
+        System.out.println(misc.BOLD+misc.YELLOW+"P2:"+misc.RESET);
+        }
+
 
         if(this.isPoisoned == true){ 
             isPoisoned_Effects();
@@ -479,6 +484,9 @@ public class SelectedCharacter_2 extends GameMechanics{
         //paralyzed is set in every attacks
         // increase and decrease too
 
+        if(this.isPoisoned == true || this.isBleeding == true || this.isThorned == true || this.isBurned == true){
+        System.out.println("─────────────────────────────────────────────────────────────────────────────────");
+        }
     }
 
     @Override

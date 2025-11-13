@@ -264,7 +264,7 @@ public class SelectedCharacter_1 extends GameMechanics{
         System.out.println(misc.BOLD+getCharacterName()+" Block "+misc.RESET);
         this.isBlocked = true;
         this.blockCooldown = 5;
-        this.blockEffectTurn = 1;
+        this.blockEffectTurn = 2;
     }
     @Override
     public boolean getIsBlocked(){
@@ -456,12 +456,18 @@ public class SelectedCharacter_1 extends GameMechanics{
         if(this.isIncreasedDamage == true) System.out.println(misc.CYAN+misc.BOLD+"INCREASE DMG"+misc.RESET);
         if(this.isDecreasedDamage == true) System.out.println(misc.BLUE+misc.BOLD+"DECREASE DMG"+misc.RESET);
 
-        if(this.isPoisoned == false && this.isBleeding == false && this.isThorned == false && this.isParalyzed == false && this.isIncreasedDamage == false && this.isDecreasedDamage == false)
+        if(this.isPoisoned == false && this.isBleeding == false && this.isThorned == false && this.isParalyzed == false && this.isBurned == false && this.isIncreasedDamage == false && this.isDecreasedDamage == false)
         System.out.println("None");
     }
 
     @Override
     public void doStatusEffect(){
+
+        if(this.isPoisoned == true || this.isBleeding == true || this.isThorned == true || this.isBurned == true){
+        System.out.println("─────────────────────────────────────────────────────────────────────────────────");
+        System.out.println(misc.BOLD+misc.YELLOW+"P1:"+misc.RESET);
+        }
+
 
         if(this.isPoisoned == true){ 
             isPoisoned_Effects();
@@ -478,6 +484,10 @@ public class SelectedCharacter_1 extends GameMechanics{
         }
         //paralyzed is set in every attacks
         // increase and decrease too
+
+        if(this.isPoisoned == true || this.isBleeding == true || this.isThorned == true || this.isBurned == true){
+        System.out.println("─────────────────────────────────────────────────────────────────────────────────");
+        }
 
     }
 

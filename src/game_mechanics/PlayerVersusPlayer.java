@@ -65,7 +65,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());//skill input
+                    dealDamageCharacter_1ToCharacter_2(selectedCharacter_1.enterSkill());//skill input
                     selectedCharacter_1.doStatusEffect();
                     misc.slowPrint(text, timeInMs);
                 
@@ -78,7 +78,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(misc.enterSkillTryCatch());//skill input
+                    dealDamageCharacter_2ToCharacter_1(selectedCharacter_2.enterSkill());//skill input
                     selectedCharacter_2.doStatusEffect();
                     misc.slowPrint(text, timeInMs);
 
@@ -92,7 +92,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_2.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_2.getCharacterName(), selectedCharacter_2.getHealth(), misc.getMaxHealth(), selectedCharacter_2.getMana(), misc.getMaxMana());
                     selectedCharacter_2.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_2ToCharacter_1(misc.enterSkillTryCatch());//skill input
+                    dealDamageCharacter_2ToCharacter_1(selectedCharacter_2.enterSkill());//skill input
                     selectedCharacter_2.doStatusEffect();
                     misc.slowPrint(text, timeInMs);
                 
@@ -105,7 +105,7 @@ public class PlayerVersusPlayer extends GameMechanics_2{
                     selectedCharacter_1.displayCurrectStatusEffect();
                     misc.displayCharacterNameHealthAndMana(selectedCharacter_1.getCharacterName(), selectedCharacter_1.getHealth(), misc.getMaxHealth(), selectedCharacter_1.getMana(), misc.getMaxMana());
                     selectedCharacter_1.displaySkillsAndIfAvailable();
-                    dealDamageCharacter_1ToCharacter_2(misc.enterSkillTryCatch());//skill input
+                    dealDamageCharacter_1ToCharacter_2(selectedCharacter_1.enterSkill());//skill input
                     selectedCharacter_1.doStatusEffect();
                     misc.slowPrint(text, timeInMs);
 

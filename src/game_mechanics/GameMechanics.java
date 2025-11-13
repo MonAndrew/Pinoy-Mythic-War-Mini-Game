@@ -9,9 +9,12 @@ import character.Character_6;
 import character.Character_7;
 import character.Character_8; 
 import character.Miscellaneous;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import java.util.Random;
 
 public abstract class GameMechanics{
+    Scanner scan = new Scanner(System.in);
     Miscellaneous misc = new Miscellaneous();
     Random random = new Random();
 //setters
@@ -59,6 +62,122 @@ public abstract class GameMechanics{
     abstract public void isBurned_Effects();
 
     abstract public void checkHealthAndManaIfBelowZero();
+
+    public int enterSkill(){
+        boolean isValid = false;
+        int skillNum = 0;
+
+        while(isValid == false){
+            try{
+                System.out.print("Enter Skill Number: ");
+                skillNum = scan.nextInt();
+
+                if(skillNum >= 1 || skillNum <= 4){
+                    switch(skillNum){
+
+                        case 1 -> {
+                            isValid = true;
+                            //return skillNum;
+                        }
+                        case 2 -> {
+                            if(getMana() < getManaCost1()){System.out.println("Not Enough Mana!");}
+                            else if(getCooldown_1() != 0){ System.out.println("Skill in Cooldown for "+getCooldown_1()+" Turn/s");}
+                            else{isValid = true;}
+                        }
+                        case 3 -> {
+                            if(getMana() < getManaCost2()){System.out.println("Not Enough Mana!");}
+                            else if(getCooldown_2() != 0){ System.out.println("Skill in Cooldown for "+getCooldown_2()+" Turn/s");}
+                            else{isValid = true;}
+                        }
+                        case 4 -> {
+                            if(getBlockedCooldown() != 0){ System.out.println("Skill in Cooldown for "+getBlockedCooldown()+" Turn/s");}
+                            else{isValid = true;}
+                        }
+
+                        default -> {System.out.println("Invalid Skill Number!");}
+                    }
+                }
+
+            }catch(InputMismatchException e){
+                System.out.println("Invalid Input!");
+                scan.next();
+            }
+        }
+
+        return skillNum;
+    }
+
+    public int enterSkillForBots(int max,int min){
+        boolean isValid = false;
+        int skillNum = 0;
+
+        while(isValid == false){
+            try{
+                skillNum = misc.getRNG(max, min);
+
+                int chance = 0;
+                if(getMana() >= getManaCost2()){
+                    chance = misc.getRNG(100, 1);
+                    if(chance <= (int)(100 * 0.10)){skillNum = 1;}
+                    else if(chance <= (int)(100 * 0.40)){skillNum = 2;}
+                    else{ skillNum = 3;}
+
+                }
+                if(getMana() >= getManaCost1()){
+                    chance = misc.getRNG(100, 1);
+                    if(chance <= (int)(100 * 0.10)){skillNum = 1;}
+                    else if(chance <= (int)(100 * 0.60)){skillNum = 1;}
+                    else{ skillNum = 2;}
+
+                }
+                else{
+                    if(misc.getFifthyFifhtyChance() == misc.getFifthyFifhtyChance() ){ skillNum = 1;}
+                }
+
+
+                if(skillNum >= 1 || skillNum <= 4){
+                    switch(skillNum){
+
+                        case 1 -> {
+                            isValid = true;
+                            //return skillNum;
+                        }
+                        case 2 -> {
+                            if(getMana() < getManaCost1()){System.out.println("Not Enough Mana!");}
+                            else if(getCooldown_1() != 0){ System.out.println("Skill in Cooldown for "+getCooldown_1()+" Turn/s");}
+                            else{
+                                if(misc.getFifthyFifhtyChance() == 1){skillNum = 1;isValid = true;}
+                                else{isValid = true;}
+                            }
+                        }
+                        case 3 -> {
+                            if(getMana() < getManaCost2()){System.out.println("Not Enough Mana!");}
+                            else if(getCooldown_2() != 0){ System.out.println("Skill in Cooldown for "+getCooldown_2()+" Turn/s");}
+                            else{
+                                if(misc.getFifthyFifhtyChance() == 1){skillNum = 1;isValid = true;}
+                                else{isValid = true;}
+                            }
+                        }
+                        case 4 -> {
+                            if(getBlockedCooldown() != 0){ System.out.println("Skill in Cooldown for "+getBlockedCooldown()+" Turn/s");}
+                            else{
+                                if(misc.getFifthyFifhtyChance() == 1){skillNum = 1;isValid = true;}
+                                else{isValid = true;}
+                            }
+                        }
+
+                        default -> {System.out.println("Invalid Skill Number!");}
+                    }
+                }
+
+            }catch(InputMismatchException e){
+                System.out.println("Invalid Input!");
+                scan.next();
+            }
+        }
+
+        return skillNum;
+    }
 }
 
 @SuppressWarnings("unused")
@@ -76,7 +195,7 @@ class GameMechanics_2{
     GameMechanics selectedCharacter_1 = new SelectedCharacter_1();
     GameMechanics selectedCharacter_2 = new SelectedCharacter_2();
 
-    //seems useless also kinda annoying but do i really need this, just to organize the code?
+    
     public void setCharacters(){
         character_1.setCharacter();
         character_2.setCharacter();

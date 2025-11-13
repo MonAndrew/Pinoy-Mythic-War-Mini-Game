@@ -467,7 +467,7 @@ public class Miscellaneous {
         System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
         System.out.println("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
         System.out.println("    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
-        System.out.print  ("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
             
         selection = scan.nextInt();
 
@@ -548,7 +548,7 @@ public class Miscellaneous {
         System.out.println("          Ivy Ygoña                                     John Eric Ribo");
         System.out.println();
         System.out.println("                             SUPPORT/AUDIENECE:");
-        System.out.println("                       Mon Andrew Ludovice (Canton 1x)");
+        System.out.println("                       Mon Andrew Ludovice (Canton 5x)");
         System.out.println();
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
     }
