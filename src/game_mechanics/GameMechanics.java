@@ -19,7 +19,7 @@ public abstract class GameMechanics{
     Random random = new Random();
 //setters
     abstract public void setPlayerSelectedCharacter(String name,int health, int mana);
-    abstract  public void setBuffAndDebuff(int buff,int debuff);
+    abstract  public void setBuffAndDebuff(String SupportSkillName,int buff,int debuff);
     abstract public void setCharacterNormalSkill(String skillName, int min, int max, int manaGain);
     abstract public void setCharacterSkill_1(String skillName, int min,int max, int manaCost);
     abstract public void setCharacterSkill_2(String skillName, int min,int max, int manaCost);
@@ -41,6 +41,7 @@ public abstract class GameMechanics{
     abstract public int getDamageFromSkill_2();
     abstract public void useBlockOrProtect();
     abstract public boolean getIsBlocked();
+    abstract public String getSupportSkillName();
     abstract public int getBuff();
     abstract public int getDebuff();
 //battles
@@ -60,8 +61,17 @@ public abstract class GameMechanics{
     abstract public void isBleeding_Effects();
     abstract public void isThorned_Effects();
     abstract public void isBurned_Effects();
+    abstract public boolean isParalyzed_TrueOrFalse();
 
     abstract public void checkHealthAndManaIfBelowZero();
+
+    public void missedAttacksAfterEffect(int skillNum){
+        switch(skillNum){
+            case 1 ->{addMana(misc.getRNG(75, getManaGain()));}
+            case 2 ->{minusMana(getManaCost1());}
+            case 3 ->{minusMana(getManaCost2());}
+        }
+    }
 
     public int enterSkill(){
         boolean isValid = false;
@@ -115,51 +125,51 @@ public abstract class GameMechanics{
             try{
                 skillNum = misc.getRNG(max, min);
 
-                int chance = 0;
+                int chance;
                 if(getMana() >= getManaCost2()){
                     chance = misc.getRNG(100, 1);
-                    if(chance <= (int)(100 * 0.10)){skillNum = 1;}
-                    else if(chance <= (int)(100 * 0.40)){skillNum = 2;}
-                    else{ skillNum = 3;}
+                    if(chance > 80){//20% chance, no
+                        switch(misc.getRNG(3,1)){
+                            case 1 -> {skillNum = 1;}
+                            case 2 -> {skillNum = 2;}
+                            case 3 -> {skillNum = 4;}//block
+                        }
+                    }
+                    else{ skillNum = 3;}//yess
 
                 }
                 if(getMana() >= getManaCost1()){
                     chance = misc.getRNG(100, 1);
-                    if(chance <= (int)(100 * 0.10)){skillNum = 1;}
-                    else if(chance <= (int)(100 * 0.60)){skillNum = 1;}
-                    else{ skillNum = 2;}
+                    if(chance > 60){//40% chance, no
+                        skillNum = (misc.getFifthyFifhtyChance() == 1) ? 1 : 4;}
+                    else{ skillNum = 2;}//yes
 
                 }
-                else{
-                    if(misc.getFifthyFifhtyChance() == misc.getFifthyFifhtyChance() ){ skillNum = 1;}
-                }
-
 
                 if(skillNum >= 1 || skillNum <= 4){
                     switch(skillNum){
 
                         case 1 -> {
                             isValid = true;
-                            //return skillNum;
                         }
                         case 2 -> {
-                            if(getMana() < getManaCost1()){System.out.println("Not Enough Mana!");}
-                            else if(getCooldown_1() != 0){ System.out.println("Skill in Cooldown for "+getCooldown_1()+" Turn/s");}
+                            if(getMana() < getManaCost1()){}
+                            else if(getCooldown_1() != 0){ }
                             else{
                                 if(misc.getFifthyFifhtyChance() == 1){skillNum = 1;isValid = true;}
                                 else{isValid = true;}
                             }
                         }
                         case 3 -> {
-                            if(getMana() < getManaCost2()){System.out.println("Not Enough Mana!");}
-                            else if(getCooldown_2() != 0){ System.out.println("Skill in Cooldown for "+getCooldown_2()+" Turn/s");}
+                            if(getMana() < getManaCost2()){}
+                            else if(getCooldown_2() != 0){}
                             else{
                                 if(misc.getFifthyFifhtyChance() == 1){skillNum = 1;isValid = true;}
                                 else{isValid = true;}
                             }
                         }
                         case 4 -> {
-                            if(getBlockedCooldown() != 0){ System.out.println("Skill in Cooldown for "+getBlockedCooldown()+" Turn/s");}
+                            if(getBlockedCooldown() != 0){}
                             else{
                                 if(misc.getFifthyFifhtyChance() == 1){skillNum = 1;isValid = true;}
                                 else{isValid = true;}
@@ -217,7 +227,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_1.getNormalSkillName(), character_1.getMinRangeNormalSkill(), character_1.getMaxRangeNormalSkill(), character_1.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_1.getSkillName_1(), character_1.getMinRangeSkill_1(), character_1.getMaxRangeSkill_1(), character_1.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_1.getSkillName_2(), character_1.getMinRangeSkill_2(), character_1.getMaxRangeSkill_2(), character_1.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_1.getBuff(), character_1.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_1.getSupportSkillName(),character_1.getBuff(), character_1.getDebuff());
             return 1;}
 
             case 2 -> {
@@ -225,7 +235,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_2.getNormalSkillName(), character_2.getMinRangeNormalSkill(), character_2.getMaxRangeNormalSkill(), character_2.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_2.getSkillName_1(), character_2.getMinRangeSkill_1(), character_2.getMaxRangeSkill_1(), character_2.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_2.getSkillName_2(), character_2.getMinRangeSkill_2(), character_2.getMaxRangeSkill_2(), character_2.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_2.getBuff(), character_2.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_2.getSupportSkillName(),character_2.getBuff(), character_2.getDebuff());
             return 2;}
 
             case 3 -> {
@@ -233,7 +243,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_3.getNormalSkillName(), character_3.getMinRangeNormalSkill(), character_3.getMaxRangeNormalSkill(), character_3.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_3.getSkillName_1(), character_3.getMinRangeSkill_1(), character_3.getMaxRangeSkill_1(), character_3.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_3.getSkillName_2(), character_3.getMinRangeSkill_2(), character_3.getMaxRangeSkill_2(), character_3.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_3.getBuff(), character_3.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_3.getSupportSkillName(),character_3.getBuff(), character_3.getDebuff());
             return 3;}
 
             case 4 -> {
@@ -241,7 +251,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_4.getNormalSkillName(), character_4.getMinRangeNormalSkill(), character_4.getMaxRangeNormalSkill(), character_4.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_4.getSkillName_1(), character_4.getMinRangeSkill_1(), character_4.getMaxRangeSkill_1(), character_4.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_4.getSkillName_2(), character_4.getMinRangeSkill_2(), character_4.getMaxRangeSkill_2(), character_4.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_4.getBuff(), character_4.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_4.getSupportSkillName(),character_4.getBuff(), character_4.getDebuff());
             return 4;}
 
             case 5 -> {
@@ -249,7 +259,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_5.getNormalSkillName(), character_5.getMinRangeNormalSkill(), character_5.getMaxRangeNormalSkill(), character_5.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_5.getSkillName_1(), character_5.getMinRangeSkill_1(), character_5.getMaxRangeSkill_1(), character_5.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_5.getSkillName_2(), character_5.getMinRangeSkill_2(), character_5.getMaxRangeSkill_2(), character_5.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_5.getBuff(), character_5.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_5.getSupportSkillName(),character_5.getBuff(), character_5.getDebuff());
             return 5;}
 
             case 6 -> {
@@ -257,7 +267,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_6.getNormalSkillName(), character_6.getMinRangeNormalSkill(), character_6.getMaxRangeNormalSkill(), character_6.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_6.getSkillName_1(), character_6.getMinRangeSkill_1(), character_6.getMaxRangeSkill_1(), character_6.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_6.getSkillName_2(), character_6.getMinRangeSkill_2(), character_6.getMaxRangeSkill_2(), character_6.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_6.getBuff(), character_6.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_6.getSupportSkillName(),character_6.getBuff(), character_6.getDebuff());
             return 6;}
 
             case 7 -> {
@@ -265,7 +275,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_7.getNormalSkillName(), character_7.getMinRangeNormalSkill(), character_7.getMaxRangeNormalSkill(), character_7.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_7.getSkillName_1(), character_7.getMinRangeSkill_1(), character_7.getMaxRangeSkill_1(), character_7.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_7.getSkillName_2(), character_7.getMinRangeSkill_2(), character_7.getMaxRangeSkill_2(), character_7.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_7.getBuff(), character_7.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_7.getSupportSkillName(),character_7.getBuff(), character_7.getDebuff());
             return 7;}
 
             case 8 -> {
@@ -273,7 +283,7 @@ class GameMechanics_2{
             selectedCharacter_1.setCharacterNormalSkill(character_8.getNormalSkillName(), character_8.getMinRangeNormalSkill(), character_8.getMaxRangeNormalSkill(), character_8.getManaGain());
             selectedCharacter_1.setCharacterSkill_1(character_8.getSkillName_1(), character_8.getMinRangeSkill_1(), character_8.getMaxRangeSkill_1(), character_8.getManaCost1());
             selectedCharacter_1.setCharacterSkill_2(character_8.getSkillName_2(), character_8.getMinRangeSkill_2(), character_8.getMaxRangeSkill_2(), character_8.getManaCost2());
-            selectedCharacter_1.setBuffAndDebuff(character_8.getBuff(), character_8.getDebuff());
+            selectedCharacter_1.setBuffAndDebuff(character_8.getSupportSkillName(),character_8.getBuff(), character_8.getDebuff());
             return 8;}
 
         }
@@ -289,7 +299,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_1.getNormalSkillName(), character_1.getMinRangeNormalSkill(), character_1.getMaxRangeNormalSkill(), character_1.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_1.getSkillName_1(), character_1.getMinRangeSkill_1(), character_1.getMaxRangeSkill_1(), character_1.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_1.getSkillName_2(), character_1.getMinRangeSkill_2(), character_1.getMaxRangeSkill_2(), character_1.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_1.getBuff(), character_1.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_1.getSupportSkillName(),character_1.getBuff(), character_1.getDebuff());
             return 1;}
 
             case 2 -> {
@@ -297,7 +307,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_2.getNormalSkillName(), character_2.getMinRangeNormalSkill(), character_2.getMaxRangeNormalSkill(), character_2.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_2.getSkillName_1(), character_2.getMinRangeSkill_1(), character_2.getMaxRangeSkill_1(), character_2.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_2.getSkillName_2(), character_2.getMinRangeSkill_2(), character_2.getMaxRangeSkill_2(), character_2.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_2.getBuff(), character_2.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_2.getSupportSkillName(),character_2.getBuff(), character_2.getDebuff());
             return 2;}
 
             case 3 -> {
@@ -305,7 +315,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_3.getNormalSkillName(), character_3.getMinRangeNormalSkill(), character_3.getMaxRangeNormalSkill(), character_3.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_3.getSkillName_1(), character_3.getMinRangeSkill_1(), character_3.getMaxRangeSkill_1(), character_3.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_3.getSkillName_2(), character_3.getMinRangeSkill_2(), character_3.getMaxRangeSkill_2(), character_3.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_3.getBuff(), character_3.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_3.getSupportSkillName(),character_3.getBuff(), character_3.getDebuff());
             return 3;}
 
             case 4 -> {
@@ -313,7 +323,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_4.getNormalSkillName(), character_4.getMinRangeNormalSkill(), character_4.getMaxRangeNormalSkill(), character_4.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_4.getSkillName_1(), character_4.getMinRangeSkill_1(), character_4.getMaxRangeSkill_1(), character_4.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_4.getSkillName_2(), character_4.getMinRangeSkill_2(), character_4.getMaxRangeSkill_2(), character_4.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_4.getBuff(), character_4.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_4.getSupportSkillName(),character_4.getBuff(), character_4.getDebuff());
             return 4;}
 
             case 5 -> {
@@ -321,7 +331,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_5.getNormalSkillName(), character_5.getMinRangeNormalSkill(), character_5.getMaxRangeNormalSkill(), character_5.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_5.getSkillName_1(), character_5.getMinRangeSkill_1(), character_5.getMaxRangeSkill_1(), character_5.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_5.getSkillName_2(), character_5.getMinRangeSkill_2(), character_5.getMaxRangeSkill_2(), character_5.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_5.getBuff(), character_5.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_5.getSupportSkillName(),character_5.getBuff(), character_5.getDebuff());
             return 5;}
 
             case 6 -> {
@@ -329,7 +339,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_6.getNormalSkillName(), character_6.getMinRangeNormalSkill(), character_6.getMaxRangeNormalSkill(), character_6.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_6.getSkillName_1(), character_6.getMinRangeSkill_1(), character_6.getMaxRangeSkill_1(), character_6.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_6.getSkillName_2(), character_6.getMinRangeSkill_2(), character_6.getMaxRangeSkill_2(), character_6.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_6.getBuff(), character_6.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_6.getSupportSkillName(),character_6.getBuff(), character_6.getDebuff());
             return 6;}
 
             case 7 -> {
@@ -337,7 +347,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_7.getNormalSkillName(), character_7.getMinRangeNormalSkill(), character_7.getMaxRangeNormalSkill(), character_7.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_7.getSkillName_1(), character_7.getMinRangeSkill_1(), character_7.getMaxRangeSkill_1(), character_7.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_7.getSkillName_2(), character_7.getMinRangeSkill_2(), character_7.getMaxRangeSkill_2(), character_7.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_7.getBuff(), character_7.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_7.getSupportSkillName(),character_7.getBuff(), character_7.getDebuff());
             return 7;}
 
             case 8 -> {
@@ -345,7 +355,7 @@ class GameMechanics_2{
             selectedCharacter_2.setCharacterNormalSkill(character_8.getNormalSkillName(), character_8.getMinRangeNormalSkill(), character_8.getMaxRangeNormalSkill(), character_8.getManaGain());
             selectedCharacter_2.setCharacterSkill_1(character_8.getSkillName_1(), character_8.getMinRangeSkill_1(), character_8.getMaxRangeSkill_1(), character_8.getManaCost1());
             selectedCharacter_2.setCharacterSkill_2(character_8.getSkillName_2(), character_8.getMinRangeSkill_2(), character_8.getMaxRangeSkill_2(), character_8.getManaCost2());
-            selectedCharacter_2.setBuffAndDebuff(character_8.getBuff(), character_8.getDebuff());
+            selectedCharacter_2.setBuffAndDebuff(character_8.getSupportSkillName(),character_8.getBuff(), character_8.getDebuff());
             return 8;}
 
         }
@@ -406,19 +416,19 @@ class GameMechanics_2{
     case 1 -> { dmg  = selectedCharacter_1.getDamagefromNormalSkill(); } 
     case 2 -> { dmg  = selectedCharacter_1.getDamageFromSkill_1(); }
     case 3 -> {
-        if((selectedCharacter_1.getMana() >= selectedCharacter_1.getManaCost2()) && selectedCharacter_1.getCooldown_2() <= 0 && selectedCharacter_2.getIsBlocked() == false){
-        selectedCharacter_2.setStatusEffect_On(misc.getRNG(6, 1));//should be change to character debuff
-        }
         dmg  = selectedCharacter_1.getDamageFromSkill_2();
+        selectedCharacter_2.setStatusEffect_On(selectedCharacter_1.getDebuff());//turns on
+        selectedCharacter_1.setBuffAndDebuff(selectedCharacter_1.getSupportSkillName(),0,0);
+
     }
-    //case 4 ->{selectedCharacter_1.useBlockOrProtect();}
 
     }
     if(selectedCharacter_2.getIsBlocked() ==  true){dmg = 0;
         System.out.println(misc.BOLD+"** "+selectedCharacter_2.getCharacterName()+" is protected! **"+misc.RESET);
         selectedCharacter_2.setBlockedToFalse();}
     if(misc.killSwitch == true){dmg = 10000;}
-    return dmg;
+
+    return dmg = 100;
     }
 
     public int skillNumberForSelectedCharacter_2(int skillnum){
@@ -439,20 +449,20 @@ class GameMechanics_2{
             selectedCharacter_1.setStatusEffect_On(4);
             selectedCharacter_1.setStatusEffect_On(5);
             selectedCharacter_1.setStatusEffect_On(6);
+            }
         }
-        else if(selectedCharacter_1.getIsBlocked() == false)
-        selectedCharacter_1.setStatusEffect_On(misc.getRNG(6, 1));//should be change to character debuff
 
-        }
         dmg  = selectedCharacter_2.getDamageFromSkill_2();
+        selectedCharacter_1.setStatusEffect_On(selectedCharacter_2.getDebuff());//turns on
+        selectedCharacter_2.setBuffAndDebuff(selectedCharacter_2.getSupportSkillName(),0,0);
     }
-    //case 4 ->{selectedCharacter_2.setBlockedTrueOrFalse();}
 
     }
     if(selectedCharacter_1.getIsBlocked() ==  true){dmg = 0;
         System.out.println(misc.BOLD+"** "+selectedCharacter_1.getCharacterName()+" is protected! **"+misc.RESET);
-        selectedCharacter_1.setBlockedToFalse();}         
-    return dmg;
+        selectedCharacter_1.setBlockedToFalse();}   
+
+    return dmg = 100;
     }
     
     public void dealDamageCharacter_1ToCharacter_2(int skillnum){
@@ -461,13 +471,23 @@ class GameMechanics_2{
             selectedCharacter_1.useBlockOrProtect();
             return;
         }
-        int missChance = misc.getRNG(100, 1);
-        // to <- from
-        if(missChance > 30)
-        selectedCharacter_2.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 50),50,skillNumberForSelectedCharacter_1(skillnum)) );
-        else{
-        System.out.println(misc.BOLD+misc.RED+" ** "+misc.WHITE+selectedCharacter_1.getCharacterName()+" Attacks Missed!"+misc.RED+" ** "+misc.RESET+"\n");
+        if(selectedCharacter_1.isParalyzed_TrueOrFalse() == true){ 
+            if(misc.getRNG(3, 1) ==  1){
+            System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED: "+misc.RESET);
+            System.out.println(misc.BOLD+"** "+misc.YELLOW+selectedCharacter_1.getCharacterName()+" is Paralyzed, can't move."+misc.WHITE+" **"+misc.RESET);
+            return ;
+            }
         }
+
+        int missChance = misc.getRNG(100, 1);
+        if(missChance <= 30){
+            System.out.println(misc.BOLD+misc.RED+" ** "+misc.WHITE+selectedCharacter_1.getCharacterName()+" Attacks Missed!"+misc.RED+" ** "+misc.RESET+"\n");
+            selectedCharacter_1.missedAttacksAfterEffect(skillnum);
+            return;
+        }
+        int dmg = skillNumberForSelectedCharacter_1(skillnum);
+        // to <- from
+        selectedCharacter_2.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 50),50,dmg) );
 
     }
 
@@ -477,14 +497,23 @@ class GameMechanics_2{
             selectedCharacter_2.useBlockOrProtect();
             return;
         }
+        if(selectedCharacter_2.isParalyzed_TrueOrFalse() == true){ 
+            if(misc.getRNG(3, 1) ==  1){
+            System.out.println(misc.YELLOW+misc.BOLD+"PARALYZED: "+misc.RESET);
+            System.out.println(misc.BOLD+"** "+misc.YELLOW+selectedCharacter_2.getCharacterName()+" is Paralyzed, can't move."+misc.WHITE+" **"+misc.RESET);
+            return;
+            }
+        }
 
         int missChance = misc.getRNG(100, 1);
-        // to <- from
-        if(missChance > 30)
-        selectedCharacter_1.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 50),50,skillNumberForSelectedCharacter_2(skillnum)) );
-        else{
-        System.out.println(misc.BOLD+misc.RED+" ** "+misc.WHITE+selectedCharacter_2.getCharacterName()+" Attacks Missed!"+misc.RED+" ** "+misc.RESET+"\n");
+        if(missChance <= 30){
+            System.out.println(misc.BOLD+misc.RED+" ** "+misc.WHITE+selectedCharacter_2.getCharacterName()+" Attacks Missed!"+misc.RED+" ** "+misc.RESET+"\n");
+            selectedCharacter_2.missedAttacksAfterEffect(skillnum);
+            return;
         }
+        int dmg = skillNumberForSelectedCharacter_2(skillnum);
+        // to <- from
+        selectedCharacter_1.minusHealth( misc.additionalCritDamage(misc.getRNG(100, 50),50,dmg) );
     }
     
 }

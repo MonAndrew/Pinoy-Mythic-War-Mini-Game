@@ -33,9 +33,9 @@ Miscellaneous misc = new Miscellaneous();
         setCharacterName("Ruby Galapad");
         setCharacterStats(super.getMaxHealth(),super.getMaxMana()); //HP[1000] && Mana[250]
         setCharacterNormalSkill("Normal", 75, 80, 25);
-        setCharacterSkill_1("Poussa", 130, 150, 150);
+        setCharacterSkill_1("Macho", 130, 150, 150);
         setCharacterSkill_2("Eagle pose", 175, 250, 250);
-        setCharacterSupportSkill("Tigas Ulo Tigas Katawan ",1, 0);
+        setCharacterSupportSkill("Tigas Ulo Tigas Katawan ",0, 0);
     }
     @Override
     public void displayBackStory(){
@@ -44,7 +44,7 @@ Miscellaneous misc = new Miscellaneous();
 
         System.out.println("("+getCharacterName()+") Backstory:");
         System.out.println();
-        String text = "A Male midnight ballerina dancer who does it for the passion for dancing, and his only main source of income. He created a viral dance move called “The Flying Eagle Dance.”. With his smooth movement despite his large size, he captures the attention of those around him. Just like those sudden rises of attention, he lost his way; he no longer possessed the humble person he was. As his greed grew, the entity took notice and was lured to the darkness, and was never seen again.";
+        String text = "A Male midnight ballerina dancer who does it for the passion for dancing, and his only main source of income. He created a viral dance move called The Flying Eagle Dance. With his smooth movement despite his large size, he captures the attention of those around him. Just like those sudden rises of attention, he lost his way; he no longer possessed the humble person he was. As his greed grew, the entity took notice and was lured to the darkness, and was never seen again.";
         misc.slowPrint(text,10);
         System.out.println("\n═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -63,10 +63,11 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("                                ╔═════════╗");
         System.out.println("                                ║"+misc.BOLD+misc.YELLOW+" SKILLS: "+misc.RESET+"║");
         System.out.println("                                ╚═════════╝");
-        System.out.println("(" + this.normalSkillName+"): Damage: "+this.normalSkillminRange+"-"+this.normalSkillmaxRange+", Mana Gain: "+this.manaGain);
-        System.out.println("(" + this.skillName1+"): Damage: "+this.minRangeSkill_1+"-"+this.maxRangeSkill_1+", Mana Cost: "+this.manaCost1);
-        System.out.println("(" + this.skillName2+"): Damage: "+this.minRangeSkill_2+"-"+this.maxRangeSkill_2+", Mana Cost: "+this.manaCost2);
-        System.out.println("(" + this.supportSkillName+"): ???");
+        int maxManaGain = 75;
+        System.out.println("(" + this.normalSkillName+"): Damage: "+misc.BOLD+misc.RED+this.normalSkillminRange+"-"+this.normalSkillmaxRange+misc.RESET+", Mana Gain: "+misc.BOLD+misc.CYAN+this.manaGain+"-"+maxManaGain+misc.RESET);
+        System.out.println("(" + this.skillName1+"): Damage: "+misc.BOLD+misc.RED+this.minRangeSkill_1+"-"+this.maxRangeSkill_1+misc.RESET+", Mana Cost: "+misc.BOLD+misc.PURPLE+this.manaCost1+misc.RESET);
+        System.out.println("(" + this.skillName2+"): Damage: "+misc.BOLD+misc.RED+this.minRangeSkill_2+"-"+this.maxRangeSkill_2+misc.RESET+", Mana Cost: "+misc.BOLD+misc.PURPLE+this.manaCost2+misc.RESET);
+        System.out.print("(" + this.supportSkillName+"): ");misc.displaySupportSkillTypesFromBuffAndDebuff(this.buff, this.debuff);
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -144,7 +145,9 @@ Miscellaneous misc = new Miscellaneous();
     @Override
     public int getMaxRangeSkill_2(){ return this.maxRangeSkill_2; }
 
-    //
+    //support skill
+    @Override
+    public String getSupportSkillName(){ return this.supportSkillName; }
     @Override
     public int getBuff(){ return this.buff; }
     @Override

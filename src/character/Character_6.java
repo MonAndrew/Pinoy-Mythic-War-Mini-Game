@@ -34,8 +34,8 @@ Miscellaneous misc = new Miscellaneous();
         setCharacterStats(super.getMaxHealth(),super.getMaxMana()); //HP[1000] && Mana[250]
         setCharacterNormalSkill("Normal", 75, 80, 25);
         setCharacterSkill_1("Basher", 130, 150, 150);
-        setCharacterSkill_2("Who You", 175, 250, 250);
-        setCharacterSupportSkill("Expired Trial Card",1, 0);
+        setCharacterSkill_2("Pash Pash", 175, 250, 250);
+        setCharacterSupportSkill("Expired Trial Card",0, 0);
     }
     @Override
     public void displayBackStory(){
@@ -63,10 +63,11 @@ Miscellaneous misc = new Miscellaneous();
         System.out.println("                                ╔═════════╗");
         System.out.println("                                ║"+misc.BOLD+misc.YELLOW+" SKILLS: "+misc.RESET+"║");
         System.out.println("                                ╚═════════╝");
-        System.out.println("(" + this.normalSkillName+"): Damage: "+this.normalSkillminRange+"-"+this.normalSkillmaxRange+", Mana Gain: "+this.manaGain);
-        System.out.println("(" + this.skillName1+"): Damage: "+this.minRangeSkill_1+"-"+this.maxRangeSkill_1+", Mana Cost: "+this.manaCost1);
-        System.out.println("(" + this.skillName2+"): Damage: "+this.minRangeSkill_2+"-"+this.maxRangeSkill_2+", Mana Cost: "+this.manaCost2);
-        System.out.println("(" + this.supportSkillName+"): ???");
+        int maxManaGain = 75;
+        System.out.println("(" + this.normalSkillName+"): Damage: "+misc.BOLD+misc.RED+this.normalSkillminRange+"-"+this.normalSkillmaxRange+misc.RESET+", Mana Gain: "+misc.BOLD+misc.CYAN+this.manaGain+"-"+maxManaGain+misc.RESET);
+        System.out.println("(" + this.skillName1+"): Damage: "+misc.BOLD+misc.RED+this.minRangeSkill_1+"-"+this.maxRangeSkill_1+misc.RESET+", Mana Cost: "+misc.BOLD+misc.PURPLE+this.manaCost1+misc.RESET);
+        System.out.println("(" + this.skillName2+"): Damage: "+misc.BOLD+misc.RED+this.minRangeSkill_2+"-"+this.maxRangeSkill_2+misc.RESET+", Mana Cost: "+misc.BOLD+misc.PURPLE+this.manaCost2+misc.RESET);
+        System.out.print("(" + this.supportSkillName+"): ");misc.displaySupportSkillTypesFromBuffAndDebuff(this.buff, this.debuff);
 
         System.out.println("═════════════════════════════════════════════════════════════════════════════════");
         System.out.println();
@@ -144,7 +145,9 @@ Miscellaneous misc = new Miscellaneous();
     @Override
     public int getMaxRangeSkill_2(){ return this.maxRangeSkill_2; }
 
-    //
+    //support skill
+    @Override
+    public String getSupportSkillName(){ return this.supportSkillName; }
     @Override
     public int getBuff(){ return this.buff; }
     @Override

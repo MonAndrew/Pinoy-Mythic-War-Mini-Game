@@ -31,6 +31,8 @@ public interface CharacterStats {
     public String getSkillName_2();
     public int getMinRangeSkill_2();
     public int getMaxRangeSkill_2();
+    //supp/passive skill
+    public String getSupportSkillName();
     public int getBuff();
     public int getDebuff();
 

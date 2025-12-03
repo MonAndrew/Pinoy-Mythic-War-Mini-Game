@@ -2,10 +2,10 @@
 import character.Miscellaneous;
 import game_mechanics.PlayerVersusEntity;
 import game_mechanics.PlayerVersusPlayer;
+import game_mechanics.CustomGameMode;
 
 import java.util.Scanner;
-//import playerversusentity.Main;
-//import java.nio.charset.Charset;
+import java.nio.charset.Charset;
 
 public class TurnBasedGame {
     @SuppressWarnings("ConvertToTryWithResources")
@@ -16,6 +16,7 @@ public class TurnBasedGame {
         Miscellaneous misc = new Miscellaneous();
         PlayerVersusEntity pve = new PlayerVersusEntity();
         PlayerVersusPlayer pvp = new PlayerVersusPlayer();
+        CustomGameMode pvCustom = new CustomGameMode();
 
         boolean confirmation;
         boolean isLeavingGame = false;
@@ -25,6 +26,7 @@ public class TurnBasedGame {
 
         while(isLeavingGame == false){
             int test = misc.displayGamePlayOptions();
+            
             switch(test) {
                 case 1 -> {
                     do{
@@ -50,9 +52,16 @@ public class TurnBasedGame {
                     confirmation = misc.returnTrueOrFalseConfimation();
                     }while(confirmation == true);
                 }
-                case 4 -> {//options
+                case 4 -> {//Custom Game
                     misc.addSpace();
-                    misc.displayOptions();
+                    pvCustom.setCustomGameModeSettings(maxCharacter);
+                    do{
+                    misc.addSpace();
+                    pvCustom.mainCustomGame(maxCharacter);
+                    System.out.print("Play Again?");
+                    confirmation = misc.returnTrueOrFalseConfimation();
+                    }while(confirmation == true);
+                    
                 }
                 case 5 -> {//Quit Game
                     misc.addSpace();
@@ -77,15 +86,19 @@ public class TurnBasedGame {
             }
         }
         scan.close();
+    }
+
+    
+
+    public void notMineJustAskedAIForThis(){
         //System.out.println("Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ");
-        /*Charset cp437 = Charset.forName("Cp437"); // DOS Extended ASCII
+        Charset cp437 = Charset.forName("Cp437"); // DOS Extended ASCII
         for (int i = 0; i <= 255; i++) {
         byte[] b = { (byte) i };
         String s = new String(b, cp437);
         System.out.printf("%3d : %s%n", i, s);
-        }*/
-        
-
+        }
     }
+    
 }
 

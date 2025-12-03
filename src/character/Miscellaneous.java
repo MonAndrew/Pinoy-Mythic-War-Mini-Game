@@ -157,7 +157,7 @@ public class Miscellaneous {
     }
 
     public void displayKillStreak(int killStreak){
-    System.out.print("Defeats: ");
+    System.out.print("Streak: ");
     for(int i=0; i<=killStreak ;i++){
         if(i!=0)System.out.print(PURPLE+"▌"+RESET);
     }
@@ -206,6 +206,29 @@ public class Miscellaneous {
     }
 
     //user input
+    public int tryCatch(String inputMessage,String errorMessage_1,String errorMessage_2,int limit){
+        int num = 1;
+        boolean isValid = false;
+
+        while(!isValid){
+            try {
+
+            System.out.print(inputMessage);
+            num = scan.nextInt();
+
+            if(num >= limit){ isValid = true;}
+
+            else System.out.println(errorMessage_1);
+                
+            } catch (InputMismatchException e) {
+                System.err.println(errorMessage_2);
+                scan.next();
+            }
+        }
+
+        return num;
+    }
+
     public int characterSelectionTryCatch(int maxCharacter){
 
         int characterSelection = 0;
@@ -382,7 +405,7 @@ public class Miscellaneous {
     }
 
     public void addSpace(){
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
     //conclusion battle
     public void displayEndBattle(int player1, int player2){
@@ -458,17 +481,17 @@ public class Miscellaneous {
         System.out.println("                             ║ 3:   ARCADE MODE     ║");
         System.out.println("                             ╚══════════════════════╝");
         System.out.println("                             ╔══════════════════════╗");
-        System.out.println("                             ║ 4:    SETTINGS       ║");
+        System.out.println("                             ║ 4:   CUSTOM GAME     ║");
         System.out.println("                             ╚══════════════════════╝");
         System.out.println("                             ╔══════════════════════╗");
-        System.out.println("                             ║ 5:    QUIT GAME      ║");
+        System.out.println("                             ║ :5    QUIT GAME      ║");
         System.out.println("                             ╚══════════════════════╝");
         System.out.println();
         System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
         System.out.println("    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
         System.out.println("    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓");
         System.out.println("    █████████████████████████████████████████████████████████████████████████");
-            
+        System.out.print("    Enter Selection: ");
         selection = scan.nextInt();
 
             if(selection < 1 || selection > 5){
@@ -491,38 +514,75 @@ public class Miscellaneous {
     }
 
     public void displayInvalidScreen(){
-        System.out.println("█████████████████████████████████████████████████████████████████████████");
-        System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
-        System.out.println("███▓▓▓                                                             ▓▓▓███");             
-        System.out.println("███▓▓▓                                                             ▓▓▓███");
-        System.out.println("███▓▓▓                      ╔══════════════╗                       ▓▓▓███");
-        System.out.println("███▓▓▓                      ║   INVALID!   ║                       ▓▓▓███");
-        System.out.println("███▓▓▓                      ╚══════════════╝                       ▓▓▓███");
-        System.out.println("███▓▓▓                                                             ▓▓▓███");
-        System.out.println("███▓▓▓                                                             ▓▓▓███");
-        System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
-        System.out.println("█████████████████████████████████████████████████████████████████████████");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+        System.out.println("    ███▓▓▓                                                             ▓▓▓███");             
+        System.out.println("    ███▓▓▓                                                             ▓▓▓███");
+        System.out.println("    ███▓▓▓                       ╔══════════════╗                      ▓▓▓███");
+        System.out.println("    ███▓▓▓                       ║   INVALID!   ║                      ▓▓▓███");
+        System.out.println("    ███▓▓▓                       ╚══════════════╝                      ▓▓▓███");
+        System.out.println("    ███▓▓▓                                                             ▓▓▓███");
+        System.out.println("    ███▓▓▓                                                             ▓▓▓███");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.print("    Invalid!");
+        slowPrint(".....", 270);
+    }
+    public void displayFinalRoundScreen(){
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");            
+        System.out.println("    ███▓▓▓                                                             ▓▓▓███");
+        System.out.println("    ███▓▓▓              "+YELLOW+"       █▀▀ █ █▄  █ ▄▀▄ █           "+RESET+"            ▓▓▓███");
+        System.out.println("    ███▓▓▓             "+YELLOW+"        █▀  █ █ ▀▄█ █▄█ █           "+RESET+"            ▓▓▓███");
+        System.out.println("    ███▓▓▓             "+YELLOW+"        ▀   ▀ ▀   ▀ ▀ ▀ ▀▀▀▀        "+RESET+"            ▓▓▓███");
+        System.out.println("    ███▓▓▓              "+YELLOW+"     █▀▄ ▄▀▀▄ █  █ █▄  █ █▀▀▄     "+RESET+"             ▓▓▓███");
+        System.out.println("    ███▓▓▓              "+YELLOW+"     █▀▄ █  █ █  █ █ ▀▄█ █  █    "+RESET+"              ▓▓▓███");
+        System.out.println("    ███▓▓▓              "+YELLOW+"     ▀ ▀  ▀▀   ▀▀  ▀   ▀ ▀▀▀    "+RESET+"               ▓▓▓███");
+        System.out.println("    ███▓▓▓                                                             ▓▓▓███");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
     }
 
     public void displayDeathScreen(){
         //Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ═
-        System.out.println("█████████████████████████████████████████████████████████████████████████");
-        System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");    
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");    
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
 
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░  ╥ ╥ ╓─╖ ╥ ╥   ╥─╖ ╥ ╓── ╥─╖  ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░  ╚╦╝ ║ ║ ║ ║   ║ ║ ║ ╠═  ║ ║  ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░   ╨  ╙─╜ ╙─╜   ╨─╜ ╨ ╙── ╨─╜  ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░  ╥ ╥ ╓─╖ ╥ ╥   ╥─╖ ╥ ╓── ╥─╖  ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░  ╚╦╝ ║ ║ ║ ║   ║ ║ ║ ╠═  ║ ║  ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░   ╨  ╙─╜ ╙─╜   ╨─╜ ╨ ╙── ╨─╜  ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
 
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");
-        System.out.println("███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
-        System.out.println("█████████████████████████████████████████████████████████████████████████");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        
+    }
+    public void displayWinScreen(){
+        //Ç ñ │ ║ © ® π ♥ ♦ ░ ▒ ▓ █  ─ «  » ╠ ╣ ║ ╦ ╩ ╬ ╗ ╝ ╔ ╚ ═
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");    
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░   ╥ ╥ ╓─╖ ╥ ╥   ╥ ╥ ╥ ╥ ╥─╖   ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░   ╚╦╝ ║ ║ ║ ║   ║ ║ ║ ║ ║ ║   ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░    ╨  ╙─╜ ╙─╜   ╨─╨─╨ ╨ ╨ ╨   ░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓███");
+        System.out.println("    ███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███");
+        System.out.println("    █████████████████████████████████████████████████████████████████████████");
         
     }
 
@@ -676,6 +736,65 @@ public class Miscellaneous {
          }while(confirmation == false);
     }
     
+    public void displaySupportSkillTypesFromBuffAndDebuff(int buff,int debuff){
+        if(buff == 0 && debuff == 0){
+            System.out.print("Effects "+BOLD+CYAN+"Buff"+RESET+" and "+BOLD+PURPLE+"Debuff"+RESET+" are ");
+            System.out.print(BOLD+RED+"R");
+            System.out.print(YELLOW+"A");
+            System.out.print(GREEN+"N");
+            System.out.print(CYAN+"D");
+            System.out.print(BLUE+"O"+RESET);
+            System.out.print(PURPLE+"M"+RESET);
+            
+            System.out.println();
+            return;
+        }
+
+        switch(buff){
+            case 1 -> {System.out.print("Generates "+BOLD+GREEN+"HP"+RESET+" for itself");}
+            case 2 -> {System.out.print("Generates "+BOLD+BLUE+"MANA"+RESET+" for itself");}
+            case 3 -> {System.out.print("Casts "+BOLD+CYAN+"INCREASE DAMAGE"+RESET+" for itself");}
+
+            default -> {}//receiveds the val 0 for empty
+        }
+
+        if(buff != 0 && debuff != 0){System.out.print(", ");}
+
+        switch(debuff){
+            case 1 -> {System.out.print("Casts "+BOLD+PURPLE+"POISON"+RESET+" on enemy");}
+            case 2 -> {System.out.print("Casts "+BOLD+RED+"BLEED"+RESET+" on enemy");}
+            case 3 -> {System.out.print("Casts "+BOLD+GREEN+"THORNS"+RESET+" on enemy");}
+            case 4 -> {System.out.print("Casts "+BOLD+YELLOW+"PARALYZED"+RESET+" on enemy");}
+            case 5 -> {System.out.print("Casts "+BOLD+YELLOW+"BURN"+RESET+" on enemy");}
+            case 6 -> {System.out.print("Casts "+BOLD+BLUE+"DECREASE DAMAGE"+RESET+" on enemy");}
+
+            default -> {}
+        }
+        System.out.println(".");
+    }
+
+    public void displayPlayerVSPlayerModeScreen(){
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+        System.out.println("█▀█ █   ▄▀▄ █ █ ██▀ █▀█    ▀█");
+        System.out.println("█▀  █▄▄ █▀█  █  █▄▄ █▀▄    ▄█▄");
+        System.out.println();
+        System.out.println("█▀█ █   ▄▀▄ █ █ ██▀ █▀█    ▀█");
+        System.out.println("█▀  █▄▄ █▀█  █  █▄▄ █▀▄    █▄▄");
+        System.out.println("═════════════════════════════════════════════════════════════════════════════════");
+
+    }
+
+    public void displayTurnPlayer_1(){
+        System.out.println(RED+"═════════════════════════════════╔════════════╗═════════════════════════════════");
+                System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║ "+BOLD+"PLAYER  1:"+RESET+" ║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
+                System.out.println("═════════════════════════════════╚════════════╝═════════════════════════════════"+RESET);
+    }
+
+    public void displayTurnPlayer_2(String namePlayer_2){
+        System.out.println(BLUE+"═════════════════════════════════╔════════════╗═════════════════════════════════");
+                System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░║ "+BOLD+namePlayer_2+RESET+" ║░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░");
+                System.out.println("═════════════════════════════════╚════════════╝═════════════════════════════════"+RESET);
+    }
 
 
 }
