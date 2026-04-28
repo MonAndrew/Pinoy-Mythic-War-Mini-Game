@@ -1,4 +1,14 @@
-public class CharacterInfo {
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package OOP_Season2;
+
+/**
+ *
+ * @author Junwel
+ */
+public class CharacterInfo extends Skill{
     private String name;
     private int health;
     private int maxHp;
@@ -32,4 +42,29 @@ public class CharacterInfo {
         return isAlive;
     }
     
+    public void takeDmg(int dmg){
+        health -= dmg;
+        if(health <=0){
+            health = 0;
+            isAlive = false;
+        }
+    }
+    
+    @Override
+    public void normalSkill(CharacterInfo target){
+        System.out.println(name + " used Normal Attack!");
+        target.takeDmg(10);
+    }
+    
+    @Override
+    public void miniSkill(CharacterInfo target){
+        System.out.println(name + " used Fire Breath!");
+        target.takeDmg(45);
+    }
+    
+    @Override
+    public void burstSkill(CharacterInfo target){
+        System.out.println(name + " used Ultimate Move!");
+        target.takeDmg(60);
+    }
 }
