@@ -5,12 +5,27 @@ public class CharacterInfo {
     private int dmg;
     private boolean isAlive = true;
     
+    public CharacterInfo(String name, int hp, int dmg){
+        this.name = name;
+        this.maxHp = hp;
+        this.health = maxHp;
+        this.dmg = dmg;
+    }
+    
     public String getName(){
         return name;
     }
     
     public void setName(String name){
         this.name = name;
+    }
+    
+    public int getHealth(){
+        return health;
+    }
+    
+    public int getDmg(){
+        return dmg;
     }
     
     public boolean isAlive(){
