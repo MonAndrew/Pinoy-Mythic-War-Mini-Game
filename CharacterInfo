@@ -1,0 +1,60 @@
+public class CharacterInfo extends Skill{
+    private String name;
+    private int health;
+    private int maxHp;
+    private int dmg;
+    private boolean isAlive = true;
+    
+    public CharacterInfo(String name, int hp, int dmg){
+        this.name = name;
+        this.maxHp = hp;
+        this.health = maxHp;
+        this.dmg = dmg;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public int getHealth(){
+        return health;
+    }
+    
+    public int getDmg(){
+        return dmg;
+    }
+    
+    public boolean isAlive(){
+        return isAlive;
+    }
+    
+    public void takeDmg(int dmg){
+        health -= dmg;
+        if(health <=0){
+            health = 0;
+            isAlive = false;
+        }
+    }
+    
+    @Override
+    public void normalSkill(CharacterInfo target){
+        System.out.println(name + " used Normal Attack!");
+        target.takeDmg(10);
+    }
+    
+    @Override
+    public void miniSkill(CharacterInfo target){
+        System.out.println(name + " used Fire Breath!");
+        target.takeDmg(45);
+    }
+    
+    @Override
+    public void burstSkill(CharacterInfo target){
+        System.out.println(name + " used Ultimate Move!");
+        target.takeDmg(60);
+    }
+}
