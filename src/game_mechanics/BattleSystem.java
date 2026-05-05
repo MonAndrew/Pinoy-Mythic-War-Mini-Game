@@ -4,28 +4,38 @@ public class BattleSystem {
         System.out.println("Battle Start!");
         System.out.println(player.name + " vs " + enemy.name);
 
-        int round = 1;
+    while (player.isAlive() && enemy.isAlive()) {
 
-        while (player.isAlive() && enemy.isAlive()) {
-            System.out.println("\nRound " + round);
+        System.out.println("\nYour HP: " + player.getHp());
+        System.out.println("Enemy HP: " + enemy.getHp());
 
-            enemy.hp -= player.attack;
-            System.out.println(player.name + " attacks " + enemy.name + " for " + player.attack + " damage.");
+        System.out.println("\nChoose Skill:");
+        System.out.println("1. Normal");
+        System.out.println("2. Mini Special");
+        System.out.println("3. Burst");
 
-            if (!enemy.isAlive()) break;
+        int choice = scan.nextInt();
 
-            player.hp -= enemy.attack;
-            System.out.println(enemy.name + " attacks " + player.name + " for " + enemy.attack + " damage.");
+        if (choice == 1)
+            player.normalSkill(enemy);
+        else if (choice == 2)
+            player.miniSkill(enemy);
+        else if (choice == 3)
+            player.burstSkill(enemy);
 
-            System.out.println(player.name + " HP: " + player.hp);
-            System.out.println(enemy.name + " HP: " + enemy.hp);
+        if (!enemy.isAlive())
+            break;
 
-            round++;
-        }
+        // Enemy random attack
+        int enemyMove = rand.nextInt(3) + 1;
 
-        if (player.isAlive()) {
-            System.out.println("\n" + player.name + " wins!");
-        } else {
-            System.out.println("\n" + enemy.name + " wins!");
-        }
+        if (enemyMove == 1)
+            enemy.normalSkill(player);
+        else if (enemyMove == 2)
+            enemy.miniSkill(player);
+        else
+            enemy.burstSkill(player);
+          
     }
+}
+    
