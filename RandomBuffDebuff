@@ -1,0 +1,24 @@
+class RandomBuffDebuff{
+
+  //void for now, dunno if it will work but the idea is something like that ----> Correct me if I'm wrong bro
+  public void lifesteal(CharacterInfo player){
+    double ls = (player.dmg * 0.25) + 10;
+    player.health += ls;
+  }
+
+  //straight forward, just add a permanent dmg sa player
+  public void addDmg(CharacterInfo player){
+    player.dmg += 30;
+  }
+
+  //3 ticks only, after attacks it lessen the health gani sa enemy
+  public void addPsn(ChacterInfo enemy){
+    enemy.health -= 15;
+    enemy.dmg -= 17;
+  }
+
+  //same idea sa poison but this time, 5 ticks, kinda OP
+  public void addFire(CharacterInfo enemy){
+    enemy.health -= 30;
+  }
+}
