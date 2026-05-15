@@ -1,0 +1,14 @@
+public class Main {
+    
+    
+    
+    public static void main(String[] arg){
+        CharacterInfo player = new CharacterInfo("Hero", 1000, 100);
+        CharacterInfo enemy = new CharacterInfo("Enemy", 1000, 100);
+
+        BattleSystem battle = new BattleSystem();
+
+        battle.battleStart(player, enemy);
+    }
+    
+}
