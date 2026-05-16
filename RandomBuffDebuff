@@ -1,0 +1,50 @@
+public class RandomBuffDebuff {
+
+    public void giveBuff(CharacterInfo player, int choice) {
+
+        switch(choice) {
+
+            case 1:
+                player.setLifeSteal(true);
+                System.out.println("LifeSteal Activated!");
+                break;
+
+            case 2:
+                player.setBonusDmg(30);
+                System.out.println("+30 Damage Activated!");
+                break;
+
+            case 3:
+                player.setPoisonTicks(3);
+                System.out.println("Poison Enabled!");
+                break;
+
+            case 4:
+                player.setFireTicks(5);
+                System.out.println("Fire Enabled!");
+                break;
+        }
+    }
+
+    // Apply damage over time
+    public void applyEffects(CharacterInfo enemy) {
+
+        if(enemy.getPoisonTicks() > 0) {
+
+            enemy.takeDmg(15);
+
+            enemy.setPoisonTicks(enemy.getPoisonTicks() - 1);
+
+            System.out.println(enemy.getName() + " took 15 poison damage!");
+        }
+
+        if(enemy.getFireTicks() > 0) {
+
+            enemy.takeDmg(30);
+
+            enemy.setFireTicks(enemy.getFireTicks() - 1);
+
+            System.out.println(enemy.getName() + " took 30 fire damage!");
+        }
+    }
+}

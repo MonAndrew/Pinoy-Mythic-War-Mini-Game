@@ -1,0 +1,151 @@
+public class CharacterInfo extends Skill {
+ 
+    private String name;
+    private int health;
+    private int maxHp;
+    private int dmg;
+    private boolean isAlive = true;
+ 
+    // Buffs and Debuffs
+    private int bonusDmg = 0;
+    private int poisonTicks = 0;
+    private int fireTicks = 0;
+    private boolean lifeSteal = false;
+ 
+    public CharacterInfo(String name, int hp, int dmg) {
+        this.name = name;
+        this.maxHp = hp;
+        this.health = maxHp;
+        this.dmg = dmg;
+    }
+ 
+ 
+    // GETTERS and SETTERS
+    public String getName() {
+        return name;
+    }
+ 
+    public int getHealth() {
+        return health;
+    }
+    public void setHealth(int health) {
+        this.health = health;
+    }
+ 
+    public int getDmg() {
+        return dmg;
+    }
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+    }
+ 
+    public boolean isAlive() {
+        return isAlive;
+    }
+    public void setIsAlive(boolean input){
+        this.isAlive = input;
+    }
+ 
+    public int getBonusDmg() {
+        return bonusDmg;
+    }
+
+    public void setBonusDmg(int bonusDmg) {
+        int temp = bonusDmg + this.bonusDmg;
+        this.bonusDmg = temp;
+    }
+ 
+    public int getPoisonTicks() {
+        return poisonTicks;
+    }
+ 
+    public void setPoisonTicks(int poisonTicks) {
+        this.poisonTicks = poisonTicks;
+    }
+ 
+    public int getFireTicks() {
+        return fireTicks;
+    }
+ 
+    public void setFireTicks(int fireTicks) {
+        this.fireTicks = fireTicks;
+    }
+ 
+    public boolean getLifeSteal() {
+        return lifeSteal;
+    }
+ 
+    public void setLifeSteal(boolean lifeSteal) {
+        this.lifeSteal = lifeSteal;
+    }
+ 
+
+    // DAMAGE and HEAL
+ 
+    public void takeDmg(int dmg) {
+        health -= dmg;
+ 
+        if (health <= 0) {
+            health = 0;
+            isAlive = false;
+        }
+    }
+ 
+    public void heal(int amount) {
+        health += amount;
+ 
+        if (health > maxHp) {
+            health = maxHp;
+        }
+    }
+ 
+ 
+    // SKILLS
+ 
+    @Override
+    public void normalSkill(CharacterInfo target) {
+ 
+        int totalDmg = 10 + bonusDmg;
+ 
+        System.out.println(name + " used Normal Attack!");
+        target.takeDmg(totalDmg);
+ 
+        applyLifeSteal(totalDmg);
+    }
+ 
+    @Override
+    public void miniSkill(CharacterInfo target) {
+ 
+        int totalDmg = 45 + bonusDmg;
+ 
+        System.out.println(name + " used Fire Breath!");
+        target.takeDmg(totalDmg);
+ 
+        applyLifeSteal(totalDmg);
+    }
+ 
+    @Override
+    public void burstSkill(CharacterInfo target) {
+ 
+        int totalDmg = 60 + bonusDmg;
+ 
+        System.out.println(name + " used Ultimate Move!");
+        target.takeDmg(totalDmg);
+ 
+        applyLifeSteal(totalDmg);
+    }
+ 
+    //TO apply LIFESTEAL
+ 
+    public void applyLifeSteal(int dmgDealt) {
+ 
+        if (lifeSteal) {
+ 
+            int healAmount = (int)(dmgDealt * 0.25) + 10;
+ 
+            heal(healAmount);
+ 
+            System.out.println(name + " healed for " + healAmount + " HP!");
+        }
+    }
+}

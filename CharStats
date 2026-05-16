@@ -1,0 +1,22 @@
+abstract class CharStats {
+
+    CharacterInformation[] CharInfo = new CharacterInformation[10];
+
+    public CharacterStats() {
+
+       //object instantiation
+        CharInfo[0] = new CharInfo();
+        CharInfo[1] = new CharInfo();
+
+
+        CharInfo [0].name = "Coco Martin";
+        CharInfo [0].hp = 100;
+        CharInfo [0].mana = 100;
+
+
+        CharInfo [1].name = "Dante Gulapa";
+        CharInfo [1].hp = 100;
+        CharInfo [1].mana = 100;
+    }
+
+}

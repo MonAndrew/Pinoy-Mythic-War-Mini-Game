@@ -1,0 +1,7 @@
+public abstract class Skill {
+    public abstract void normalSkill(CharacterInfo target);
+    
+    public abstract void miniSkill(CharacterInfo target);
+    
+    public abstract void burstSkill(CharacterInfo target);
+}
